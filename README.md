@@ -1,4 +1,23 @@
-## 最初に行う
+# 初期設定
+
+### 1.Gitのインストール
+
+https://gitforwindows.org/
+
+### 2.Gitの設定（コマンド）
+```
+git config --global user.name {自分の名前}
+git config --global user.email {メールアドレス}
+```
+
+### 3.Githubアカウントの作成
+
+https://github.co.jp/
+
+上記の{自分の名前}、{メールアドレス}で登録する。
+<br><br><br>
+
+## すでにプロジェクトがある場合
 ### 1. Githubリポジトリのclone
 ```
 git clone https://github.com/mako4kamiya/yammp_test.git
@@ -6,7 +25,7 @@ git clone https://github.com/mako4kamiya/yammp_test.git
 
 ### 2.作業用ブランチに変更する
 ```
-git checkout feature_miki
+git checkout dev_miki
 ```
 <br><br><br>
 
@@ -16,13 +35,12 @@ git checkout feature_miki
 git branch
 ```
 ```
->  feature_mako
->  * feature_miki
+>  * dev_miki
 >  main
 ```
 *が現在いるブランチ。
 
-**必ず作業用のブランチにいることを確認する。もし違うブランチにいれば、`git checkout feature_miki`で移動する**
+**必ず作業用のブランチにいることを確認する。もし違うブランチにいれば、`git checkout dev_miki`で移動する**
 
 ### 2.作業する
 
@@ -61,7 +79,7 @@ git log --oneline --graph
 
 ### 9.作業用ブランチにプッシュ
 ```
-git push origin feature_miki
+git push origin dev_miki
 ```
 **すべての作業、コミットが終ったら、最低でも一日の最後の終わりにはプッシュする**
 
@@ -87,31 +105,13 @@ git pull
 
 ### 3.作業用ブランチに変更する
 ```
-git checkout feature_miki
+git checkout dev_miki
 ```
 
 ### 1.現在いるブランチを確認する にもどる
 <br><br><br>
 
 ***
-# 初期設定
-
-### Gitのインストール
-
-https://gitforwindows.org/
-
-### Gitの設定（コマンド）
-```
-git config --global user.name {自分の名前}
-git config --global user.email {メールアドレス}
-```
-
-### Githubアカウントの作成
-
-https://github.co.jp/
-
-上記の{自分の名前}、{メールアドレス}で登録する。
-
 
 ## 【用語】
 ### Gitについてわかりやすいサイト
