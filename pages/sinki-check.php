@@ -1,6 +1,6 @@
 <?php 
   include("html_head.php");
-  require('./dbconnect.php');
+  require('../dbconnect.php');
   session_start();
 
   print_r($_SESSION['user']);

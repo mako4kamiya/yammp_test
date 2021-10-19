@@ -1,6 +1,6 @@
 <?php
-	require('./dbconnect.php');
-	$users = $db->query('SELECT * FROM users');
+  require('./dbconnect.php');
+  $users = $db->query('SELECT * FROM users');
 	$questions = $db->query('SELECT * FROM questions');
 	$user_answers = $db->query('SELECT * FROM user_answers');
 	$seigohyous = $db->query('SELECT * FROM seigohyou');

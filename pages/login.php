@@ -1,5 +1,5 @@
 <?php include("html_head.php");
-  require('./dbconnect.php');
+  require('../dbconnect.php');
   session_start();
 
   // ログイン情報があればマイページを表示する
