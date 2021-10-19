@@ -9,7 +9,7 @@
   if (isset($_SESSION['user'])) {
     header('Location: mypage.php');
     exit();
-  } else if ($_COOKIE["yammp_test"]){
+  } else if ($_COOKIE["user"]){
     // Cookieにユーザー情報があれば、自動でログイン処理を行って、
     // マイページ画面を表示する。
     $statement = $db->prepare('SELECT * FROM users');
