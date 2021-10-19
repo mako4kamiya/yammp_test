@@ -3,6 +3,25 @@
   require('./dbconnect.php');
   session_start();
 
+  // ログイン情報があればマイページを表示する
+  if (isset($_SESSION['user'])) {
+    header('Location: mypage.php');
+    exit();
+  } else if ($_COOKIE["yammp_test"]){
+    // Cookieにユーザー情報があれば、自動でログイン処理を行って、
+    // マイページ画面を表示する。
+    $statement = $db->prepare('SELECT * FROM users');
+    $statement->execute();
+    while ($user = $statement->fetch()) {
+      if (password_verify($user['id'], $_COOKIE['yammp_test'])) {
+        $_SESSION['user']['studentNumber'] = $user['studentNumber'];
+        $_SESSION['user']['userName'] = $user['userName'];
+        header('Location: mypage.php');
+        exit();
+      }
+    }
+  }
+
   if (!empty($_POST)) {
     // エラー項目の確認
     if ($_POST['userName'] == '') {
@@ -34,7 +53,8 @@
 
 	if (empty($error) && !empty($_POST) ) {		
 		$_SESSION['user'] = $_POST;
-		header('Location: sinki-check.php'); exit();
+		header('Location: sinki-check.php');
+    exit();
 	}
 
   // 書き直し

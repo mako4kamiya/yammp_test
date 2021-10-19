@@ -2,10 +2,25 @@
   require('./dbconnect.php');
   session_start();
 
-  // if ($_COOKIE["yammp_test"]) {
-    // Cookieにユーザー情報があれば、マイページ画面を表示する。（ログイン画面は表示しない）
-    // header('Location: mypage.php'); exit();
-  // }
+  // ログイン情報があればマイページを表示する
+  if (isset($_SESSION['user'])) {
+    header('Location: mypage.php');
+    exit();
+  } else if ($_COOKIE["yammp_test"]){
+    // Cookieにユーザー情報があれば、自動でログイン処理を行って、
+    // マイページ画面を表示する。
+    $statement = $db->prepare('SELECT * FROM users');
+    $statement->execute();
+    while ($user = $statement->fetch()) {
+      if (password_verify($user['id'], $_COOKIE['yammp_test'])) {
+        $_SESSION['user']['studentNumber'] = $user['studentNumber'];
+        $_SESSION['user']['userName'] = $user['userName'];
+        header('Location: mypage.php');
+        exit();
+      }
+    }
+  }
+
 
   if (!empty($_POST)) {
     // 入力エラーのチェック
@@ -19,9 +34,8 @@
     if (empty($error)) {
       // 学籍番号がDBにあるか確認する
       $statement = $db->prepare('SELECT * FROM users WHERE studentNumber=?');
-      $statement->execute([
-        $_POST['studentNumber'],
-      ]);
+      $statement->bindParam(1, $_POST['studentNumber'], PDO::PARAM_INT );
+      $statement->execute();
       $user = $statement->fetch();
       
       // 入力されたパスワードと、DBのパスワードを照合する
@@ -29,13 +43,14 @@
         // セッションにユーザー情報を記録する
         $_SESSION['user']['studentNumber'] = $user['studentNumber'];
         $_SESSION['user']['userName'] = $user['userName'];
-        $_SESSION['user']['time'] = time();
         
         if ($_POST['save'] == 'on') {
           // チェックが入っていれば、CookieにユーザーIDを登録する
-          setcookie("yammp_test", password_hash($user['id'], PASSWORD_DEFAULT), time()+60*60*24*30);
+          setcookie("yammp_test", password_hash($user['id'], PASSWORD_DEFAULT), strtotime("+1 month"));
+          // setcookie("yammp_test", password_hash($user['id'], PASSWORD_DEFAULT), strtotime("+1 min"));
         }
-        header('Location: mypage.php'); exit();
+        header('Location: mypage.php');
+        exit();
       } else {
         // ログイン失敗
         $error['login'] = 'failed';
@@ -83,6 +98,13 @@
   print('COOKIE：');
   var_export($_COOKIE);
   print('<br>');
+  print('COOKIE["yammp_test]：');
+  var_export($_COOKIE['yammp_test']);
+  print('<br>');
+  print('COOKIE["yammp_test]：');
+  var_export(isset($_COOKIE['yammp_test']));
+  print('<br>');
+
 
 ?>
 <body id="login">
