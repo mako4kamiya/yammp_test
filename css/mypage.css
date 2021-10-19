@@ -1,0 +1,46 @@
+#mypage .button_type1 {
+  background-color: #12CDD4;
+  border-color: #12CDD4;
+  width: 138px;
+}
+
+#mypage .button_type1:hover {
+  background-color: #87cefa;
+  border-color: #87cefa;
+}
+
+#mypage .button_type2{
+  background-color: #0CA789;
+  border-color: #0CA789;
+  width: 138px;
+}
+
+#mypage .button_type2:hover {
+  background-color: #32cd32;
+  border-color: #32cd32;
+}
+
+#mypage .button_type3{
+  background-color: #8FD14F;
+  border-color: #8FD14F;
+}
+
+#mypage .button_type3:hover {
+  background-color: #90ee90;
+  border-color: #90ee90;
+}
+
+#mypage .mypage-menu i {
+  font-size: 6em;
+  margin-bottom: 15px;
+}
+
+#mypage .main-body {
+  justify-content: center;
+}
+
+#mypage .mypage-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,92 @@
+#cbt .btn-end {
+  color: black;
+  background-color: #A08C5A;
+  border-color: #A08C5A;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+#cbt .icon-click::before {
+  font-family: "Font Awesome 5 Free";
+  content: '\f054';
+  font-weight: 900;
+  margin-left: 5px;
+}
+
+#cbt .btnsize {
+  width: 75px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+ 
+#cbt .select-header {
+  background-color: black;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+#cbt .select-main {
+  overflow: scroll;
+  height: 90vh;
+  padding-top: 63px;
+  padding-bottom: 49px;
+}
+
+#cbt .select-footer {
+  background-color: black;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#cbt .style-display {
+  width: 50%;
+}
+
+#cbt .card .test3-card {
+  background-color: #DFE7EA;
+  flex-direction: row;
+  height: 100%;
+}
+
+#cbt .select {
+  height: 100%;
+  background-color: #FFFFFF;
+  position: relative;
+}
+
+#cbt .img img {
+  height: 100%;
+  object-fit: contain;
+}
+
+#cbt .img {
+  height: 100%;
+  background-color: #FFFFFF;
+  overflow: scroll;
+  height: 90vh;
+}
+
+#cbt .select-header-simei p {
+  margin: unset;
+  color: #FFFFFF;
+  font-size: 10px;
+}
+
+#cbt .select-header-simei {
+  background-color: #619123;
+  display: flex;
+  justify-content: space-between;
+}
+
+#cbt .select-header-simei span {
+  font-weight: bold;
+}

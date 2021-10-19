@@ -1,0 +1,70 @@
+#delete .button_2 {
+  font-weight: bold;
+  color: #208DC3;
+  border-color: #208DC3;
+  border-width: 5px;
+  width: 100px;
+}
+
+#delete .button_2:hover {
+  background-color: #208DC3;
+  border-color: #208DC3;
+}
+
+#delete .button_3{
+  font-weight: bold;
+  color: #F26040;
+  border-color: #F26040;
+  border-width: 5px;
+  width: 100px;
+  margin-right: 49px;
+  margin-left: 10px;
+}
+
+#delete .button_3:hover {
+  background-color: #F26040;
+  border-color: #F26040;
+}
+
+#delete .forms {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  justify-content: center;
+}
+
+#delete .main-body { 
+  flex-direction: column;
+	width: 70%;
+	margin: 0 auto;
+}
+
+#delete .link-2::before {
+  font-size: 2.0em;
+  content: "\f503";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  text-align: center;
+}
+
+#delete .main-body input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+  padding: 1em; 
+	transition: 0.3s;
+	letter-spacing: 5px;
+	color: #474d52;
+	border: 5px solid #1b2538;
+	border-radius: 4px;
+  text-align: center;
+}
+
+#delete i { 
+  font-size: 2em;
+  width: 50px;
+}
+
+#delete p {
+  text-align: center;
+}

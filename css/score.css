@@ -1,0 +1,33 @@
+#score .oyayouso {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#score .suuji {
+  margin-top: -40px;
+  margin-left: -10px; /* マルの大きさの半分を指定する */
+  position: absolute;
+}
+
+#score .maru {
+  width: 20px;  /* マルの大きさ */ 
+  height: 20px;
+  margin-left: -10px; /* マルの大きさの半分を指定する */
+  background-color: #FFA500;
+  border-radius: 50%;
+  border: 5px solid #FFFFFF;
+  position: absolute;
+}
+
+#score .aiu {
+  text-align: center;
+}
+
+.progress {
+background-image: radial-gradient( circle 450px at 0.6% 53.8%, rgba(255,142,20,1) 0%, rgba(249,206,4,1) 50.5%, rgba(137,212,0,1) 90% );
+}
+
+.progress-bar {
+  background-color: unset;
+}

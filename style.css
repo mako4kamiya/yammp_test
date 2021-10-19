@@ -1,0 +1,341 @@
+.aiu {
+  display: flex;
+  justify-content: center;
+}
+/*************** ログイン画面 ********************/
+.button_1 {
+  font-weight: bold;
+  color: #1EA8B5;
+  border-color: #1EA8B5;
+  border-width: 3px;
+}
+
+.button_1:hover {
+  background-color: #1EA8B5;
+  border-color: #1EA8B5;
+}
+
+.link-1::before {
+  font-size: 2em;
+  content: "\f00e";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 10px;
+}
+
+.link-2::before {
+  font-size: 2em;
+  content: "\f084";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 10px;
+}
+
+.link-3::before {
+  content: "\f055";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 5px;
+}
+
+body {
+  background-color: #FDF1B7;
+}
+
+.ptag1 {
+  padding-left: 70px;
+}
+
+ .mycontainer { 
+  width: 500px;
+  margin: 0 auto;
+}
+
+.myinline {
+  padding-right: 20px;
+}
+
+.create {
+  padding-bottom: 50px;
+  padding-left: 70px;
+}
+
+.myform {
+  text-align: center;
+  width: 500px;
+  border-width: 3px;
+  border-color: #272822;
+}
+
+img {
+  padding-bottom: 50px;
+}
+
+/* スマホ用 */
+@media all and (max-width:768px){
+.login-img {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 900px;
+}
+}
+/* PC用 */
+@media all and (min-width:769px){
+.login-img {
+  width: 1000px;
+  margin: 0 auto;
+  display: block;
+}
+}
+/****************** 新規登録画面 *****************/
+
+#sinki .button_2 {
+  font-weight: bold;
+  color: #208DC3;
+  border-color: #208DC3;
+  border-width: 4px;
+  width: 15%;
+  margin: 0 auto;
+}
+
+.button_2:hover {
+  background-color: #208DC3;
+  border-color: #208DC3;
+}
+
+.link-4::before {
+  font-size: 2.8em;
+  content: "\f234";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 10px;
+}
+
+.link-5::before {
+  font-size: 3em;
+  content: "\f162";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 10px;
+}
+
+.link-6::before {
+  font-size: 3em;
+  content: "\f13e";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 10px;
+}
+
+.ptag2 {
+  font-size: 30px;
+}
+
+.h1font {
+  font-family: 'Fredoka One', cursive;
+  font-size: 60px;
+}
+
+.cp_iptxt {
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.cp_iptxt input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+  padding: 1em; 
+	transition: 0.3s;
+	letter-spacing: 5px;
+	color: #474d52;
+	border: 5px solid #1b2538;
+	border-radius: 4px;
+  text-align: center;
+}
+
+.ef input[type='text']:focus { 
+	border: 5px solid #9ed7e2;
+	outline: none;
+}
+
+.box {
+  text-align: center;
+}
+
+.box1 {
+  text-align: center;
+  height: 150px;
+}
+
+.box2 {
+  text-align: center;
+  height: 150px;
+}
+
+.box3 {
+  text-align: center;
+  height: 150px;
+}
+
+
+
+
+/*************** マイページ画面 ******************/
+.button_type1 {
+  /* width: 14%; */
+  background-color: #12CDD4;
+  border-color: #12CDD4;
+}
+
+.button_type1:hover {
+  background-color: #87cefa;
+  border-color: #87cefa;
+}
+
+.button_type2{
+  /* width: 14%; */
+  background-color: #0CA789;
+  border-color: #0CA789;
+}
+
+.button_type2:hover {
+  background-color: #32cd32;
+  border-color: #32cd32;
+}
+
+.button_type3{
+  background-color: #8FD14F;
+  border-color: #8FD14F;
+}
+
+.button_type3:hover {
+  background-color: #90ee90;
+  border-color: #90ee90;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.child{
+  margin-left: 100px;
+}
+
+
+.top_mypage {
+  font-family: 'Fredoka One', cursive;
+  font-size: 60px;
+}
+
+.mypage1::before {
+  font-size: 1.5em;
+  content: "\f2bb";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 20px;
+  margin-left: 240px;
+}
+
+.angle-type {
+  font-size: 3em;
+}
+
+
+/*********** ユーザー情報修正・削除画面 **********/
+
+#delete .button_2 {
+  font-weight: bold;
+  color: #208DC3;
+  border-color: #208DC3;
+  border-width: 4px;
+  width: 15%;
+  margin-left: 300px;
+}
+
+.button_2:hover {
+  background-color: #208DC3;
+  border-color: #208DC3;
+}
+
+.button_3{
+  font-weight: bold;
+  color: #F26040;
+  border-color: #F26040;
+  border-width: 4px;
+  width: 15%;
+}
+
+.button_3:hover {
+  background-color: #F26040;
+  border-color: #F26040;
+}
+
+.nav-font{
+  font-family: 'Fredoka One', cursive;
+}
+
+.box4 {
+  text-align: center;
+  height: 100px;
+}
+
+.box5 {
+  text-align: center;
+  height: 100px;
+}
+
+.settings_h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 60px;
+}
+
+.link-7::before {
+  font-size: 1.5em;
+  content: "\f2bb";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 20px;
+  margin-left: 240px;
+}
+
+.link-8::before {
+  font-size: 2.5em;
+  content: "\f503";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 10px;
+  margin-left: 240px;
+}
+
+.angle-type {
+  font-size: 3em;
+}
+
+.edit-type {
+  margin-left: 245px;
+}
+
+.info {
+  font-family: 'Fredoka One', cursive;
+  font-size: 30px;
+  display: inline;
+}
+
+.info2 {
+  font-size: 20px;
+  margin-top: 50px;
+  margin-left: 240px;
+}
+
+/*************** スコア画面 ******************/
+
+.link-9::before {
+  font-size: 1.5em;
+  content: "\f5a2";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 10px;
+  margin-left: 240px;
+}

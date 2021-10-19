@@ -1,0 +1,24 @@
+.main-header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 60px;
+}
+
+.user-info {
+  margin-left: 280px;
+  margin-bottom: 50px;
+}
+
+.user-info p {
+  font-family: 'Fredoka One', cursive;
+  font-size: 30px;
+  display: inline;
+}
+
+.link-3::before {
+  font-size: 1.5em;
+  content: "\f5a2";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-right: 10px;
+  margin-left: 240px;
+}
