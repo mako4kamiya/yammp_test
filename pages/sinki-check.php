@@ -1,14 +1,27 @@
 <?php 
   include("html_head.php");
-  require('./dbconnect.php');
+  require('../dbconnect.php');
   session_start();
 
   print_r($_SESSION['user']);
 
-  
-  if (!isset($_SESSION['user'])) {
-    header('Location: index.php'); 
+  // ログイン情報があればマイページを表示する
+  if (isset($_SESSION['user'])) {
+    header('Location: mypage.php');
     exit();
+  } else if ($_COOKIE["yammp_test"]){
+    // Cookieにユーザー情報があれば、自動でログイン処理を行って、
+    // マイページ画面を表示する。
+    $statement = $db->prepare('SELECT * FROM users');
+    $statement->execute();
+    while ($user = $statement->fetch()) {
+      if (password_verify($user['id'], $_COOKIE['yammp_test'])) {
+        $_SESSION['user']['studentNumber'] = $user['studentNumber'];
+        $_SESSION['user']['userName'] = $user['userName'];
+        header('Location: mypage.php');
+        exit();
+      }
+    }
   }
   
   if (!empty($_POST)) {
@@ -19,9 +32,9 @@
       $_SESSION['user']['userName'],
       password_hash($_SESSION['user']['password'], PASSWORD_DEFAULT),
     ]);
-    unset($_SESSION['user']);
+    // unset($_SESSION['user']);
   
-    // header('Location: mypage.php');
+    header('Location: mypage.php');
     exit();
   }
 ?>
