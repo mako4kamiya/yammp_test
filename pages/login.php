@@ -6,13 +6,13 @@
   if (isset($_SESSION['user'])) {
     header('Location: mypage.php');
     exit();
-  } else if ($_COOKIE["yammp_test"]){
+  } else if ($_COOKIE["user"]){
     // Cookieにユーザー情報があれば、自動でログイン処理を行って、
     // マイページ画面を表示する。
     $statement = $db->prepare('SELECT * FROM users');
     $statement->execute();
     while ($user = $statement->fetch()) {
-      if (password_verify($user['id'], $_COOKIE['yammp_test'])) {
+      if (password_verify($user['id'], $_COOKIE['user'])) {
         $_SESSION['user']['studentNumber'] = $user['studentNumber'];
         $_SESSION['user']['userName'] = $user['userName'];
         header('Location: mypage.php');
@@ -46,8 +46,8 @@
         
         if ($_POST['save'] == 'on') {
           // チェックが入っていれば、CookieにユーザーIDを登録する
-          setcookie("yammp_test", password_hash($user['id'], PASSWORD_DEFAULT), strtotime("+1 month"));
-          // setcookie("yammp_test", password_hash($user['id'], PASSWORD_DEFAULT), strtotime("+1 min"));
+          setcookie("user", password_hash($user['id'], PASSWORD_DEFAULT), strtotime("+1 month"));
+          // setcookie("user", password_hash($user['id'], PASSWORD_DEFAULT), strtotime("+1 min"));
         }
         header('Location: mypage.php');
         exit();
@@ -98,11 +98,11 @@
   print('COOKIE：');
   var_export($_COOKIE);
   print('<br>');
-  print('COOKIE["yammp_test]：');
-  var_export($_COOKIE['yammp_test']);
+  print('COOKIE["user"]：');
+  var_export($_COOKIE['user']);
   print('<br>');
-  print('COOKIE["yammp_test]：');
-  var_export(isset($_COOKIE['yammp_test']));
+  print('COOKIE["user"]：');
+  var_export(isset($_COOKIE['user']));
   print('<br>');
 
 

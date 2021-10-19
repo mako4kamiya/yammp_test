@@ -3,7 +3,7 @@
   require('../dbconnect.php');
   session_start();
 
-  if ($_COOKIE["yammp_test"]){
+  if ($_COOKIE["user"]){
     // Cookieにユーザー情報があれば、自動でログイン処理を行って、
     // マイページ画面を表示する。
     $statement = $db->prepare('SELECT * FROM users');
@@ -14,6 +14,9 @@
         $_SESSION['user']['userName'] = $user['userName'];
       }
     }
+  } else {
+    header('Location: login.php');
+    exit();
   }
 ?>
 
