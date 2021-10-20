@@ -3,15 +3,8 @@
   require('../dbconnect.php');
   session_start();
 
-  print_r($_SESSION['user']);
-
-  // ログイン情報があればマイページを表示する
-  if (isset($_SESSION['user'])) {
-    header('Location: mypage.php');
-    exit();
-  } else if ($_COOKIE["user"]){
-    // Cookieにユーザー情報があれば、自動でログイン処理を行って、
-    // マイページ画面を表示する。
+  if ($_COOKIE["user"]){
+    // Cookieにユーザー情報があれば、自動でログイン処理を行って、マイページ画面を表示する。
     $statement = $db->prepare('SELECT * FROM users');
     $statement->execute();
     while ($user = $statement->fetch()) {
@@ -25,15 +18,13 @@
   }
   
   if (!empty($_POST)) {
-    // 登録処理をする
+    // ユーザー登録処理をする
     $statement = $db->prepare('INSERT INTO users SET studentNumber=?, userName=?, password=?, created_at = NOW(), updated_at = NOW()');
     echo $ret = $statement->execute([
       $_SESSION['user']['studentNumber'],
       $_SESSION['user']['userName'],
       password_hash($_SESSION['user']['password'], PASSWORD_DEFAULT),
-    ]);
-    // unset($_SESSION['user']);
-  
+    ]);  
     header('Location: mypage.php');
     exit();
   }

@@ -3,9 +3,12 @@
   require('../dbconnect.php');
   session_start();
 
-  if ($_COOKIE["user"]){
-    // Cookieにユーザー情報があれば、自動でログイン処理を行って、
-    // マイページ画面を表示する。
+  if (!isset($_SESSION['user'])) {
+    // ログイン情報が無ければログイン画面を表示する
+    header('Location: login.php');
+    exit();
+  }if ($_COOKIE["user"]){
+    // Cookieにユーザー情報があれば、自動でログイン処理を行う。
     $statement = $db->prepare('SELECT * FROM users');
     $statement->execute();
     while ($user = $statement->fetch()) {
@@ -14,9 +17,6 @@
         $_SESSION['user']['userName'] = $user['userName'];
       }
     }
-  } else {
-    header('Location: login.php');
-    exit();
   }
 ?>
 

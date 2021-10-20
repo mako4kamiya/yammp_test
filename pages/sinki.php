@@ -3,13 +3,12 @@
   require('../dbconnect.php');
   session_start();
 
-  // ログイン情報があればマイページを表示する
   if (isset($_SESSION['user'])) {
+    // ログイン情報があればマイページ画面を表示する。
     header('Location: mypage.php');
     exit();
   } else if ($_COOKIE["user"]){
-    // Cookieにユーザー情報があれば、自動でログイン処理を行って、
-    // マイページ画面を表示する。
+    // Cookieにユーザー情報があれば、自動でログイン処理を行って、マイページ画面を表示する。
     $statement = $db->prepare('SELECT * FROM users');
     $statement->execute();
     while ($user = $statement->fetch()) {
@@ -23,7 +22,7 @@
   }
 
   if (!empty($_POST)) {
-    // エラー項目の確認
+    // 入力エラーチェック
     if ($_POST['userName'] == '') {
       $error['userName'] = 'blank';
     }
