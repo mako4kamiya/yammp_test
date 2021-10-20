@@ -7,6 +7,7 @@ class UserSeeder extends AbstractSeed
 {
     public function run()
     {
+        // sql文で入れる方法
         // $sql = "INSERT INTO users
         //     (
         //         studentNumber,
@@ -25,15 +26,22 @@ class UserSeeder extends AbstractSeed
         //     );";
         // $this->execute($sql);
 
+        // fakerを使う方法
         $faker = Faker\Factory::create();
-        $data = [];
+        $data[] = [
+            'studentNumber' => 2000,
+            'userName'      => "test_user",
+            'password'      => password_hash('testuser', PASSWORD_DEFAULT),
+            'created_at'    => date('Y-m-d H:i:s'),
+            'updated_at'    => date('Y-m-d H:i:s'),
+        ];
         for ($i = 0; $i < 5; $i++) {
             $data[] = [
                 'studentNumber' => $faker->numberBetween($min = 2001, $max = 2020),
                 'userName'      => $faker->userName,
-                'password'      => $faker->sha256('foo'),
+                'password'      => password_hash('faker', PASSWORD_DEFAULT),
                 'created_at'    => date('Y-m-d H:i:s'),
-                'updated_at'    => $faker->lastName,
+                'updated_at'    => date('Y-m-d H:i:s'),
             ];
         }
         $this->insert('users', $data);
