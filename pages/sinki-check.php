@@ -30,7 +30,7 @@
       password_hash($_SESSION['login']['password'], PASSWORD_DEFAULT),
     ]);
     $_SESSION['user']['studentNumber'] = $_SESSION['login']['studentNumber'];
-    $_SESSION['user']['userName'] = $_SESSION['login']['studentNumber'];
+    $_SESSION['user']['userName'] = $_SESSION['login']['userName'];
     unset($_SESSION['login']);
     header('Location: mypage.php');
     exit();

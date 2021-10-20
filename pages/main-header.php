@@ -1,5 +1,7 @@
 <?php
     session_start();
+    var_export($_SESSION['user']['studentNumber']);
+    var_export($_SESSION['user']['userName']);
 ?>
 
 <div class="main-header">

@@ -46,7 +46,6 @@
         if ($_POST['save'] == 'on') {
           // チェックが入っていれば、CookieにユーザーIDを登録する
           setcookie("user", password_hash($user['id'], PASSWORD_DEFAULT), strtotime("+1 month"));
-          // setcookie("user", password_hash($user['id'], PASSWORD_DEFAULT), strtotime("+1 min"));
         }
         header('Location: mypage.php');
         exit();
@@ -56,54 +55,6 @@
       }
     }
   }
-
-  // エラー表示
-  print('error：');
-  var_export($error);
-  print('<br>');
-
-  // POSTの表示
-  print('<br>');
-  print('POST：');
-  var_export($_POST);
-  print('<br>');
-
-  // ログインしているユーザー情報
-  print('<br>');  
-  print("user['id']：");
-  var_export($user['id']);
-  print('<br>');
-  print("user['studentNumber']");
-  var_export($user['studentNumber']);
-  print('<br>');
-  print("user['userName']");
-  var_export($user['userName']);
-  print('<br>');
-  print("user['password']");
-  var_export($user['password']);
-  print('<br>');
-
-  // セッション情報
-  print('<br>');
-  print('SESSION：');
-  var_export($_SESSION);
-  print('<br>');
-  print('SESSION["user"]：');
-  var_export($_SESSION['user']);
-  print('<br>');
-
-  // Cookie情報
-  print('<br>');
-  print('COOKIE：');
-  var_export($_COOKIE);
-  print('<br>');
-  print('COOKIE["user"]：');
-  var_export($_COOKIE['user']);
-  print('<br>');
-  print('COOKIE["user"]：');
-  var_export(isset($_COOKIE['user']));
-  print('<br>');
-
 
 ?>
 <body id="login">
