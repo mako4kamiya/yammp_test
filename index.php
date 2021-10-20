@@ -5,7 +5,7 @@
 
     if (isset($_SESSION['user'])) {
         // ログイン情報があればマイページ画面を表示する。
-        header('Location: mypage.php');
+        header('Location: pages/mypage.php');
         exit();
     } else if ($_COOKIE["user"]){
         // Cookieにユーザー情報があれば、自動でログイン処理を行って、マイページ画面を表示する。
@@ -15,7 +15,7 @@
             if (password_verify($user['id'], $_COOKIE['user'])) {
                 $_SESSION['user']['studentNumber'] = $user['studentNumber'];
                 $_SESSION['user']['userName'] = $user['userName'];
-                header('Location: mypage.php');
+                header('Location: pages/mypage.php');
                 exit();
             }
         }

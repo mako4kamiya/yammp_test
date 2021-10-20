@@ -51,14 +51,14 @@
 	}
 
 	if (empty($error) && !empty($_POST) ) {		
-		$_SESSION['user'] = $_POST;
+		$_SESSION['login'] = $_POST;
 		header('Location: sinki-check.php');
     exit();
 	}
 
   // 書き直し
   if ($_REQUEST['action'] == 'rewrite') {
-    $_POST = $_SESSION['user'];
+    $_POST = $_SESSION['login'];
     $error['rewite'] = true;
   }
 
@@ -87,7 +87,6 @@
         </div>
 
         <div class="forms">
-        <!-- $error['studentNumber'] == 'duplicate') ? (".{4}") : (".{4}") -->
           <i class="col-3 fas fa-sort-numeric-down"></i>
           <input required <?php print($error['studentNumber'] == 'duplicate' ? 'pattern=".{}"' : 'pattern=".{4}"') ?> class="col-9 flex-grow-1 form-control <?php print($error['userName'] == 'blank' ? 'is-invalid' : '') ?>" type="text" placeholder="学籍番号(4桁)" name="studentNumber" value="<?php echo htmlspecialchars($_POST['studentNumber'], ENT_QUOTES, 'UTF-8'); ?>" />
           <i class="col-3"></i>
