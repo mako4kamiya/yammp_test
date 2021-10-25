@@ -12,7 +12,23 @@
           <a class="nav-link" href="#">マイページ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">ログアウト</a>
+          <button type="button" class="nav-link btn btn-link" data-bs-toggle="modal" data-bs-target="#logoutModal">ログアウト</button>
+          <!-- ログアウトモーダル -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="logoutModalLabel">ログアウトしますか？</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">戻る</button>
+                  <a href="login.php?action=logout"><button type="button" class="btn btn-primary">ログアウトする</button></a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
@@ -21,3 +37,4 @@
     <i class="fas fa-angle-double-left angle-type"></i>
 
   </header>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

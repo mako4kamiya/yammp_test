@@ -2,6 +2,14 @@
   require('../dbconnect.php');
   session_start();
 
+    // ログアウト
+    if ($_REQUEST['action'] == 'logout') {
+      unset($_SESSION['user']);
+      setcookie("user", time() - 3600);
+      header('Location: login.php');
+      exit();
+    }
+
   if (isset($_SESSION['user'])) {
     // ログイン情報があればマイページ画面を表示する。
     header('Location: mypage.php');
