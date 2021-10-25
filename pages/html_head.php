@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    if (preg_match('/mypage/', $_SERVER['REQUEST_URI'])) {
+      $html_head_title = 'CBT体験 - My page';
+    } elseif (preg_match('/score/', $_SERVER['REQUEST_URI'])) {
+      $html_head_title = 'CBT体験 - SCORE';
+    } elseif (preg_match('/delete/', $_SERVER['REQUEST_URI'])) {
+      $html_head_title = 'CBT体験 - EDIT';
+    } else {
+      $html_head_title = 'CBT体験';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -13,5 +26,5 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
 
-  <title>CBT体験</title>
+  <title><?php print($html_head_title); ?></title>
 </head>

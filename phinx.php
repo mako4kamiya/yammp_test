@@ -1,5 +1,11 @@
 <?php
 
+if (!$_ENV['CLEARDB_DATABASE_URL']) {
+    require 'vendor/autoload.php';
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+}
+
 return
 [
     'paths' => [
@@ -9,16 +15,6 @@ return
     'environments' =>
     [
         'default_migration_table' => 'phinxlog',
-        'development' =>
-        [
-            'adapter' => 'mysql',
-            'host' => 'localhost',
-            'name' => 'yammp_test',
-            'user' => 'root',
-            'pass' => '',
-            'port' => 3309,
-            'charset' => 'utf8',
-        ],
         'production' =>
         [
             'adapter' => $_ENV['DB_CONNECTION'],

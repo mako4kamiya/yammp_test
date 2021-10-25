@@ -3,13 +3,12 @@
   require('../dbconnect.php');
   session_start();
 
-  // ログイン情報があればマイページを表示する
   if (isset($_SESSION['user'])) {
+    // ログイン情報があればマイページ画面を表示する。
     header('Location: mypage.php');
     exit();
   } else if ($_COOKIE["user"]){
-    // Cookieにユーザー情報があれば、自動でログイン処理を行って、
-    // マイページ画面を表示する。
+    // Cookieにユーザー情報があれば、自動でログイン処理を行って、マイページ画面を表示する。
     $statement = $db->prepare('SELECT * FROM users');
     $statement->execute();
     while ($user = $statement->fetch()) {
@@ -23,7 +22,7 @@
   }
 
   if (!empty($_POST)) {
-    // エラー項目の確認
+    // 入力エラーチェック
     if ($_POST['userName'] == '') {
       $error['userName'] = 'blank';
     }
@@ -52,14 +51,14 @@
 	}
 
 	if (empty($error) && !empty($_POST) ) {		
-		$_SESSION['user'] = $_POST;
+		$_SESSION['login'] = $_POST;
 		header('Location: sinki-check.php');
     exit();
 	}
 
   // 書き直し
   if ($_REQUEST['action'] == 'rewrite') {
-    $_POST = $_SESSION['user'];
+    $_POST = $_SESSION['login'];
     $error['rewite'] = true;
   }
 
@@ -88,7 +87,6 @@
         </div>
 
         <div class="forms">
-        <!-- $error['studentNumber'] == 'duplicate') ? (".{4}") : (".{4}") -->
           <i class="col-3 fas fa-sort-numeric-down"></i>
           <input required <?php print($error['studentNumber'] == 'duplicate' ? 'pattern=".{}"' : 'pattern=".{4}"') ?> class="col-9 flex-grow-1 form-control <?php print($error['userName'] == 'blank' ? 'is-invalid' : '') ?>" type="text" placeholder="学籍番号(4桁)" name="studentNumber" value="<?php echo htmlspecialchars($_POST['studentNumber'], ENT_QUOTES, 'UTF-8'); ?>" />
           <i class="col-3"></i>
