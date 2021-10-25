@@ -28,15 +28,15 @@
     <div class="main-body row">
       <div class="mypage-menu col-6">
       <i class="fas fa-desktop"></i>
-        <button type="button" class="btn btn-success button_type1">CBT体験する</button>
+        <button type="button" class="btn btn-success button_type1" onclick="location.href='cbt_start.php'">CBT体験する</button>
       </div>
       <div class="mypage-menu col-6">
       <i class="fas fa-medal"></i>
-        <button type="button" class="btn btn-success button_type2">スコア</button>
+        <button type="button" class="btn btn-success button_type2" onclick="location.href='score.php'">スコア</button>
       </div>
       <div class="mypage-menu col-6">
       <i class="fas fa-user-cog"></i>
-        <button type="button" class="btn btn-success button_type3">ユーザー情報編集・削除</button>
+        <button type="button" class="btn btn-success button_type3" onclick="location.href='delete.php'">ユーザー情報編集・削除</button>
       </div>
     </div>
   </main>
