@@ -13,7 +13,7 @@ class AddQuestionsBankTable extends AbstractMigration
             `setsumon` varchar(2) NOT NULL,
             `allotion` double NOT NULL,
             `fieldName` TEXT NOT NULL,
-            `examName` varchar(11) NOT NULL,
+            `examName` TEXT NOT NULL
             );"
         ;
         $questions = $this->execute($sql);
