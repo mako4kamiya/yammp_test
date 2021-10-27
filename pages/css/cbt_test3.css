@@ -51,7 +51,7 @@
   width: 50%;
 }
 
-#cbt .card .test3-card {
+#cbt .card.test3-card {
   background-color: #DFE7EA;
   flex-direction: row;
   height: 100%;
