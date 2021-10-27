@@ -18,6 +18,7 @@
       }
     }
   }
+  $scores = $db->query('SELECT * FROM score');
 ?>
 
 <body id="score">
@@ -51,16 +52,18 @@
           </div>
         </div>
 
+        <?php while($score = $scores->fetch()): ?>
         <div class="row">
-          <p class="col">02_問2 ソフトウェア・ハードウェア</p>
+          <p class="col"><?php print("0{$score['toi']}_問{$score['toi']} {$score['fieldName']}"); ?></p>
           <div class="oyayouso col">
-            <div class="suuji"style="left: 25%;">25%</div>
-            <div class="maru" style="left: 25%;"></div>
+            <div class="suuji"style="left: <?php printf('%d',$score['rate']) ?>%;"><?php printf('%d',$score['rate']) ?>%</div>
+            <div class="maru" style="left: <?php printf('%d',$score['rate']) ?>%;"></div>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: <?php printf('%d',$score['rate']) ?>%;" aria-valuenow="<?php printf('%d',$score['rate']) ?>" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
         </div>
+        <?php endwhile ?>
       
       </div>
 </body>
