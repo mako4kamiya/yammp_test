@@ -3,11 +3,11 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class UserAnswerSeeder extends AbstractSeed
+class AnswerSeeder extends AbstractSeed
 {
     public function run()
     {
-        $sql = "INSERT INTO user_answers(
+        $sql = "INSERT INTO answers(
             userAnswer,selected,created_at,userID,questionID
             )VALUES
             ('エ',1,NOW(),1,1),

@@ -2,11 +2,11 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class AddUserAnswersTable extends AbstractMigration
+class AnswersTable extends AbstractMigration
 {
     public function up()
     {
-        $sql = "CREATE TABLE `user_answers`(
+        $sql = "CREATE TABLE `answers`(
             `id` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
             `userAnswer` VARCHAR(1) NOT NULL,
             `selected` TINYINT(1) NOT NULL DEFAULT 0,
@@ -14,7 +14,7 @@ class AddUserAnswersTable extends AbstractMigration
             `userID` INT(11) NOT NULL,
             `questionID` INT(11) NOT NULL,
             FOREIGN KEY fk_userID(userID) REFERENCES users(id),
-            FOREIGN KEY fk_questionID(questionID) REFERENCES questionsbank(id)
+            FOREIGN KEY fk_questionID(questionID) REFERENCES questions(id)
             );"
         ;
         $user_answers = $this->execute($sql);
