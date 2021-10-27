@@ -1,4 +1,24 @@
-<?php include("html_head.php"); ?>
+<?php
+  include("html_head.php");
+  require('../dbconnect.php');
+  session_start();
+
+  if (!isset($_SESSION['user'])) {
+    // ログイン情報が無ければログイン画面を表示する
+    header('Location: login.php');
+    exit();
+  }if ($_COOKIE["user"]){
+    // Cookieにユーザー情報があれば、自動でログイン処理を行う。
+    $statement = $db->prepare('SELECT * FROM users');
+    $statement->execute();
+    while ($user = $statement->fetch()) {
+      if (password_verify($user['id'], $_COOKIE['yammp_test'])) {
+        $_SESSION['user']['studentNumber'] = $user['studentNumber'];
+        $_SESSION['user']['userName'] = $user['userName'];
+      }
+    }
+  }
+?>
 
 <body id="score">
 <?php include("header.php"); ?>

@@ -10,7 +10,7 @@
       <?php if (!preg_match('/cbt_test/', $_SERVER['REQUEST_URI'])) : ?>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href='/yammp_test/index.php' class="nav-link" href="#">マイページ</a>
+            <a href='/pages/mypage.php' class="nav-link" href="#">マイページ</a>
           </li>
           <li class="nav-item">
             <button type="button" class="nav-link btn btn-link" data-bs-toggle="modal" data-bs-target="#logoutModal">ログアウト</button>
