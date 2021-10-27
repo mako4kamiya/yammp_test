@@ -2,11 +2,11 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class AddQuestionsBankTable extends AbstractMigration
+class QuestionsTable extends AbstractMigration
 {
     public function up()
     {
-        $sql = "CREATE TABLE `questionsBank` (
+        $sql = "CREATE TABLE `questions` (
             `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
             `collectAnswer` varchar(1) NOT NULL,
             `toi` INT NOT NULL,
@@ -20,7 +20,7 @@ class AddQuestionsBankTable extends AbstractMigration
     }
     public function down()
     {
-        $sql = "DROP TABLE IF EXISTS questionsBank";
+        $sql = "DROP TABLE IF EXISTS questions";
         $this->execute($sql);
     }
 }

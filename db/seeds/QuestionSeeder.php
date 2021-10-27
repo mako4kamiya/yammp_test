@@ -7,7 +7,7 @@ class QuestionSeeder extends AbstractSeed
 {
     public function run()
     {
-        $sql = "INSERT INTO questionsBank(
+        $sql = "INSERT INTO questions(
             collectAnswer,toi,setsumon,allotion,fieldName,examName
             )VALUES
             ('エ',1,'1a',12,'情報セキュリティ','r01a_fe_pm'),
