@@ -21,7 +21,7 @@ class AnswersTable extends AbstractMigration
     }
     public function down()
     {
-        $sql = "DROP TABLE IF EXISTS user_answers";
+        $sql = "DROP TABLE IF EXISTS answers";
         $this->execute($sql);
     }
 }
