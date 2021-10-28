@@ -17,10 +17,18 @@ class ScoreView extends AbstractMigration
                     `seigohyou`.`userID` AS `userID`,
                     `seigohyou`.`created_at` AS `created_at`
                 FROM
-                    `seigohyou`
+                    `yammp_test`.`seigohyou`
                 GROUP BY
+                    `seigohyou`.`toi`,
+                    `seigohyou`.`examName`,
+                    `seigohyou`.`created_at`,
+                    `seigohyou`.`userID`
+                ORDER BY
+                    `seigohyou`.`userID`,
+                    `seigohyou`.`created_at`,
+                    `seigohyou`.`examName`,
                     `seigohyou`.`toi`;"
-        ;
+                ;
         $users = $this->execute($sql);
     }
     public function down()

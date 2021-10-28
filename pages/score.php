@@ -19,9 +19,11 @@
       }
     }
   }
-  var_export(intval($_SESSION['user']['id']));
-  $scores = $db->prepare('SELECT * FROM score WHERE id = ?');
-  $scores->execute(intval($_SESSION['user']['id']));
+  $scores = $db->prepare('SELECT * FROM score WHERE userID = ? AND created_at = ?');
+  $scores->execute([
+    $_SESSION['user']['id'],
+    '2021-10-28 14:30:57'
+  ]);
 ?>
 
 <body id="score">
