@@ -70,28 +70,55 @@
 
 
 
-        <div id="timer">
-        <script>
-        window.addEventListener( "DOMContentLoaded" , ()=> {
- 
- const button = document.getElementById("timerstart");
- const p = document.getElementById("timer");
 
-    // 残り時間通知受け取り関数
- const tickFunc = ( time  )=>{
-     p.textContent = `残り${ time[0] } 日 ${ time[1] }時間 ${ time[2] }分  ${ time[3] }秒`;
- };
-    // 終了通知受け取り関数
- const endFunc = ()=>{
-     p.textContent = "終了しました";
- };
+<p id="timer"></p>
 
- button.addEventListener("click",()=>{
-     coutdownTimer( tickFunc , endFunc , 70 );
- });
-});
-        </script>
-        </div>
+<script>
+
+let countdown = function(due){
+// 現在日時を取得
+let now = new Date();
+// 現在日時と引数dueの時間の差を取得
+let rest = due.getTime() - now.getTime();
+// 差の秒の値を取得
+let sec = Math.floor(rest / 1000) % 60;
+// 差の分の値を取得
+let min = Math.floor(rest / 1000 / 60) % 60;
+// 差の時間を取得
+let hours = Math.floor(rest / 1000 / 60 / 60) % 24;
+// 差の日付を取得
+let days = Math.floor(rest / 1000 / 60 / 60 /24);
+// countに差の一覧を代入
+let count = [days, hours, min, sec];
+// countを戻す
+return count;
+}
+// 期日を設定
+let goal = new Date();
+goal.setHours(23);
+goal.setMinutes(59);
+goal.setSeconds(59);
+
+// recalcの中にファンクションを変数として代入
+let recalc = function(){
+// counterにcountdown(goal)の結果を代入
+let counter = countdown(goal);
+// counterの値をhtmlのIDがtimerの場所へ表示
+let time = counter[1] + ":" + counter[2] + ":" + counter[3];
+document.getElementById("timer").textContent = time;
+document.getElementById("timer").style.color = "white";
+// refreshを実行
+refresh();
+}
+let refresh = function(){
+// 指定した(1/1000 秒)時間の後にrecalcを実行
+setTimeout(recalc, 1000);
+}
+// recalc()を呼び出し
+recalc();
+
+
+  </script>
 
 
         
