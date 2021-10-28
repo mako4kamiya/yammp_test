@@ -39,13 +39,18 @@
     ?>
     <?php foreach($data_array as $data) : ?>
         <?php $statements = $db->query($data['sql']); ?>
+        <?php var_export($data['title']) ?>
         <details>
             <summary><?php print($data['title']) ?></summary>
-            <?php while($statement = $statements->fetch()) : ?>
-                <pre>
-                    <?php print_r($statement) ?>
-                </pre>
-            <?php endwhile ?>
+            <?php try {
+                while ($statement = $statements->fetch()) {
+                    print('<pre>');
+                    print_r($statement);
+                    print('</pre>');
+                }
+            } catch (\Throwable $e) {
+                echo $e->getMessage();
+            }?>
         </details>
     <?php endforeach ?>
 
