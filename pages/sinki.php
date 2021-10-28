@@ -13,7 +13,7 @@
     $statement->execute();
     while ($user = $statement->fetch()) {
       if (password_verify($user['id'], $_COOKIE['user'])) {
-        $_SESSION['user']['id'] = $_COOKIE['user'];
+        $_SESSION['user']['id'] = $user['id'];
         $_SESSION['user']['studentNumber'] = $user['studentNumber'];
         $_SESSION['user']['userName'] = $user['userName'];
         header('Location: mypage.php');

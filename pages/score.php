@@ -13,14 +13,15 @@
     $statement->execute();
     while ($user = $statement->fetch()) {
       if (password_verify($user['id'], $_COOKIE['user'])) {
-        $_SESSION['user']['id'] = $_COOKIE['user'];
+        $_SESSION['user']['id'] = $user['id'];
         $_SESSION['user']['studentNumber'] = $user['studentNumber'];
         $_SESSION['user']['userName'] = $user['userName'];
       }
     }
   }
-  var_export($_SESSION['user']['id']);
-  $scores = $db->query('SELECT * FROM score');
+  var_export(intval($_SESSION['user']['id']));
+  $scores = $db->prepare('SELECT * FROM score WHERE id = ?');
+  $scores->execute(intval($_SESSION['user']['id']));
 ?>
 
 <body id="score">
