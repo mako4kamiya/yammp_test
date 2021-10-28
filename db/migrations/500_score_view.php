@@ -17,7 +17,7 @@ class ScoreView extends AbstractMigration
                     `seigohyou`.`userID` AS `userID`,
                     `seigohyou`.`created_at` AS `created_at`
                 FROM
-                    `yammp_test2`.`seigohyou`
+                    `seigohyou`
                 GROUP BY
                     `seigohyou`.`toi`;"
         ;

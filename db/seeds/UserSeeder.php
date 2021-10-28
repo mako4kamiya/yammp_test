@@ -29,15 +29,17 @@ class UserSeeder extends AbstractSeed
         // fakerを使う方法
         $faker = Faker\Factory::create();
         $data[] = [
+            'id' => 1,
             'studentNumber' => 2000,
             'userName'      => "test_user",
             'password'      => password_hash('testuser', PASSWORD_DEFAULT),
             'created_at'    => date('Y-m-d H:i:s'),
             'updated_at'    => date('Y-m-d H:i:s'),
         ];
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 1; $i < 6; $i++) {
             $data[] = [
-                'studentNumber' => $faker->numberBetween($min = 2001, $max = 2020),
+                'id' => $i + 1,
+                'studentNumber' => 2000 + $i,
                 'userName'      => $faker->userName,
                 'password'      => password_hash('faker', PASSWORD_DEFAULT),
                 'created_at'    => date('Y-m-d H:i:s'),

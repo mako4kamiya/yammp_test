@@ -8,7 +8,7 @@ class AnswersTable extends AbstractMigration
     {
         $sql = "CREATE TABLE `answers`(
             `id` INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-            `userAnswer` VARCHAR(1) NOT NULL,
+            `userAnswer` VARCHAR(1) NULL DEFAULT NULL,
             `selected` TINYINT(1) NOT NULL DEFAULT 0,
             `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
             `userID` INT(11) NOT NULL,
