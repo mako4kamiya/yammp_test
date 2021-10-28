@@ -2,7 +2,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class AddUsersTable extends AbstractMigration
+class UsersTable extends AbstractMigration
 {
     public function up()
     {
