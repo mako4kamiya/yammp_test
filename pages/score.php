@@ -30,13 +30,16 @@
 <?php include("header.php"); ?>
 
   <main class="mycontainer container">
-  <?php include("main-header.php"); ?>
-      
-      <div class="main-body">
+  <div class="main-body row">
+
+  
+      <?php include("main-header.php"); ?>
+
         <div class="total-score"></div>
 
-        <div class="row">
-          <div class="col ">
+      <div class="container">
+        <div class="score-top row">
+          <div class="col">
             <p class="col">出題分野</p>
           </div>
           <div class="col row aiu">
@@ -46,6 +49,7 @@
           </div>
         </div>
 
+      <div class="score-all">
         <div class="row">
           <p class="col">01_問1 情報セキュリティ</p>
           <div class="oyayouso col">
@@ -68,8 +72,14 @@
             </div>
           </div>
         </div>
+
         <?php endwhile ?>
-      
+
       </div>
+      </div>
+
+  </div>
+  </main>
+
 </body>
 </html>

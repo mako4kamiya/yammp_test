@@ -69,9 +69,19 @@
   print_r($_SESSION['user']);
 ?>
 
+<style>
+  html {
+    overflow: hidden;
+  }
+</style>
 <body id="sinki">
+
+    <?php if (!preg_match('/mypage|cbt_test/', $_SERVER['REQUEST_URI'])) : ?>
+    <i onclick="history.back()" class="fas fa-angle-double-left angle-type"></i>
+    <?php endif ?>
+
   <main class="mycontainer">
-    <div class="main-header">
+    <div class="create-header">
       <p>Create New Account</p>
       <h1>WELCOME</h1>
     </div>
