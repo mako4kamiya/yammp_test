@@ -86,7 +86,16 @@ body, p {
     background-color: #dfe7eb;
 }
 #cbt_demo_exam > div:first-child {
-    
+    overflow: scroll;
+}
+#cbt_demo_exam > div:first-child .mondai_img{
+    display: none;
+}
+#cbt_demo_exam > div:first-child .mondai_img.show{
+    display: block;
+}
+#cbt_demo_exam > div:first-child img{
+    width: 100%;
 }
 #cbt_demo_exam > div:nth-child(2) {
     display: flex;

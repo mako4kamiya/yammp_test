@@ -12,7 +12,20 @@
 </head>
 <body id="cbt_demo_exam">
     <div>
-        <img src="" alt="">
+        <div class="mondai_img show">
+            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0005.jpg" alt="toi-1-1">
+            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0006.jpg" alt="toi-1-2">
+            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0007.jpg" alt="toi-1-3">
+            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0008.jpg" alt="toi-1-4">
+            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0009.jpg" alt="toi-1-5">
+        </div>
+        <div class="mondai_img show">
+            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0010.jpg" alt="toi-2-1">
+            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0011.jpg" alt="toi-2-2">
+            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0012.jpg" alt="toi-2-3">
+            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0013.jpg" alt="toi-2-4">
+            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0014.jpg" alt="toi-2-5">
+        </div>
     </div>
     <div>
         <div class="cbt_demo_exam-header">
@@ -30,16 +43,16 @@
         <div class="cbt_demo_exam-main">
             <ul class="nav navs" role="tablist">
                 <li role="presentation">
-                    <a class="nav-link active" data-bs-toggle="tab" href="#sentaku-1" role="tab" aria-controls="toi-1" aria-selected="true">1</a>
+                    <a class="nav-link active" data-bs-toggle="tab" href="#sentaku-1" role="tab" aria-controls="sentaku-1" aria-selected="true">1</a>
                 </li>
                 <li role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-2-7" role="tab" aria-controls="profile" aria-selected="false">2-7</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-2-7" role="tab" aria-controls="sentaku-2-7" aria-selected="false">2-7</a>
                 </li>
                 <li role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-8" role="tab" aria-controls="contact" aria-selected="false">8</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-8" role="tab" aria-controls="sentaku-8" aria-selected="false">8</a>
                 </li>
                 <li role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-9-13" role="tab" aria-controls="contact" aria-selected="false">9-13</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-9-13" role="tab" aria-controls="sentaku-9-13" aria-selected="false">9-13</a>
                 </li>
             </ul>
             <div class="tab-content">
