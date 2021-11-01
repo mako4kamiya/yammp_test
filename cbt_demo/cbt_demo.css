@@ -131,6 +131,9 @@ body, p {
 }
 #cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-main ul.nav .nav-link {
     color: #000;
+    padding: 0.5em;
+    text-align: center;
+    width: 3.5em;
 }
 #cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-main ul.nav .nav-link.active {
     background-color: #fff;
@@ -155,6 +158,16 @@ body, p {
     padding: 0.5em;
     margin: 1em 0;
 }
+#cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-main .tab-content .tab-pane label.btn {
+    border: 3px solid #3d505a;
+}
+/* ホバー効かない */
+#cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-main .tab-content .tab-pane label.btn-outline-dark:hover {
+    border: 3px solid #FFA510;
+}
+#cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-main .tab-content .tab-pane label.btn-outline-dark:active {
+    border: 3px solid #FFA510;
+}
 #cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-footer{
     background-color: #000;
     position: absolute;
@@ -177,7 +190,7 @@ body, p {
 }
 .cbt_demo_check .modal-body div {
     background-color: #f1f5f6;
-    padding: 0.5em;
+    margin-bottom: 0.5em;
 }
 .cbt_demo_check .modal-body div p:first-child {
     background-color: #3a5159;
@@ -187,13 +200,21 @@ body, p {
 .cbt_demo_check .modal-body div p:not(:first-child) {
     padding: 1em;
 }
-.cbt_demo_check button {
+.cbt_demo_check button:first-child {
     background-color: #619028;
+    color: white;
+}
+.cbt_demo_check button:nth-child(2) {
+    background-color: #3a5159;
+    color: white;
+}
+.cbt_demo_check button.not-checked {
+    background-color: #3a5159;
     color: white;
 }
 .cbt_demo_check .modal-footer {
     border-top: unset;
-    justify-content: space-around;
+    justify-content: center;
 }
 .cbt_demo_check .modal-footer button::before {
     font-family: "Font Awesome 5 Free";
@@ -205,6 +226,9 @@ body, p {
 }
 .cbt_demo_check .modal-footer button:nth-child(2)::before {
     content: '\f00d';
+}
+.cbt_demo_check .modal-footer button.not-checked::before {
+    content: unset;
 }
 .cbt_demo_end .cbt_demo_end-main {
     background-color: white;

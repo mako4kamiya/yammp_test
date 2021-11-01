@@ -28,19 +28,21 @@
             <p><span>試験：プロメトリック認定試験（体験版）</span><span>受験者名： 試験 太郎</span></p>
         </div>
         <div class="cbt_demo_exam-main">
-
-            <ul class="nav navs" id="myTab" role="tablist">
+            <ul class="nav navs" role="tablist">
                 <li role="presentation">
-                    <a class="nav-link active" data-bs-toggle="tab" href="#toi-1" role="tab" aria-controls="toi-1" aria-selected="true">1</a>
+                    <a class="nav-link active" data-bs-toggle="tab" href="#sentaku-1" role="tab" aria-controls="toi-1" aria-selected="true">1</a>
                 </li>
                 <li role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">2</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-2-7" role="tab" aria-controls="profile" aria-selected="false">2-7</a>
                 </li>
                 <li role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">3</a>
+                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-8" role="tab" aria-controls="contact" aria-selected="false">8</a>
+                </li>
+                <li role="presentation">
+                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-9-13" role="tab" aria-controls="contact" aria-selected="false">9-13</a>
                 </li>
             </ul>
-            <div class="tab-content" id="myTabContent">
+            <div class="tab-content">
                 <?php include("cbt_demo_exam-mondai.php") ?>
             </div>
         </div>

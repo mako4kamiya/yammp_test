@@ -28,7 +28,6 @@
             <p><span>試験：プロメトリック認定試験（体験版）</span><span>受験者名： 試験 太郎</span></p>
         </div>
         <div class="cbt_demo_exam-main">
-
             <ul class="nav navs" id="myTab" role="tablist">
                 <li role="presentation">
                     <a class="nav-link active" data-bs-toggle="tab" href="#toi-1" role="tab" aria-controls="toi-1" aria-selected="true">1</a>
@@ -48,8 +47,8 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade show cbt_demo_check" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <!-- Modal 選択されている場合 -->
+    <!-- <div class="modal fade show cbt_demo_check" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">確認</div>
@@ -67,8 +66,24 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn" onclick="location.href='./cbt_demo_end.php'">確認</button>
-                    <button type="button" class="btn" onclick="location.href='./cbt_demo_exam.php?action=rewrite'">キャンセル</button>
+                    <button type="button" class="btn" onclick="location.href='./cbt_demo_end.php'">試験を終了する</button>
+                    <button type="button" class="btn" onclick="location.href='./cbt_demo_exam.php?action=rewrite'">戻る</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Modal 選択が足りない場合 -->
+    <div class="modal fade show cbt_demo_check"  tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">確認</div>
+                <div class="modal-body">
+                    <p>採点の対象とする問題の選択数が足りません。</p>
+                    <p>指定された数の問題を選択してください。</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn not-checked" onclick="location.href='./cbt_demo_exam.php?action=rewrite'">閉じる</button>
                 </div>
             </div>
         </div>
