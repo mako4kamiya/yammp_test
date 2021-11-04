@@ -12,6 +12,8 @@ class QuestionsTable extends AbstractMigration
             `toi` INT NOT NULL,
             `setsumon` varchar(2) NOT NULL,
             `allotion` double NOT NULL,
+            `sentakuGroup` TEXT NOT NULL,
+            `sentakushi` INT NOT NULL,
             `fieldName` TEXT NOT NULL,
             `examName` TEXT NOT NULL
             );"

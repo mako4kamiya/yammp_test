@@ -1,3 +1,16 @@
+<?php
+        require('../dbconnect.php');
+        session_start();
+        $examName = '令和元年度秋期';
+
+        $statement = $db->prepare('SELECT * FROM questions WHERE examName = ? GROUP BY toi');
+        $statement->execute([$examName]);
+        $mondaisu = $statement->rowCount();
+        
+        $sentaku_kigou = array("ア", "イ", "ウ", "エ", "オ", "カ", "キ", "ク", "ケ", "コ",);
+
+        $questions = $db->prepare('SELECT * FROM questions WHERE examName = ? AND toi = ?');
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -38,25 +51,45 @@
                 </p>
                 <button type="button" class="btn" onclick="location.href='./cbt_demo_check.php'">終了</button>
             </div>
-            <p><span>試験：プロメトリック認定試験（体験版）</span><span>受験者名： 試験 太郎</span></p>
+            <p><span>試験：<?php print $examName ?> 基本情報技術者試験 午後（体験版）</span><span>受験者名： <?php print($_SESSION['user']['userName']); ?></span></p>
         </div>
         <div class="cbt_demo_exam-main">
             <ul class="nav navs" role="tablist">
-                <li role="presentation">
-                    <a class="nav-link active" data-bs-toggle="tab" href="#sentaku-1" role="tab" aria-controls="sentaku-1" aria-selected="true">1</a>
-                </li>
-                <li role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-2-7" role="tab" aria-controls="sentaku-2-7" aria-selected="false">2-7</a>
-                </li>
-                <li role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-8" role="tab" aria-controls="sentaku-8" aria-selected="false">8</a>
-                </li>
-                <li role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" href="#sentaku-9-13" role="tab" aria-controls="sentaku-9-13" aria-selected="false">9-13</a>
-                </li>
+                <?php for($i = 1; $i <= $mondaisu; $i++) : ?>
+                    <li role="presentation">
+                        <a class="nav-link <?php $i === 1 ? print 'active' : '' ?>" data-bs-toggle="tab" href= "#toi-<?php print $i ?>" role="tab" aria-controls="toi-<?php print $i ?>" aria-selected="true"><?php print $i ?></a>
+                    </li>
+                <?php endfor ?>
             </ul>
             <div class="tab-content">
-                <?php include("cbt_demo_exam-mondai.php") ?>
+                <form action="">
+                    <?php for($i = 1; $i <= $mondaisu; $i++) : ?>
+                    <div class="tab-pane fade <?php $i === 1 ? print 'show active' : '' ?>" id="toi-<?php print $i ?>" role="tabpanel" aria-labelledby="toi-<?php print $i ?>">
+                        <?php $questions->execute([$examName, $i]); ?>
+                        <?php $question = $questions->fetch(); ?>
+
+                        <?php if(!preg_match("/必修/",$question['sentakuGroup'])) : ?>
+                            <input  id="selected" name="selected" value="1" class="form-check-input" type="checkbox">
+                            <label for="selected" class="form-check-label">この問題を選択する</label>
+                        <?php endif ?>
+
+                        <p>問<?php print $question['toi'] ?></p>
+
+                        <?php $questions->execute([$examName, $i]); ?>
+                        <?php while($question = $questions->fetch()) : ?>
+                            <p>設問<?php print $question['setsumon'] ?>に関する解答群</p>
+                            <div>
+                                <?php for($j = 0; $j < $question['sentakushi']; $j++) : ?>
+                                    <div>
+                                        <input  id="<?php print $question['id']."_". $sentaku_kigou[$j] ?>" name="<?php print $question['id'] ?>" value="<?php print $sentaku_kigou[$j] ?>" type="radio" class="btn-check" autocomplete="off">
+                                        <label for="<?php print $question['id']."_". $sentaku_kigou[$j] ?>" class="btn btn-outline-dark"><?php print $sentaku_kigou[$j] ?></label>
+                                    </div>
+                                <?php endfor ?>
+                            </div>
+                        <?php endwhile ?>
+                    </div>
+                    <?php endfor ?>
+                </form>
             </div>
         </div>
         <div class="cbt_demo_exam-footer">
