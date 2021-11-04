@@ -30,17 +30,16 @@
         <div class="cbt_demo_exam-main">
             <ul class="nav navs" id="myTab" role="tablist">
                 <li role="presentation">
-                    <a class="nav-link active" data-bs-toggle="tab" href="#toi-1" role="tab" aria-controls="toi-1" aria-selected="true">1</a>
+                    <a class="nav-link active">1</a>
                 </li>
                 <li role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">2</a>
+                    <a class="nav-link">2</a>
                 </li>
                 <li role="presentation">
-                    <a class="nav-link" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">3</a>
+                    <a class="nav-link">3</a>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <?php include("cbt_demo_exam-mondai.php") ?>
             </div>
         </div>
         <div class="cbt_demo_exam-footer">
@@ -79,6 +78,8 @@
             <div class="modal-content">
                 <div class="modal-header">確認</div>
                 <div class="modal-body">
+                    <?php var_export($_SESSION['answers']); ?>
+                    <?php var_export($_POST['1']); ?>
                     <p>採点の対象とする問題の選択数が足りません。</p>
                     <p>指定された数の問題を選択してください。</p>
                 </div>

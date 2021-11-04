@@ -10,6 +10,7 @@
         $sentaku_kigou = array("ア", "イ", "ウ", "エ", "オ", "カ", "キ", "ク", "ケ", "コ",);
 
         $questions = $db->prepare('SELECT * FROM questions WHERE examName = ? AND toi = ?');
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -49,7 +50,7 @@
                     <span>残り時間</span>
                     <span>00:15:00</span>
                 </p>
-                <button type="button" class="btn" onclick="location.href='./cbt_demo_check.php'">終了</button>
+                <button type="button" class="btn" onclick="document.answers.submit()">終了</button>
             </div>
             <p><span>試験：<?php print $examName ?> 基本情報技術者試験 午後（体験版）</span><span>受験者名： <?php print($_SESSION['user']['userName']); ?></span></p>
         </div>
@@ -62,15 +63,20 @@
                 <?php endfor ?>
             </ul>
             <div class="tab-content">
-                <form action="">
+                <?php print("<pre>"); ?>
+                <?php var_export($_POST); ?>
+                <?php print("</pre>"); ?>
+                <form action="" method="post" name="answers">
                     <?php for($i = 1; $i <= $mondaisu; $i++) : ?>
                     <div class="tab-pane fade <?php $i === 1 ? print 'show active' : '' ?>" id="toi-<?php print $i ?>" role="tabpanel" aria-labelledby="toi-<?php print $i ?>">
                         <?php $questions->execute([$examName, $i]); ?>
                         <?php $question = $questions->fetch(); ?>
 
-                        <?php if(!preg_match("/必修/",$question['sentakuGroup'])) : ?>
-                            <input  id="selected" name="selected" value="1" class="form-check-input" type="checkbox">
-                            <label for="selected" class="form-check-label">この問題を選択する</label>
+                        <?php if(preg_match("/必修/",$question['sentakuGroup'])) : ?>
+                            <input name="<?php printf("%d[selected]", $question['id']) ?>" value="1" checked hidden type="checkbox">
+                        <?php else : ?>
+                            <input  id="<?php printf("%d_selected", $question['id']) ?>" name="<?php printf("%d[selected]", $question['id']) ?>" value="1" class="form-check-input" type="checkbox">
+                            <label for="<?php printf("%d_selected", $question['id']) ?>" class="form-check-label">この問題を選択する</label>
                         <?php endif ?>
 
                         <p>問<?php print $question['toi'] ?></p>
@@ -81,8 +87,9 @@
                             <div>
                                 <?php for($j = 0; $j < $question['sentakushi']; $j++) : ?>
                                     <div>
-                                        <input  id="<?php print $question['id']."_". $sentaku_kigou[$j] ?>" name="<?php print $question['id'] ?>" value="<?php print $sentaku_kigou[$j] ?>" type="radio" class="btn-check" autocomplete="off">
-                                        <label for="<?php print $question['id']."_". $sentaku_kigou[$j] ?>" class="btn btn-outline-dark"><?php print $sentaku_kigou[$j] ?></label>
+                                        <input  name="<?php printf("%d[questionID]", $question['id']) ?>" value="<?php print $question['id'] ?>" checked hidden type="checkbox">
+                                        <input  id="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" name="<?php printf("%d[userAnswer]", $question['id'], $question['setsumon']) ?>" value="<?php print $sentaku_kigou[$j] ?>" type="radio" class="btn-check" autocomplete="off">
+                                        <label for="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" class="btn btn-outline-dark"><?php print $sentaku_kigou[$j] ?></label>
                                     </div>
                                 <?php endfor ?>
                             </div>
