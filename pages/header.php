@@ -1,5 +1,5 @@
-<header class="mycontainer container">
 
+<header>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4"
       aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">

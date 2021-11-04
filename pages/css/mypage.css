@@ -31,16 +31,10 @@
 }
 
 #mypage .mypage-menu i {
-  font-size: 6em;
+  font-size: 8em;
   margin-bottom: 15px;
 }
 
 #mypage .main-body {
   justify-content: center;
-}
-
-#mypage .mypage-menu {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
