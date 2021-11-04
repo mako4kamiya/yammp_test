@@ -1,4 +1,4 @@
-#delete .button_2 {
+#edit .button_2 {
   font-weight: bold;
   color: #208DC3;
   border-color: #208DC3;
@@ -6,12 +6,12 @@
   width: 100px;
 }
 
-#delete .button_2:hover {
+#edit .button_2:hover {
   background-color: #208DC3;
   border-color: #208DC3;
 }
 
-#delete .button_3{
+#edit .button_3{
   font-weight: bold;
   color: #F26040;
   border-color: #F26040;
@@ -21,12 +21,12 @@
   margin-left: 10px;
 }
 
-#delete .button_3:hover {
+#edit .button_3:hover {
   background-color: #F26040;
   border-color: #F26040;
 }
 
-#delete .forms {
+#edit .forms {
   width: 100%;
   display: flex;
   align-items: center;
@@ -34,13 +34,13 @@
   justify-content: center;
 }
 
-#delete .main-body { 
+#edit .main-body { 
   flex-direction: column;
 	width: 70%;
 	margin: 0 auto;
 }
 
-#delete .link-2::before {
+#edit .link-2::before {
   font-size: 2.0em;
   content: "\f503";
   font-family: "Font Awesome 5 Free";
@@ -48,7 +48,7 @@
   text-align: center;
 }
 
-#delete .main-body input[type='text'] {
+#edit .main-body input[type='text'] {
 	font: 15px/24px sans-serif;
 	box-sizing: border-box;
   padding: 1em; 
@@ -60,11 +60,11 @@
   text-align: center;
 }
 
-#delete i { 
+#edit .forms i { 
   font-size: 2em;
   width: 50px;
 }
 
-#delete p {
+#edit p {
   text-align: center;
 }

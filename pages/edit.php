@@ -1,11 +1,14 @@
 <?php include("html_head.php"); ?>
 
-<body id="delete">
+<body id="edit">
 <?php include("header.php"); ?>
 
   <main class="mycontainer container">
-    <?php include("main-header.php"); ?>
-      <div class="main-body">
+    
+      <div class="main-body row">
+
+      <?php include("main-header.php"); ?>
+
         <div class="forms">
         <i class="fas fa-user-plus"></i>
             <input class="flex-grow-1" type="text" placeholder="ニックネーム">

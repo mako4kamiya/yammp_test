@@ -25,8 +25,10 @@
 <?php include("header.php"); ?>
 
   <main class="mycontainer container">
+  <div class="main-body row">
+
     <?php include("main-header.php"); ?>
-    <div class="main-body row">
+
       <div class="mypage-menu col-6">
       <i class="fas fa-desktop"></i>
       <!-- <button type="button" class="btn btn-success button_type1" onclick="location.href='cbt_start.php'">CBT体験する</button> -->
