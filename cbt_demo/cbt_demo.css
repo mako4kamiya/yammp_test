@@ -133,6 +133,7 @@ body, p {
     background-color: #f6f7f9;
     height: 100%;
     display: flex;
+    margin-bottom: 40px;
 }
 #cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-main ul.nav {
     flex-direction: column;
@@ -170,14 +171,14 @@ body, p {
 #cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-main .tab-content .tab-pane p {
     background-color: #f5f6f8;
     padding: 0.5em;
-    margin: 2em 0 1em 0;
+    margin: 0 0 1em 0;
 }
 #cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-main .tab-content .tab-pane div {
     display: flex;
 }
 #cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-main .tab-content .tab-pane label.btn {
     border: 3px solid #3d505a;
-    margin-right: 1em;
+    margin: 0 1em 1em 0;
 }
 #cbt_demo_exam > div:nth-child(2) .cbt_demo_exam-main .tab-content .tab-pane label.btn-outline-dark:hover {
     border: 3px solid #FFA510;
