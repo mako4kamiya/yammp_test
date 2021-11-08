@@ -21,6 +21,7 @@
         }
     }
 
+    $_SESSION['answers'] = null;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
