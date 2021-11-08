@@ -1,13 +1,15 @@
 <?php
-    require('../dbconnect.php');
+    require('../../dbconnect.php');
     session_start();
 
     if (!isset($_SESSION['user'])) {
         // ログイン情報が無ければログイン画面を表示する
-        header('Location: login.php');
+        $host  = $_SERVER['HTTP_HOST'];
+        $extra = 'pages/login.php';
+        header("Location: http://$host/$extra");
         exit();
     } else if ($_COOKIE["user"]){
-    // Cookieにユーザー情報があれば、自動でログイン処理を行って、マイページ画面を表示する。
+    // Cookieにユーザー情報があれば、自動でログイン処理を行う。
         $statement = $db->prepare('SELECT * FROM users');
         $statement->execute();
         while ($user = $statement->fetch()) {
@@ -15,8 +17,6 @@
             $_SESSION['user']['id'] = $user['id'];
             $_SESSION['user']['studentNumber'] = $user['studentNumber'];
             $_SESSION['user']['userName'] = $user['userName'];
-            header('Location: mypage.php');
-            exit();
             }
         }
     }
@@ -43,11 +43,23 @@
         }
         if ($sentakuGroup1 < 4 || $sentakuGroup2 < 1) {
             $error['selected'] = 'not_enough';
+        } else {
+            $error['selected'] = 'ok' ;
         }
+        $_SESSION['answers'] = $_POST;
     }
-    if (empty($error) && !empty($_POST) ) {		
-		$_SESSION['answers'] = $_POST;
-	}
+
+    // if (empty($error) && !empty($_POST) ) {		
+    //     $_SESSION['answers'] = $_POST;
+    //     header('Location: cbt_demo_check.php');
+    //     exit();
+    // }
+    
+    // 書き直し
+    if ($_REQUEST['action'] == 'rewrite') {
+        $_POST = $_SESSION['answers'];
+        // $error['rewite'] = true;
+    }
 
 ?>
 <!DOCTYPE html>
@@ -85,8 +97,6 @@
                 <p>
                 </p>
                 <p>
-                    <span>残り時間</span>
-                    <span>00:15:00</span>
                 </p>
                 <button type="button" class="btn" onclick="document.answers.submit()">終了</button>
             </div>
@@ -102,15 +112,19 @@
             </ul>
             <div class="tab-content">
                 <?php 
+                    print("<pre>check<br>");
+                    var_export($check);
+                    print("</pre>");
                     print("<pre>error<br>");
                     var_export($error);
+                    print("</pre>");
                     print("</pre>");
                     print("<pre>SESSION[answers]<br>");
                     var_export($_SESSION['answers']);
                     print("</pre>");
-                    // print("<pre>POST<br>");
-                    // var_export($_POST);
-                    // print("</pre>");
+                    print("<pre>POST<br>");
+                    var_export($_POST);
+                    print("</pre>");
                 ?>
                 <form action="" method="post" name="answers">
                     <?php for($i = 1; $i <= $mondaisu; $i++) : ?>
@@ -122,10 +136,10 @@
 
                             <?php if(!$flag_display_selected) : ?>
                                 <?php if(preg_match("/選択1/",$question['sentakuGroup'])) : ?>
-                                    <input  id="<?php printf("selected[選択1][%d]", $question['id']) ?>" name="<?php print("selected[][選択1]") ?>" value="<?php printf("問%d", $question['toi']) ?>" class="form-check-input" type="checkbox">
+                                    <input  id="<?php printf("selected[選択1][%d]", $question['id']) ?>" name="<?php print("selected[][選択1]") ?>" value="<?php printf("問%d", htmlspecialchars($question['toi'], ENT_QUOTES, 'UTF-8')) ?>" class="form-check-input" type="checkbox">
                                     <label for="<?php printf("selected[選択1][%d]", $question['id']) ?>" class="form-check-label">この問題を選択する</label>
                                 <?php elseif (preg_match("/選択2/",$question['sentakuGroup'])) : ?>
-                                    <input  id="<?php printf("selected[選択2][%d]", $question['id']) ?>" name="<?php print("selected[][選択2]") ?>" value="<?php printf("問%d", $question['toi']) ?>" class="form-check-input" type="checkbox">
+                                    <input  id="<?php printf("selected[選択2][%d]", $question['id']) ?>" name="<?php print("selected[][選択2]") ?>" value="<?php printf("問%d", htmlspecialchars($question['toi'], ENT_QUOTES, 'UTF-8')) ?>" class="form-check-input" type="checkbox">
                                     <label for="<?php printf("selected[選択2][%d]", $question['id']) ?>" class="form-check-label">この問題を選択する</label>
                                     <?php endif ?>
                                 <?php $flag_display_selected = true; ?>
@@ -140,7 +154,7 @@
                             <div>
                                 <?php for($j = 0; $j < $question['sentakushi']; $j++) : ?>
                                     <div>
-                                        <input  id="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" name="<?php printf("%d[userAnswer]", $question['id'], $question['setsumon']) ?>" value="<?php print $sentaku_kigou[$j] ?>" type="radio" class="btn-check" autocomplete="off">
+                                        <input  id="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" name="<?php printf("%d[userAnswer]", $question['id'], $question['setsumon']) ?>" value="<?php print(htmlspecialchars($sentaku_kigou[$j], ENT_QUOTES, 'UTF-8')) ?>" type="radio" class="btn-check" autocomplete="off">
                                         <label for="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" class="btn btn-outline-dark"><?php print $sentaku_kigou[$j] ?></label>
                                     </div>
                                 <?php endfor ?>
@@ -154,5 +168,64 @@
         <div class="cbt_demo_exam-footer">
         </div>
     </div>
+
+    <?php if($error['selected'] == 'not_enough'): ?>
+        <div class="modal fade show cbt_demo_check"  tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">確認</div>
+                    <div class="modal-body">
+                        <p>採点の対象とする問題の選択数が足りません。</p>
+                        <p>指定された数の問題を選択してください。</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn not-checked" onclick="location.href='./cbt_demo_exam.php?action=rewrite'">閉じる</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show"></div>
+    <?php endif; ?>
+
+    <?php if($error['selected'] == 'ok') : ?>
+            <div class="modal fade show cbt_demo_check" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">確認</div>
+                        <div class="modal-body">
+                            <p>採点の対象として選択した問題は次のとおりであるかをご確認ください。</p>
+                            <p>選択を変更する場合や回答を続ける場合には「戻る」をクリックしてください。</p>
+                            <div>
+                                <p>2-5</p>
+                                <?php foreach ($_SESSION['answers']['selected'] as $key => $value) : ?>
+                                        <?php foreach ($value as $key_str => $value_str) : ?>
+                                                <?php if(preg_match("/選択1/", $key_str)) : ?>
+                                                    <p><?php print $value_str ?></p>
+                                                <?php endif ?>
+                                        <?php endforeach ?>
+                                <?php endforeach ?>
+                            </div>
+                            <div>
+                                <p>7-11</p>
+                                <?php foreach ($_SESSION['answers']['selected'] as $key => $value) : ?>
+                                        <?php foreach ($value as $key_str => $value_str) : ?>
+                                                <?php if(preg_match("/選択2/", $key_str)) : ?>
+                                                    <p><?php print $value_str ?></p>
+                                                <?php endif ?>
+                                        <?php endforeach ?>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <?php $_SESSION['answers'] = $_POST; ?>
+                            <button type="button" class="btn" onclick="location.href='./cbt_demo_check.php'">試験を終了する</button>
+                            <button type="button" class="btn" onclick="location.href='./cbt_demo_exam.php?action=rewrite'">戻る</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-backdrop fade show"></div>
+    <?php endif; ?>
+
 </body>
 </html>

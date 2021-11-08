@@ -11,43 +11,20 @@
     <title>CBT体験 - デモ </title>
 </head>
 <body id="cbt_demo_exam">
-    <div>
-        <img src="" alt="">
-    </div>
-    <div>
-        <div class="cbt_demo_exam-header">
-            <div>
-                <p>
-                </p>
-                <p>
-                    <span>残り時間</span>
-                    <span>00:15:00</span>
-                </p>
-                <button type="button" class="btn" >終了</button>
-            </div>
-            <p><span>試験：プロメトリック認定試験（体験版）</span><span>受験者名： 試験 太郎</span></p>
-        </div>
-        <div class="cbt_demo_exam-main">
-            <ul class="nav navs" id="myTab" role="tablist">
-                <li role="presentation">
-                    <a class="nav-link active">1</a>
-                </li>
-                <li role="presentation">
-                    <a class="nav-link">2</a>
-                </li>
-                <li role="presentation">
-                    <a class="nav-link">3</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-            </div>
-        </div>
-        <div class="cbt_demo_exam-footer">
-        </div>
-    </div>
+    <?php 
+        print("<pre>error<br>");
+        var_export($error);
+        print("</pre>");
+        print("<pre>SESSION[answers]<br>");
+        var_export($_SESSION['answers']);
+        print("</pre>");
+        // print("<pre>POST<br>");
+        // var_export($_POST);
+        // print("</pre>");
+    ?>
 
     <!-- Modal 選択されている場合 -->
-    <!-- <div class="modal fade show cbt_demo_check" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal fade show cbt_demo_check" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">確認</div>
@@ -70,10 +47,10 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <!-- Modal 選択が足りない場合 -->
-    <div class="modal fade show cbt_demo_check"  tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <!-- <div class="modal fade show cbt_demo_check"  tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">確認</div>
@@ -88,7 +65,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="modal-backdrop fade show"></div>
 </body>

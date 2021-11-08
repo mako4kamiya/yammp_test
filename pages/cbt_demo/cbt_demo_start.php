@@ -1,5 +1,26 @@
 <?php
+    require('../../dbconnect.php');
     session_start();
+
+    if (!isset($_SESSION['user'])) {
+        // ログイン情報が無ければログイン画面を表示する
+        $host  = $_SERVER['HTTP_HOST'];
+        $extra = 'pages/login.php';
+        header("Location: http://$host/$extra");
+        exit();
+    } else if ($_COOKIE["user"]){
+    // Cookieにユーザー情報があれば、自動でログイン処理を行う。
+        $statement = $db->prepare('SELECT * FROM users');
+        $statement->execute();
+        while ($user = $statement->fetch()) {
+            if (password_verify($user['id'], $_COOKIE['user'])) {
+            $_SESSION['user']['id'] = $user['id'];
+            $_SESSION['user']['studentNumber'] = $user['studentNumber'];
+            $_SESSION['user']['userName'] = $user['userName'];
+            }
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
