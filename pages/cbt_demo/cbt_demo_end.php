@@ -1,6 +1,63 @@
 <?php 
     require('../../dbconnect.php');
     session_start();
+
+    $selected_array = [];
+    foreach ($_SESSION['answers']['selected'] as $key => $value) {
+        foreach ($value as $v) {
+            array_push($selected_array, $v);
+        }
+    }
+    $userAnswer_array = $_SESSION['answers']['userAnswer'];
+
+    $questions = $db->prepare('SELECT * FROM questions WHERE examName =?');
+    $questions->execute([$_SESSION['answers']['examName']]);
+    $insertRow = $questions->rowCount();
+    
+    $answers = [];
+    while($question = $questions->fetch()) {
+        $selected = '';
+        foreach ($selected_array as $key => $value) {
+            if ($question['toi'] == $value) {
+                $selected = 1;
+                break;
+            } else {
+                $selected = 0;
+            }
+        }
+        $userAnswer = '';
+        foreach ($userAnswer_array as $key => $value) {
+            foreach ($value as $k => $v) {
+                if ($question['id'] == $k) {
+                    $userAnswer = $v;
+                }
+            }
+        }
+        $array = [
+            'selected' => $selected,
+            'userAnswer' => $userAnswer,
+            'userID' => intval($_SESSION['user']['id']),
+            'questionID' => intval($question['id'])
+        ];
+        array_push($answers, $array);
+    }
+
+    if (isset($_POST['submit_answers'])) {
+        $statement = $db->prepare('INSERT INTO answers SET selected=?, userAnswer=?, created_at=NOW(), userID=?, questionID=?');
+        foreach ($answers as $answer) {
+            $statement->execute([
+                $answer['selected'],
+                $answer['userAnswer'],
+                $answer['userID'],
+                $answer['questionID']
+            ]);
+        }
+        unset($_SESSION['answers']);
+        $host  = $_SERVER['HTTP_HOST'];
+        $extra = 'pages/mypage.php';
+        header("Location: http://$host/$extra");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -25,17 +82,13 @@
                 </p>
                 <p>
                 </p>
-                <button type="button" class="btn" onclick="location.href='/'">終了</button>
+                <form action="" method="post">
+                    <button type="submit" class="btn" name="submit_answers">終了</button>
+                </form>
             </div>
             <p><span>試験：プロメトリック認定試験（体験版）</span><span>受験者名： 試験 太郎</span></p>
         </div>
         <div class="cbt_demo_end-main">
-            <?php 
-                print("<pre>SESSION[answers]<br>");
-                var_export($_SESSION['answers']);
-                print("</pre>");
-            ?>
-
             <p>お疲れ様でした。この試験を終了します。</p>
             <p>必ず右上の[ 終 了 ]ボタンをクリックして試験を終了し、退出手続きを行ってください。</p>
         </div>

@@ -107,6 +107,7 @@
             </ul>
             <div class="tab-content">
                 <form action="" method="post" name="answers">
+                    <input type="text" name="examName" value="<?php print $examName ?>" hidden>
                     <?php for($i = 1; $i <= $mondaisu; $i++) : ?>
                     <div class="tab-pane fade <?php $i === 1 ? print 'show active' : '' ?>" id="toi-<?php print $i ?>" role="tabpanel" aria-labelledby="toi-<?php print $i ?>">
                         <?php $flag_display_selected = false; ?>
@@ -134,7 +135,7 @@
                             <div>
                                 <?php for($j = 0; $j < $question['sentakushi']; $j++) : ?>
                                     <div>
-                                        <input  id="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" name="<?php printf("%d[userAnswer]", $question['id'], $question['setsumon']) ?>" value="<?php print(htmlspecialchars($sentaku_kigou[$j], ENT_QUOTES, 'UTF-8')) ?>" type="radio" class="btn-check" autocomplete="off">
+                                        <input  id="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" name="<?php printf("userAnswer[][%d]", $question['id']) ?>" value="<?php print(htmlspecialchars($sentaku_kigou[$j], ENT_QUOTES, 'UTF-8')) ?>" type="radio" class="btn-check" autocomplete="off">
                                         <label for="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" class="btn btn-outline-dark"><?php print $sentaku_kigou[$j] ?></label>
                                     </div>
                                 <?php endfor ?>
