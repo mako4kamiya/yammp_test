@@ -40,7 +40,7 @@
       </div>
       <div class="mypage-menu col-6">
       <i class="fas fa-user-cog"></i>
-        <button type="button" class="btn btn-success button_type3" onclick="location.href='delete.php'">ユーザー情報編集・削除</button>
+        <button type="button" class="btn btn-success button_type3" onclick="location.href='edit.php'">ユーザー情報編集・削除</button>
       </div>
     </div>
   </main>

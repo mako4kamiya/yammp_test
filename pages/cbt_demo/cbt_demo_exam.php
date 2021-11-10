@@ -212,5 +212,13 @@
             <div class="modal-backdrop fade show"></div>
     <?php endif; ?>
 
+    <script>
+        'use strict';
+        history.popstate(null, null, null);
+        window.addEventListener('popstate', function(e) {
+            console.log('ブラウザバックを検知しました。');
+            alert('ブラウザバックを検知しました。');
+        });
+    </script>
 </body>
 </html>
