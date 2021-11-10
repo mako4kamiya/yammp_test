@@ -64,9 +64,9 @@
   }
 
   // チェック用
-  print_r($error);
-  print_r($_POST);
-  print_r($_SESSION['user']);
+  // print_r($error);
+  // print_r($_POST);
+  // print_r($_SESSION['user']);
 ?>
 
 <style>
@@ -75,10 +75,6 @@
   }
 </style>
 <body id="sinki">
-
-    <?php if (!preg_match('/mypage|cbt_test/', $_SERVER['REQUEST_URI'])) : ?>
-    <i onclick="history.back()" class="fas fa-angle-double-left angle-type"></i>
-    <?php endif ?>
 
   <main class="mycontainer">
     <div class="create-header">

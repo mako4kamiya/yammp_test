@@ -85,7 +85,7 @@
 
 #login .login-img {
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   margin: 0 auto;
 }
 #login img {
