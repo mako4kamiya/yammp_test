@@ -19,10 +19,10 @@
       }
     }
   }
-  $scores = $db->prepare('SELECT * FROM score WHERE userID = ? AND created_at = ?');
+  $scores = $db->prepare('SELECT * FROM score WHERE userID = ? AND examName = ?');
   $scores->execute([
     $_SESSION['user']['id'],
-    '2021-10-28 0:00:00'
+    '令和元年度秋期'
   ]);
 ?>
 
@@ -50,16 +50,6 @@
         </div>
 
       <div class="score-all">
-        <div class="row">
-          <p class="col">01_問1 情報セキュリティ</p>
-          <div class="oyayouso col">
-            <div class="suuji"style="left: 25%;">25%</div>
-            <div class="maru" style="left: 25%;"></div>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-        </div>
 
         <?php while($score = $scores->fetch()): ?>
         <div class="row">

@@ -26,10 +26,12 @@
             }
         }
         $userAnswer = '';
-        foreach ($userAnswer_array as $key => $value) {
-            foreach ($value as $k => $v) {
-                if ($question['id'] == $k) {
-                    $userAnswer = $v;
+        if ($userAnswer_array) {
+            foreach ($userAnswer_array as $key => $value) {
+                foreach ($value as $k => $v) {
+                    if ($question['id'] == $k) {
+                        $userAnswer = $v;
+                    }
                 }
             }
         }

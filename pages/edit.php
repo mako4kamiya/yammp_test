@@ -9,7 +9,8 @@
 
       <?php include("main-header.php"); ?>
 
-        <div class="forms">
+      <p>準備中</p>
+        <!-- <div class="forms">
         <i class="fas fa-user-plus"></i>
             <input class="flex-grow-1" type="text" placeholder="ニックネーム">
         </div>
@@ -24,7 +25,7 @@
         <p>ユーザー情報の削除</p>
         <div class="forms link-2">
           <button type="button" class="btn btn-outline-warning button_3">DELETE</button>
-        </div>
+        </div> -->
 
       </div>
 </body>
