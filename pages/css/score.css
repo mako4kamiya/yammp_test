@@ -44,3 +44,15 @@ background-image: radial-gradient( circle 450px at 0.6% 53.8%, rgba(255,142,20,1
 .progress-bar {
   background-color: unset;
 }
+#score .score_kirikae {
+  display: flex;
+  justify-content: space-between;
+  padding: unset;
+}
+#score .score_kirikae .dropend {
+  height: 50px;
+}
+#score .score_kirikae .dropend button {
+  position: absolute;
+  left: 0;
+}
