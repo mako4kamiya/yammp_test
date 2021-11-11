@@ -36,16 +36,16 @@ class UserSeeder extends AbstractSeed
             'created_at'    => date('Y-m-d H:i:s'),
             'updated_at'    => date('Y-m-d H:i:s'),
         ];
-        for ($i = 1; $i < 6; $i++) {
-            $data[] = [
-                'id' => $i + 1,
-                'studentNumber' => 2000 + $i,
-                'userName'      => $faker->userName,
-                'password'      => password_hash('faker', PASSWORD_DEFAULT),
-                'created_at'    => date('Y-m-d H:i:s'),
-                'updated_at'    => date('Y-m-d H:i:s'),
-            ];
-        }
+        // for ($i = 1; $i < 6; $i++) {
+        //     $data[] = [
+        //         'id' => $i + 1,
+        //         'studentNumber' => 2000 + $i,
+        //         'userName'      => $faker->userName,
+        //         'password'      => password_hash('faker', PASSWORD_DEFAULT),
+        //         'created_at'    => date('Y-m-d H:i:s'),
+        //         'updated_at'    => date('Y-m-d H:i:s'),
+        //     ];
+        // }
         $this->insert('users', $data);
     }
 }
