@@ -13,6 +13,7 @@
     $statement->execute();
     while ($user = $statement->fetch()) {
       if (password_verify($user['id'], $_COOKIE['user'])) {
+        $_SESSION['user']['id'] = $user['id'];
         $_SESSION['user']['studentNumber'] = $user['studentNumber'];
         $_SESSION['user']['userName'] = $user['userName'];
         header('Location: mypage.php');
@@ -29,6 +30,14 @@
       $_SESSION['login']['userName'],
       password_hash($_SESSION['login']['password'], PASSWORD_DEFAULT),
     ]);
+    // 登録したIDを取得
+    $statement = $db->prepare('SELECT id FROM users WHERE studentNumber = ? AND userName = ?');
+    $statement->execute([
+      $_SESSION['login']['studentNumber'],
+      $_SESSION['login']['userName'],
+    ]);
+    $user_id = $statement->fetch();
+    $_SESSION['user']['id'] = $user_id[0];
     $_SESSION['user']['studentNumber'] = $_SESSION['login']['studentNumber'];
     $_SESSION['user']['userName'] = $_SESSION['login']['userName'];
     unset($_SESSION['login']);

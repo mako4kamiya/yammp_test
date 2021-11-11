@@ -2,6 +2,26 @@
     require('../../dbconnect.php');
     session_start();
 
+    if (!isset($_SESSION['user'])) {
+        // ログイン情報が無ければログイン画面を表示する
+        $host  = $_SERVER['HTTP_HOST'];
+        $extra = 'pages/login.php';
+        header("Location: http://$host/$extra");
+        exit();
+    } else if ($_COOKIE["user"]){
+    // Cookieにユーザー情報があれば、自動でログイン処理を行う。
+        $statement = $db->prepare('SELECT * FROM users');
+        $statement->execute();
+        while ($user = $statement->fetch()) {
+            if (password_verify($user['id'], $_COOKIE['user'])) {
+            $_SESSION['user']['id'] = $user['id'];
+            $_SESSION['user']['studentNumber'] = $user['studentNumber'];
+            $_SESSION['user']['userName'] = $user['userName'];
+            }
+        }
+    }
+
+
     $selected_array = [];
     foreach ($_SESSION['answers']['selected'] as $key => $value) {
         foreach ($value as $v) {
@@ -45,20 +65,25 @@
     }
 
     if (isset($_POST['submit_answers'])) {
-        $statement = $db->prepare('INSERT INTO answers SET selected=?, userAnswer=?, created_at=NOW(), userID=?, questionID=?');
-        foreach ($answers as $answer) {
-            $statement->execute([
-                $answer['selected'],
-                $answer['userAnswer'],
-                $answer['userID'],
-                $answer['questionID']
-            ]);
+        try {
+            $statement = $db->prepare('INSERT INTO answers SET selected=?, userAnswer=?, created_at=NOW(), userID=?, questionID=?');
+            foreach ($answers as $answer) {
+                $statement->execute([
+                    $answer['selected'],
+                    $answer['userAnswer'],
+                    $answer['userID'],
+                    $answer['questionID']
+                ]);
+            }
+            unset($_SESSION['answers']);
+            $host  = $_SERVER['HTTP_HOST'];
+            $extra = 'pages/mypage.php';
+            header("Location: http://$host/$extra");
+            exit();
+        } catch (PDOException $e) {
+            echo 'DB接続エラー： ' . $e->getMessage();
         }
-        unset($_SESSION['answers']);
-        $host  = $_SERVER['HTTP_HOST'];
-        $extra = 'pages/mypage.php';
-        header("Location: http://$host/$extra");
-        exit();
+    
     }
 ?>
 <!DOCTYPE html>
@@ -91,6 +116,7 @@
             <p><span>試験：プロメトリック認定試験（体験版）</span><span>受験者名： 試験 太郎</span></p>
         </div>
         <div class="cbt_demo_end-main">
+            <?php var_export($answers) ?>
             <p>お疲れ様でした。この試験を終了します。</p>
             <p>必ず右上の[ 終 了 ]ボタンをクリックして試験を終了し、退出手続きを行ってください。</p>
         </div>
