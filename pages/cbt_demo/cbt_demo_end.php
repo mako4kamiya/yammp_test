@@ -116,7 +116,6 @@
             <p><span>試験：プロメトリック認定試験（体験版）</span><span>受験者名： 試験 太郎</span></p>
         </div>
         <div class="cbt_demo_end-main">
-            <?php var_export($answers) ?>
             <p>お疲れ様でした。この試験を終了します。</p>
             <p>必ず右上の[ 終 了 ]ボタンをクリックして試験を終了し、退出手続きを行ってください。</p>
         </div>
