@@ -30,17 +30,17 @@
     <?php include("main-header.php"); ?>
 
       <div class="mypage-menu col-6">
-      <i class="fas fa-desktop"></i>
+      <label for="iconbtn1"><i class="fas fa-desktop"></i></label>
       <!-- <button type="button" class="btn btn-success button_type1" onclick="location.href='cbt_start.php'">CBT体験する</button> -->
-      <button type="button" class="btn btn-success button_type1" onclick="location.href='cbt_demo/cbt_demo_start.php'">CBT体験する</button>
+      <button type="button" id="iconbtn1" class="btn btn-success button_type1" onclick="location.href='cbt_demo/cbt_demo_start.php'">CBT体験する</button>
       </div>
       <div class="mypage-menu col-6">
-      <i class="fas fa-medal"></i>
-        <button type="button" class="btn btn-success button_type2" onclick="location.href='score.php'">スコア</button>
+      <label for="iconbtn2"><i class="fas fa-medal"></i></label>
+        <button type="button" id="iconbtn2" class="btn btn-success button_type2" onclick="location.href='score.php'">スコア</button>
       </div>
       <div class="mypage-menu col-6">
-      <i class="fas fa-user-cog"></i>
-        <button type="button" class="btn btn-success button_type3" onclick="location.href='edit.php'">ユーザー情報編集・削除</button>
+      <label for="iconbtn3"><i class="fas fa-user-cog"></i></label>
+        <button type="button" id="iconbtn3" class="btn btn-success button_type3" onclick="location.href='edit.php'">ユーザー情報編集・削除</button>
       </div>
     </div>
   </main>

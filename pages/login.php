@@ -83,20 +83,31 @@
           <div class="forms">
             <i class="fas fa-search-plus"></i>
             <div class="form-group">
-              <input type="text" placeholder="学籍番号(4桁)" name="studentNumber" value="<?php echo htmlspecialchars($_POST['studentNumber'], ENT_QUOTES, 'UTF-8'); ?>" class="<?php print($error['studentNumber'] == 'blank' ? 'is-invalid' : '') ?>">
-              <?php if ($error['studentNumber'] == 'blank'): ?>
-                <div class="col-9 invalid-feedback">* 学籍番号を入力してください</div>
-              <?php endif; ?>
+            <input required <?php print($error['studentNumber'] == 'duplicate' ? 'pattern=".{}"' : 'pattern=".{4}"') ?> class="col-9 flex-grow-1 form-control <?php print($error['userName'] == 'blank' ? 'is-invalid' : '') ?>" type="text" placeholder="学籍番号(4桁)" name="studentNumber" value="<?php echo htmlspecialchars($_POST['studentNumber'], ENT_QUOTES, 'UTF-8'); ?>" />
+          <i class="col-3"></i>
+          <?php if ($error['studentNumber'] == 'blank'): ?>
+            <div class="col-9 invalid-feedback">* 学籍番号を入力してください</div>
+          <?php endif; ?>
+          <?php if ($error['studentNumber'] == 'length'): ?>
+            <div class="col-9 invalid-feedback">* 学籍番号は4桁で入力してください</div>
+          <?php endif; ?>
+          <?php if ($error['studentNumber'] == 'duplicate'): ?>
+            <div class="col-9 invalid-feedback">* この学籍番号はすでに登録されています</div>
+          <?php endif; ?>
             </div>
           </div>
             
           <div class="forms">
             <i class="fas fa-key"></i>
             <div class="form-group">
-              <input type="password" placeholder="Password" name="password" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8'); ?>" class="<?php print($error['password'] == 'blank' ? 'is-invalid' : '') ?>">
-              <?php if ($error['password'] == 'blank'): ?>
-                <div class="col-9 invalid-feedback">* パスワードを入力してください</div>
-              <?php endif; ?>
+          <input required pattern=".{4,}" class="col-9 flex-grow-1 form-control <?php print($error['userName'] == 'blank' ? 'is-invalid' : '') ?>" type="password" placeholder="Password" name="password" maxlength="20" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8'); ?>" />
+          <i class="col-3"></i>
+          <?php if ($error['password'] == 'blank'): ?>
+            <div class="col-9 invalid-feedback">* パスワードを入力してください</div>
+          <?php endif; ?>
+          <?php if ($error['password'] == 'length'): ?>
+            <div class="col-9 invalid-feedback">* パスワードは4桁以上で入力してください</div>
+          <?php endif; ?>
             </div>
           </div>
 
