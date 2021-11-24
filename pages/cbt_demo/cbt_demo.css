@@ -81,18 +81,25 @@ body, p {
     height: 100vh;
     justify-content: space-evenly;
 }
+/* #cbt_demo_exam span#selected::after {
+    font-family: "Font Awesome 5 Free";
+    content: '\f14b';
+    font-weight: 700;
+} */
+i {
+    position: absolute;
+}
+i::before {
+    font-family: "Font Awesome 5 Free";
+    content: '\f14b';
+    font-weight: 700;
+}
 #cbt_demo_exam > div:first-child, #cbt_demo_exam > div:nth-child(2) {
     width: 50%;
     background-color: #dfe7eb;
 }
 #cbt_demo_exam > div:first-child {
     overflow: scroll;
-}
-#cbt_demo_exam > div:first-child .mondai_img{
-    display: none;
-}
-#cbt_demo_exam > div:first-child .mondai_img.show{
-    display: block;
 }
 #cbt_demo_exam > div:first-child img{
     width: 100%;

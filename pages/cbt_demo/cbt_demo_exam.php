@@ -71,20 +71,7 @@
 </head>
 <body id="cbt_demo_exam">
     <div>
-        <div class="mondai_img show">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0005.jpg" alt="toi-1-1">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0006.jpg" alt="toi-1-2">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0007.jpg" alt="toi-1-3">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0008.jpg" alt="toi-1-4">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0009.jpg" alt="toi-1-5">
-        </div>
-        <div class="mondai_img show">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0010.jpg" alt="toi-2-1">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0011.jpg" alt="toi-2-2">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0012.jpg" alt="toi-2-3">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0013.jpg" alt="toi-2-4">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0014.jpg" alt="toi-2-5">
-        </div>
+
     </div>
     <div>
         <div class="cbt_demo_exam-header">
@@ -212,13 +199,69 @@
             <div class="modal-backdrop fade show"></div>
     <?php endif; ?>
 
-    <script>
+    <!-- <script>
         'use strict';
-        history.popstate(null, null, null);
-        window.addEventListener('popstate', function(e) {
-            console.log('ブラウザバックを検知しました。');
-            alert('ブラウザバックを検知しました。');
+        // let isSelected = false;
+
+        // マウスを離したとき
+        addEventListener('mouseup', e => {
+            // 選択した文字列を取得
+            // let selection = document.getSelection();
+            // let range = selection.getRangeAt(0);
+
+            // 選択した文字列をspanタグで囲った文字列に置き換える
+            // let newNode = document.createElement("span");
+            // newNode.id = 'selected';
+            // newNode.innerHTML = selection.toString();
+            // selection.deleteFromDocument();
+            // selection.getRangeAt(0).insertNode(newNode);
+
+            // 選択した文字列の終了地点にiconを挿入する
+            let icon = document.createElement("i");
+            icon.style.left = `${e.clientX}px`;
+            icon.style.top = `${e.clientY}px`;
+            document.body.after(icon)
+
         });
-    </script>
+
+
+        // マウスを離したとき
+        // document.addEventListener('mouseup', e => {
+        //     position_left = e.clientX;
+        //     position_top = e.clientY;
+
+        //     icon_highlight.style.display = 'block';
+        //     icon_highlight.style.top = `${position_top}px`;
+        //     icon_highlight.style.left = `${position_left}px`;
+        // });
+
+        // ユーザーが選択中のテキストを取得
+        // document.onselectionchange = () => {
+        //     let selection = document.getSelection();
+        //     console.log(selection.anchorOffset); // 選択した要素の始点
+        //     console.log(selection.focusOffset); // 選択した要素の終点
+        //     console.log(selection.toString());
+        //     console.log(selection.getRangeAt(0));
+        // };
+
+        // マウスクリックを離したとき
+        // document.addEventListener('mouseup', e => {
+        //     let selection = document.getSelection(); // 選択した要素
+        //     let range = selection.getRangeAt(0); // 選択した要素の範囲
+
+        //     // console.log(selection.anchorNode); // 選択した要素
+        //     console.log(selection.anchorOffset); // 選択した要素の始点
+        //     console.log(selection.focusOffset); // 選択した要素の終点
+        //     console.log(selection.toString());
+        //     console.log(range);
+
+        //     let newNode = document.createElement("span");
+        //     newNode.innerHTML = selection.toString(); // 選択した要素をspanタグで囲った要素を用意する
+
+        //     selection.deleteFromDocument(); // 選択した要素を一旦消す
+        //     range.insertNode(newNode); // 新しい要素を追加する
+        // });
+    </script> -->
+
 </body>
 </html>
