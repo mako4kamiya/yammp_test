@@ -27,7 +27,7 @@
     if ($_POST['userName'] == '') {
       $error['userName'] = 'blank';
     }
-    if ($_POST['studentNumber'] < 4 && $_POST['studentNumber'] >4) {
+    if (strlen($_POST['studentNumber']) != 4 ) {
       $error['studentNumber'] = 'length';
     }
     if ($_POST['studentNumber'] == '') {
@@ -86,7 +86,7 @@
       <form action="" method="post" class="<?php print($error ? 'was-validated' : '') ?>" novalidate>
         <div class="forms">
           <i class="col-3 fas fa-user-plus"></i>
-          <input required class="col-9 flex-grow-1 form-control <?php print($error['userName'] == 'blank' ? 'is-invalid' : '') ?>" type="text" placeholder="ニックネーム" name="userName" maxlength="15" value="<?php echo htmlspecialchars($_POST['userName'], ENT_QUOTES, 'UTF-8'); ?>" />
+          <input required class="col-9 flex-grow-1 form-control" type="text" placeholder="ニックネーム" name="userName" maxlength="15" value="<?php echo htmlspecialchars($_POST['userName'], ENT_QUOTES, 'UTF-8'); ?>" />
           <i class="col-3"></i>
           <?php if ($error['userName'] == 'blank'): ?>
             <div class="col-9 invalid-feedback">* ニックネームを入力してください</div>
@@ -95,7 +95,7 @@
 
         <div class="forms">
           <i class="col-3 fas fa-sort-numeric-down"></i>
-          <input required class="col-9 flex-grow-1 form-control <?php print($error['studentNumber'] == 'duplicate' ? 'pattern=".{}"' : 'pattern=".{4}"') ?> type="text" placeholder="学籍番号(4桁)" name="studentNumber" value="<?php echo htmlspecialchars($_POST['studentNumber'], ENT_QUOTES, 'UTF-8'); ?>" />
+          <input required class="col-9 flex-grow-1 form-control is-invalid<?php 'duplicate' ? '.{4}' : '' ?>" pattern=".{4}" type="text" placeholder="学籍番号(4桁)" name="studentNumber" value="<?php echo htmlspecialchars($_POST['studentNumber'], ENT_QUOTES, 'UTF-8'); ?>" />
           <i class="col-3"></i>
           <?php if ($error['studentNumber'] == 'blank'): ?>
             <div class="col-9 invalid-feedback">* 学籍番号を入力してください</div>
@@ -110,7 +110,7 @@
 
         <div class="forms">
           <i class="col-3 fas fa-unlock-alt"></i>
-          <input required pattern=".{4,}" class="col-9 flex-grow-1 form-control <?php print($error['userName'] == 'blank' ? 'is-invalid' : '') ?>" type="password" placeholder="Password" name="password" maxlength="20" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8'); ?>" />
+          <input required pattern=".{4,}" class="col-9 flex-grow-1 form-control" type="password" placeholder="Password" name="password" maxlength="20" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8'); ?>" />
           <i class="col-3"></i>
           <?php if ($error['password'] == 'blank'): ?>
             <div class="col-9 invalid-feedback">* パスワードを入力してください</div>

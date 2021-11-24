@@ -55,20 +55,31 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">以下の内容で登録してよろしいですか？</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form action="" method="post">
           <div class="modal-body">
               <input type="hidden" name="action" value="submit" />
               <p>ニックネーム：<?php echo htmlspecialchars($_SESSION['login']['userName'], ENT_QUOTES, 'UTF-8'); ?></p>
               <p>学籍番号：<?php echo htmlspecialchars($_SESSION['login']['studentNumber'], ENT_QUOTES, 'UTF-8'); ?></p>
-              <p>password：********</p>
+              <p>password：
+                
+              <?php
+              $pass_str = $_SESSION['login']['password']; 
+            
+              $password = 0;
+              while($password < strlen($pass_str)){
+                echo '*';
+                $password += 1;
+              }
+              ?>
+
+            </p>
           </div>
           <div class="modal-footer">
             <a href="sinki.php?action=rewrite">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">書き直す</button>
             </a>
-            <button type="submit" class="btn btn-outline-warning button_2">Submit</button>
+            <button type="submit" class="btn btn-outline-warning button_2-1">Submit</button>
           </div>
           </form>
         </div>

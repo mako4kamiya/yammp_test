@@ -83,7 +83,7 @@
           <div class="forms">
             <i class="fas fa-search-plus"></i>
             <div class="form-group">
-            <input required <?php print($error['studentNumber'] == 'duplicate' ? 'pattern=".{}"' : 'pattern=".{4}"') ?> class="col-9 flex-grow-1 form-control <?php print($error['userName'] == 'blank' ? 'is-invalid' : '') ?>" type="text" placeholder="学籍番号(4桁)" name="studentNumber" value="<?php echo htmlspecialchars($_POST['studentNumber'], ENT_QUOTES, 'UTF-8'); ?>" />
+            <input required class="col-9 flex-grow-1 form-control is-invalid<?php 'duplicate' ? '.{4}' : '' ?>" pattern=".{4}" type="text" placeholder="学籍番号(4桁)" name="studentNumber" value="<?php echo htmlspecialchars($_POST['studentNumber'], ENT_QUOTES, 'UTF-8'); ?>" />
           <i class="col-3"></i>
           <?php if ($error['studentNumber'] == 'blank'): ?>
             <div class="col-9 invalid-feedback">* 学籍番号を入力してください</div>
@@ -91,12 +91,11 @@
           <?php if ($error['studentNumber'] == 'length'): ?>
             <div class="col-9 invalid-feedback">* 学籍番号は4桁で入力してください</div>
           <?php endif; ?>
-          <?php if ($error['studentNumber'] == 'duplicate'): ?>
-            <div class="col-9 invalid-feedback">* この学籍番号はすでに登録されています</div>
-          <?php endif; ?>
             </div>
           </div>
             
+
+          
           <div class="forms">
             <i class="fas fa-key"></i>
             <div class="form-group">
