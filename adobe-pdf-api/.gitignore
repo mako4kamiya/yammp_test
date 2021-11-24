@@ -1,0 +1,5 @@
+node_modules/
+resource/
+private.key
+pdfservices-api-credentials.json
+*.zip
