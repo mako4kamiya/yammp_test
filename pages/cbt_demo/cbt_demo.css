@@ -101,12 +101,6 @@ i::before {
 #cbt_demo_exam > div:first-child {
     overflow: scroll;
 }
-#cbt_demo_exam > div:first-child .mondai_img{
-    display: none;
-}
-#cbt_demo_exam > div:first-child .mondai_img.show{
-    display: block;
-}
 #cbt_demo_exam > div:first-child img{
     width: 100%;
 }

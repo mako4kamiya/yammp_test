@@ -71,20 +71,7 @@
 </head>
 <body id="cbt_demo_exam">
     <div>
-        <div class="mondai_img show">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0005.jpg" alt="toi-1-1">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0006.jpg" alt="toi-1-2">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0007.jpg" alt="toi-1-3">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0008.jpg" alt="toi-1-4">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0009.jpg" alt="toi-1-5">
-        </div>
-        <div class="mondai_img show">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0010.jpg" alt="toi-2-1">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0011.jpg" alt="toi-2-2">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0012.jpg" alt="toi-2-3">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0013.jpg" alt="toi-2-4">
-            <img src="img\2019r01a_fe_pm_qs_pages-to-jpg-0014.jpg" alt="toi-2-5">
-        </div>
+
     </div>
     <div>
         <div class="cbt_demo_exam-header">
@@ -212,7 +199,7 @@
             <div class="modal-backdrop fade show"></div>
     <?php endif; ?>
 
-    <script>
+    <!-- <script>
         'use strict';
         // let isSelected = false;
 
@@ -274,7 +261,7 @@
         //     selection.deleteFromDocument(); // 選択した要素を一旦消す
         //     range.insertNode(newNode); // 新しい要素を追加する
         // });
-    </script>
+    </script> -->
 
 </body>
 </html>

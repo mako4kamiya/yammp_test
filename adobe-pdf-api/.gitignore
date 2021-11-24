@@ -3,3 +3,4 @@ resource/
 private.key
 pdfservices-api-credentials.json
 *.zip
+*_fe_pm_qs/
