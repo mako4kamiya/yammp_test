@@ -81,11 +81,6 @@ body, p {
     height: 100vh;
     justify-content: space-evenly;
 }
-/* #cbt_demo_exam span#selected::after {
-    font-family: "Font Awesome 5 Free";
-    content: '\f14b';
-    font-weight: 700;
-} */
 i {
     position: absolute;
 }
@@ -94,8 +89,22 @@ i::before {
     content: '\f14b';
     font-weight: 700;
 }
+/* ここから 左側 問題画面 */
+#cbt_demo_exam > div:first-child h1,
+#cbt_demo_exam > div:first-child h2,
+#cbt_demo_exam > div:first-child h3,
+#cbt_demo_exam > div:first-child h4 {
+    font-size: initial;
+    font-weight: initial;
+}
+#cbt_demo_exam > div:first-child section {
+    margin: 10%;
+}
+/* ここまで左側 問題画面 */
 #cbt_demo_exam > div:first-child, #cbt_demo_exam > div:nth-child(2) {
     width: 50%;
+}
+#cbt_demo_exam > div:nth-child(2) {
     background-color: #dfe7eb;
 }
 #cbt_demo_exam > div:first-child {

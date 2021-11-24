@@ -62,7 +62,7 @@ fs.readdir(path, (err, files) => {
                 // Build extractPDF options
                 const options = new PDFServicesSdk.ExtractPDF.options.ExtractPdfOptions.Builder()
                     .addElementsToExtract(PDFServicesSdk.ExtractPDF.options.ExtractElementType.TEXT)
-                    .addElementsToExtractRenditions(PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.FIGURES)
+                    .addElementsToExtractRenditions(PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.FIGURES,PDFServicesSdk.ExtractPDF.options.ExtractRenditionsElementType.TABLES)
                     .build()
             
                 // Create a new operation instance.
