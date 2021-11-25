@@ -7,10 +7,10 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="cbt_demo.css">
+    <link rel="stylesheet" href="mypage_fecbt_pm.css">
     <title>CBT体験 - デモ </title>
 </head>
-<body id="cbt_demo_exam">
+<body id="mypage_fecbt_pm_exam">
     <?php 
         print("<pre>error<br>");
         var_export($error);
@@ -24,7 +24,7 @@
     ?>
 
     <!-- Modal 選択されている場合 -->
-    <div class="modal fade show cbt_demo_check" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal fade show mypage_fecbt_pm_check" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">確認</div>
@@ -42,15 +42,15 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn" onclick="location.href='./cbt_demo_end.php'">試験を終了する</button>
-                    <button type="button" class="btn" onclick="location.href='./cbt_demo_exam.php?action=rewrite'">戻る</button>
+                    <button type="button" class="btn" onclick="location.href='./mypage_fecbt_pm_end.php'">試験を終了する</button>
+                    <button type="button" class="btn" onclick="location.href='./mypage_fecbt_pm_exam.php?action=rewrite'">戻る</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Modal 選択が足りない場合 -->
-    <!-- <div class="modal fade show cbt_demo_check"  tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <!-- <div class="modal fade show mypage_fecbt_pm_check"  tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">確認</div>
@@ -61,7 +61,7 @@
                     <p>指定された数の問題を選択してください。</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn not-checked" onclick="location.href='./cbt_demo_exam.php?action=rewrite'">閉じる</button>
+                    <button type="button" class="btn not-checked" onclick="location.href='./mypage_fecbt_pm_exam.php?action=rewrite'">閉じる</button>
                 </div>
             </div>
         </div>

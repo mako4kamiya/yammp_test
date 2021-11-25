@@ -5,7 +5,7 @@
       aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a <?php (preg_match('/cbt_test/', $_SERVER['REQUEST_URI'])) ? "" : print("href='/'") ?> class="navbar-brand nav-font">FE午後問題CBT体験</a>
+    <a href='/'class="navbar-brand nav-font">FE午後問題CBT体験</a>
     <div class="collapse navbar-collapse justify-content-end">
       <?php if (!preg_match('/cbt_test/', $_SERVER['REQUEST_URI'])) : ?>
         <ul class="navbar-nav">

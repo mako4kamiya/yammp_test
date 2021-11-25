@@ -5,12 +5,14 @@
 @import url('mypage_score.css');
 @import url('mypage_title-header.css');
 @import url('mypage_header.css');
-@import url('cbt_start.css');
+/* @import url('cbt_start.css');
 @import url('cbt_test3.css');
 @import url('cbt_test4.css');
-@import url('cbt_end.css');
+@import url('cbt_end.css'); */
+
 
 
 body {  
   background-color: #FDF1B7;
+  font-family: 'Fredoka One', cursive, sans-serif;
 }
