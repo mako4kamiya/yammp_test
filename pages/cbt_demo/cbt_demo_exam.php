@@ -21,6 +21,7 @@
         }
     }
 
+    $examFileName = '2019r01a_fe_pm_qs';
     $examName = '令和元年度秋期';
 
     $statement = $db->prepare('SELECT * FROM questions WHERE examName = ? GROUP BY toi');
@@ -71,8 +72,9 @@
 </head>
 <body id="cbt_demo_exam">
     <div>
-
+        <?php include($examFileName .'/t1.php') ?>
     </div>
+
     <div>
         <div class="cbt_demo_exam-header">
             <div>

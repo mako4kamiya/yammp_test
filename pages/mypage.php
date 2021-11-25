@@ -22,6 +22,7 @@
 ?>
 
 <body id="mypage">
+<?php include("cbt_demo/mondai-sentaku-modal.php"); ?>
 <?php include("header.php"); ?>
 
   <main class="mycontainer container">
@@ -31,8 +32,8 @@
 
       <div class="mypage-menu col-6">
       <i class="fas fa-desktop"></i>
-      <!-- <button type="button" class="btn btn-success button_type1" onclick="location.href='cbt_start.php'">CBT体験する</button> -->
-      <button type="button" class="btn btn-success button_type1" onclick="location.href='cbt_demo/cbt_demo_start.php'">CBT体験する</button>
+      <button type="button" class="btn btn-success button_type1" data-bs-toggle="modal" data-bs-target="#mondai-sentaku-modal">CBT体験する</button>
+      <!-- <button type="button" class="btn btn-success button_type1" onclick="location.href='cbt_demo/cbt_demo_start.php'">CBT体験する</button> -->
       </div>
       <div class="mypage-menu col-6">
       <i class="fas fa-medal"></i>
