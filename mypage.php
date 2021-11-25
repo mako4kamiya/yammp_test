@@ -23,12 +23,12 @@
 
 <body id="mypage">
 <?php include("cbt_demo/mondai-sentaku-modal.php"); ?>
-<?php include("header.php"); ?>
+<?php include("mypage_header.php"); ?>
 
   <main class="mycontainer container">
   <div class="main-body row">
 
-    <?php include("main-header.php"); ?>
+    <?php include("mypage_title-header.php"); ?>
 
       <div class="mypage-menu col-6">
       <i class="fas fa-desktop"></i>
@@ -37,7 +37,7 @@
       </div>
       <div class="mypage-menu col-6">
       <i class="fas fa-medal"></i>
-        <button type="button" class="btn btn-success button_type2" onclick="location.href='score.php'">スコア</button>
+        <button type="button" class="btn btn-success button_type2" onclick="location.href='mypage_score.php'">スコア</button>
       </div>
       <div class="mypage-menu col-6">
       <i class="fas fa-user-cog"></i>

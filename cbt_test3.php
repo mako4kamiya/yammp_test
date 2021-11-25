@@ -1,7 +1,7 @@
 <?php include("html_head.php"); ?>
 
 <body id="cbt">
-<?php include("header.php"); ?>
+<?php include("mypage_header.php"); ?>
 
   <main class="container">
 

@@ -40,13 +40,13 @@
 ?>
 
 <body id="score">
-<?php include("header.php"); ?>
+<?php include("mypage_header.php"); ?>
 
   <main class="mycontainer container">
   <div class="main-body row">
 
   
-      <?php include("main-header.php"); ?>
+      <?php include("mypage_title-header.php"); ?>
 
       <div class="total-score"></div>
 

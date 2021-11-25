@@ -12,7 +12,7 @@
     }
 ?>
 
-<div class="main-header mypage-menu col-12">
+<div class="mypage_title-header mypage-menu col-12">
     <h1 class="<?php print($icon) ?>"><?php print($title) ?></h1>
     <div class="user-info">
         <p><?php print($_SESSION['user']['userName']); ?></p>

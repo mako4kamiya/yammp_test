@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <div class="main-header">
+    <div class="mypage_title-header">
       <p>Create New Account</p>
       <h1>WELCOME</h1>
     </div>

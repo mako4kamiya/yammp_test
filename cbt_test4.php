@@ -1,7 +1,7 @@
 <?php include("html_head.php"); ?>
 
 <body id="cbt">
-<?php include("header.php"); ?>
+<?php include("mypage_header.php"); ?>
 <!-- Modal 正しく選択されてるとき -->
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
