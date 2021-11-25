@@ -1,11 +1,11 @@
 <?php
-    require('../../dbconnect.php');
+    require('../dbconnect.php');
     session_start();
 
     if (!isset($_SESSION['user'])) {
         // ログイン情報が無ければログイン画面を表示する
         $host  = $_SERVER['HTTP_HOST'];
-        $extra = 'pages/login.php';
+        $extra = 'login.php';
         header("Location: http://$host/$extra");
         exit();
     } else if ($_COOKIE["user"]){

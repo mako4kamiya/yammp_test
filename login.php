@@ -1,5 +1,5 @@
 <?php include("html_head.php");
-  require('../dbconnect.php');
+  require('dbconnect.php');
   session_start();
 
     // ログアウト
@@ -108,7 +108,7 @@
           </div>
     
           <div class="link-1">
-            <a href="sinki.php">create new account</a>
+            <a href="signup.php">create new account</a>
           </div>
 
         </div>
