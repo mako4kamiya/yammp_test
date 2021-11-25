@@ -69,7 +69,7 @@
 ?>
 <body id="login">
   <main class="mycontainer">
-    <div class="mypage_title-header">
+    <div class="main-header">
       <img src="image/pc.jpg" alt="" class="login-img">
     </div>
     <form action="" method="post" class="<?php print($error ? 'was-validated' : '') ?>" novalidate>

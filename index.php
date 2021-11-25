@@ -1,7 +1,7 @@
 <?php
     require('./dbconnect.php');
     session_start();
-
+    var_export($_COOKIE['user']);
 
     if (isset($_SESSION['user'])) {
         // ログイン情報があればマイページ画面を表示する。
