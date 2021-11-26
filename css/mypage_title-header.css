@@ -1,6 +1,6 @@
 
-.main-header h1 {
-    font-family: 'Fredoka One', cursive;
+.mypage_title-header h1 {
+    font-family: 'Fredoka One', cursive, sans-serif;
     font-size: 90px;
     margin-top: 20px;
     margin-left: -135px;
@@ -18,7 +18,7 @@
 }
 
 .user-info p {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Fredoka One', cursive, sans-serif;
   font-size: 30px;
   display: inline;
 }

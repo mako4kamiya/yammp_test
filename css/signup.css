@@ -1,8 +1,8 @@
-body#sinki {
+body#signup {
   overflow: hidden;
 }
 
-#sinki .button_2 {
+#signup .button_2 {
   font-weight: bold;
   color: #208DC3;
   border-color: #208DC3;
@@ -12,36 +12,36 @@ body#sinki {
   width: 130px;
 }
 
-#sinki .button_2:hover {
+#signup .button_2:hover {
   background-color: #208DC3;
   border-color: #208DC3;
 }
 
-#sinki .create-header h1{
+#signup .create-header h1{
   margin-right: 35px;
   margin-top: 18px;
   margin-bottom: 30px;
   text-align: center;
 }
 
-#sinki p {
+#signup p {
   font-size: 30px;
   margin-bottom: -10px;
   margin-left: -25px;
   text-align: center;
 }
 
-#sinki h1 {
-  font-family: 'Fredoka One', cursive;
+#signup h1 {
+  font-family: 'Fredoka One', cursive, sans-serif;
   font-size: 60px;
 }
 
-#sinki i {
+#signup i {
   font-size: 3em;
   margin-right: -75px;
 }
 
-#sinki .forms {
+#signup .forms {
   width: 100%;
   display: flex;
   align-items: center;
@@ -50,13 +50,13 @@ body#sinki {
   align-content: center;
 }
 
-#sinki .main-body { 
+#signup .main-body { 
 	width: 620px;
 	margin: 0 auto;
 }
 
-#sinki .main-body input[type='text'],
-#sinki .main-body input[type='password'] {
+#signup .main-body input[type='text'],
+#signup .main-body input[type='password'] {
 	font: 15px/24px sans-serif;
 	box-sizing: border-box;
   padding: 1em; 

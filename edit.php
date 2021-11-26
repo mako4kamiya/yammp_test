@@ -1,13 +1,13 @@
 <?php include("html_head.php"); ?>
 
 <body id="edit">
-<?php include("header.php"); ?>
+<?php include("mypage_header.php"); ?>
 
   <main class="mycontainer container">
     
       <div class="main-body row">
 
-      <?php include("main-header.php"); ?>
+      <?php include("mypage_title-header.php"); ?>
 
       <p>準備中</p>
         <!-- <div class="forms">

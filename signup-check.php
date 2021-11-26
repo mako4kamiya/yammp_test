@@ -1,6 +1,6 @@
 <?php 
   include("html_head.php");
-  require('../dbconnect.php');
+  require('dbconnect.php');
   session_start();
 
   if (isset($_SESSION['user'])) {
@@ -46,7 +46,7 @@
   }
 ?>
 
-<body id="sinki" class="modal-open">
+<body id="signup" class="modal-open">
   <main class="mycontainer">
 
     <!-- Modal -->
@@ -65,7 +65,7 @@
               <p>password：********</p>
           </div>
           <div class="modal-footer">
-            <a href="sinki.php?action=rewrite">
+            <a href="signup.php?action=rewrite">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">書き直す</button>
             </a>
             <button type="submit" class="btn btn-outline-warning button_2">Submit</button>
@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <div class="main-header">
+    <div class="mypage_title-header">
       <p>Create New Account</p>
       <h1>WELCOME</h1>
     </div>

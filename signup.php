@@ -1,6 +1,6 @@
 <?php 
   include("html_head.php");
-  require('../dbconnect.php');
+  require('dbconnect.php');
   session_start();
 
   if (isset($_SESSION['user'])) {
@@ -53,7 +53,7 @@
 
 	if (empty($error) && !empty($_POST) ) {		
 		$_SESSION['login'] = $_POST;
-		header('Location: sinki-check.php');
+		header('Location: signup-check.php');
     exit();
 	}
 
@@ -74,7 +74,7 @@
     overflow: hidden;
   }
 </style>
-<body id="sinki">
+<body id="signup">
 
   <main class="mycontainer">
     <div class="create-header">
