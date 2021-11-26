@@ -15,7 +15,7 @@
         A社のネットワーク構成を 図 1に示す。
     </p>
     <figure>
-        <img src="2019r01a_fe_pm_qs/t1_1.png" alt="図 1 A社のネットワ ーク構成">
+        <img src="mypage_fecbt_pm/2019r01a_fe_pm_qs/t1_1.png" alt="図 1 A社のネットワ ーク構成">
         <figcaption>図 1 A社のネットワ ーク構成</figcaption>
     </figure>
     <p>
@@ -39,7 +39,7 @@
         テレワーク導入後の A社のネットワーク構成案を，図 2に示す。
     </p>
     <figure>
-        <img src="2019r01a_fe_pm_qs/t1_2.png" alt="図 2 テレワーク 導入後の A社のネットワーク構成案">
+        <img src="mypage_fecbt_pm/2019r01a_fe_pm_qs/t1_2.png" alt="図 2 テレワーク 導入後の A社のネットワーク構成案">
         <figcaption>図 2 テレワーク 導入後の A社のネットワーク構成案</figcaption>
     </figure>
     <p>(A社が検討したテレワークによる業務の開始までの流れ〕</p>
@@ -56,7 +56,7 @@
     <p>　テレワーク導入後の A社 FWに設定するパケットフィルタリングのルール案を，表 1に示す</p>
     <figure>
         <figcaption>表 1 A社 FWに設定するパケットフィルタリングのルール案</figcaption>
-        <img src="2019r01a_fe_pm_qs/t1_3.png" alt="表 1 A社 FWに設定するパケットフィルタリングのルール案">
+        <img src="mypage_fecbt_pm/2019r01a_fe_pm_qs/t1_3.png" alt="表 1 A社 FWに設定するパケットフィルタリングのルール案">
     </figure>
     <p>
         　ところが，表 1のルール案ではルール番号 7の条件に誤リがあリ，<span>a</span>ことが分かった。

@@ -15,7 +15,7 @@
         <h5 class="modal-title" id="exampleModalLabel">問題を選択してください</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body d-flex justify-content-betwee">
+      <div class="modal-body d-flex justify-content-center">
         <?php foreach($exams as $exam): ?>
           <?php $linkPath = 'mypage_fecbt_pm_start.php?examName=' . $exam['examName']?>
           <button type="button" class="btn btn-light col-6 m-1" onclick="document.location='<?php print $linkPath ?>'"><?php print $exam['examName']?></button>

@@ -23,7 +23,14 @@
 
     $_SESSION['answers'] = null;
 
-    $examName = $_REQUEST['examName'];
+    if ($_REQUEST['examName'] == "") {
+        $_SESSION['exam']['examName'] = null;
+        header("Location: login.php");
+        exit();
+    } else {
+        $_SESSION['exam']['examName'] = $_REQUEST['examName'];
+        $examName = $_SESSION['exam']['examName'];
+    }
 
 ?>
 <!DOCTYPE html>
@@ -55,7 +62,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn" onclick="location.href='./mypage_fecbt_pm_exam.php'">確認</button>
-            <button type="button" class="btn" data-bs-dismiss="modal">キャンセル</button>
+            <button type="button" class="btn" onclick="location.href='./mypage_fecbt_pm_start.php?examName=<?php print $examName?>'" data-bs-dismiss="modal">キャンセル</button>
         </div>
         </div>
     </div>
@@ -71,7 +78,7 @@
         </div>
         <div>
             <div>
-                <p>試験名：<?php print $examName ?> 基本情報技術者試験 午後（体験版）</p>
+                <p>試験名：<?php print $_SESSION['exam']['examName'] ?> 基本情報技術者試験 午後（体験版）</p>
                 <p>受験者名：<?php print $_SESSION['user']['userName'] ?></p>
             </div>
         </div>

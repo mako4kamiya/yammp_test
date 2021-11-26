@@ -21,8 +21,14 @@
         }
     }
 
-    $examFileName = '2019r01a_fe_pm_qs';
-    $examName = '令和元年度秋期';
+    $examName = $_SESSION['exam']['examName'];
+    foreach (glob("mypage_fecbt_pm/*_fe_pm_qs/data.json") as $path) {
+        $json = file_get_contents($path);
+        $data = json_decode($json,true);
+        if ($data['examName'] == $examName) {
+            $examFileName = $data['examFileName'];
+        }
+    }
 
     $statement = $db->prepare('SELECT * FROM questions WHERE examName = ? GROUP BY toi');
     $statement->execute([$examName]);
@@ -67,12 +73,12 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="mypage_fecbt_pm.css">
+    <link rel="stylesheet" href="css/mypage_fecbt_pm.css">
     <title>CBT体験 - デモ </title>
 </head>
 <body id="mypage_fecbt_pm_exam">
     <div>
-        <?php include($examFileName .'/t1.php') ?>
+        <?php include('mypage_fecbt_pm/'. $examFileName .'/t1.php') ?>
     </div>
 
     <div>
@@ -149,7 +155,7 @@
                         <p>指定された数の問題を選択してください。</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn not-checked" onclick="location.href='./mypage_fecbt_pm_exam.php?action=rewrite'">閉じる</button>
+                        <button type="button" class="btn not-checked" onclick="location.href='./mypage_fecbt_pm_exam.php?action=rewrite?examName=<?php print $examName?>'">閉じる</button>
                     </div>
                 </div>
             </div>
