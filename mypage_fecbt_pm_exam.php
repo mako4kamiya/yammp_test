@@ -104,39 +104,80 @@
                 <form action="" method="post" name="answers">
                     <input type="text" name="examName" value="<?php print $examName ?>" hidden>
                     <?php for($i = 1; $i <= $mondaisu; $i++) : ?>
-                    <div class="tab-pane fade <?php $i === 1 ? print 'show active' : '' ?>" id="toi-<?php print $i ?>" role="tabpanel" aria-labelledby="toi-<?php print $i ?>">
-                        <?php $flag_display_selected = false; ?>
-                        <?php $flag_display_toi = false; ?>
-                        <?php $questions->execute([$examName, $i]); ?>
-                        <?php while($question = $questions->fetch()) : ?>
 
-                            <?php if(!$flag_display_selected) : ?>
-                                <?php if(preg_match("/選択1/",$question['sentakuGroup'])) : ?>
-                                    <input  id="<?php printf("selected[選択1][%d]", $question['id']) ?>" name="<?php print("selected[][選択1]") ?>" value="<?php print $question['toi'] ?>" class="form-check-input" type="checkbox">
-                                    <label for="<?php printf("selected[選択1][%d]", $question['id']) ?>" class="form-check-label">この問題を選択する</label>
-                                <?php elseif (preg_match("/選択2/",$question['sentakuGroup'])) : ?>
-                                    <input  id="<?php printf("selected[選択2][%d]", $question['id']) ?>" name="<?php print("selected[][選択2]") ?>" value="<?php print $question['toi'] ?>" class="form-check-input" type="checkbox">
-                                    <label for="<?php printf("selected[選択2][%d]", $question['id']) ?>" class="form-check-label">この問題を選択する</label>
+                        <div class="tab-pane fade <?php $i === 1 ? print 'show active' : '' ?>" id="toi-<?php print $i ?>" role="tabpanel" aria-labelledby="toi-<?php print $i ?>">
+                            <?php $flag_display_selected = false; ?>
+                            <?php $flag_display_toi = false; ?>
+                            <?php print('<pre>') ?>
+                            <?php var_export($_POST['userAnswer']) ?>
+                            <?php print('</pre>') ?>
+
+                            <?php a: ?>
+                            <?php $questions->execute([$examName, $i]); ?>
+                            <?php while($question = $questions->fetch()) : ?>
+
+                                <?php if(!$flag_display_selected) : ?>
+                                    <?php if(preg_match("/選択1/",$question['sentakuGroup'])) : ?>
+                                        <input  id="<?php printf("selected[選択1][%d]", $question['id']) ?>" name="<?php print("selected[][選択1]") ?>" value="<?php print $question['toi'] ?>" class="form-check-input" type="checkbox">
+                                        <label for="<?php printf("selected[選択1][%d]", $question['id']) ?>" class="form-check-label">この問題を選択する</label>
+                                    <?php elseif (preg_match("/選択2/",$question['sentakuGroup'])) : ?>
+                                        <input  id="<?php printf("selected[選択2][%d]", $question['id']) ?>" name="<?php print("selected[][選択2]") ?>" value="<?php print $question['toi'] ?>" class="form-check-input" type="checkbox">
+                                        <label for="<?php printf("selected[選択2][%d]", $question['id']) ?>" class="form-check-label">この問題を選択する</label>
+                                        <?php endif ?>
+                                    <?php $flag_display_selected = true; ?>
+                                <?php endif ?>
+                                
+                                <?php if(!$flag_display_toi) : ?>
+                                    <p>問<?php print $question['toi'] ?></p>
+                                    <?php $flag_display_toi = true; ?>
+                                <?php endif ?>
+
+                                <p>設問<?php print $question['setsumon'] ?>に関する解答群</p>
+                                <div>
+                                    <?php if(empty($_POST)): ?>
+                                        <?php for($j = 0; $j < $question['sentakushi']; $j++) : ?>
+                                            <div>
+                                                <input  id="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" name="<?php printf("userAnswer[][%d]", $question['id']) ?>" value="<?php print(htmlspecialchars($sentaku_kigou[$j], ENT_QUOTES, 'UTF-8')) ?>" type="radio" class="btn-check" autocomplete="off">
+                                                <label for="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" class="btn btn-outline-dark"><?php print $sentaku_kigou[$j] ?></label>
+                                            </div>
+                                        <?php endfor ?>
+                                    <?php else : ?>
+
+                                        <?php for($n = 0; $n < count($_POST['userAnswer']); $n++) : ?>
+                                            <?php foreach($_POST['userAnswer'][$n] as $key => $value) : ?>
+
+                                                <?php if($key == $question['id']) :?>
+                                                    <?php for($j = 0; $j < $question['sentakushi']; $j++) : ?>
+                                                        <div>
+                                                            <?php if($value == $sentaku_kigou[$j]): ?>
+                                                                <input checked id="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" name="<?php printf("userAnswer[][%d]", $question['id']) ?>" value="<?php print(htmlspecialchars($sentaku_kigou[$j], ENT_QUOTES, 'UTF-8')) ?>" type="radio" class="btn-check" autocomplete="off">
+                                                            <?php else: ?>
+                                                                <input  id="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" name="<?php printf("userAnswer[][%d]", $question['id']) ?>" value="<?php print(htmlspecialchars($sentaku_kigou[$j], ENT_QUOTES, 'UTF-8')) ?>" type="radio" class="btn-check" autocomplete="off">
+                                                            <?php endif ?>
+                                                            <label for="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" class="btn btn-outline-dark"><?php print $sentaku_kigou[$j] ?></label>
+                                                        </div>
+                                                    <?php endfor ?>
+                                                    <?php break ?>
+                                                <?php else : ?>
+                                                    <?php for($j = 0; $j < $question['sentakushi']; $j++) : ?>
+                                                        <div>
+                                                            <input  id="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" name="<?php printf("userAnswer[][%d]", $question['id']) ?>" value="<?php print(htmlspecialchars($sentaku_kigou[$j], ENT_QUOTES, 'UTF-8')) ?>" type="radio" class="btn-check" autocomplete="off">
+                                                            <label for="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" class="btn btn-outline-dark"><?php print $sentaku_kigou[$j] ?></label>
+                                                        </div>
+                                                    <?php endfor ?>
+                                                    <?#php goto a ?>
+                                                <?php endif ?>
+                                                
+                                            <?php endforeach ?>
+                                            <?php break ?>
+                                        <?php endfor ?>
+
                                     <?php endif ?>
-                                <?php $flag_display_selected = true; ?>
-                            <?php endif ?>
+                                </div>
                             
-                            <?php if(!$flag_display_toi) : ?>
-                                <p>問<?php print $question['toi'] ?></p>
-                                <?php $flag_display_toi = true; ?>
-                            <?php endif ?>
+                            <?php endwhile ?>
 
-                            <p>設問<?php print $question['setsumon'] ?>に関する解答群</p>
-                            <div>
-                                <?php for($j = 0; $j < $question['sentakushi']; $j++) : ?>
-                                    <div>
-                                        <input  id="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" name="<?php printf("userAnswer[][%d]", $question['id']) ?>" value="<?php print(htmlspecialchars($sentaku_kigou[$j], ENT_QUOTES, 'UTF-8')) ?>" type="radio" class="btn-check" autocomplete="off">
-                                        <label for="<?php printf("%d_%s_%s_", $question['id'], $question['setsumon'], $sentaku_kigou[$j]) ?>" class="btn btn-outline-dark"><?php print $sentaku_kigou[$j] ?></label>
-                                    </div>
-                                <?php endfor ?>
-                            </div>
-                        <?php endwhile ?>
-                    </div>
+                        </div>
                     <?php endfor ?>
                 </form>
             </div>
