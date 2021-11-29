@@ -1,10 +1,19 @@
+#login .createaccount {
+  font-size: 15px;
+  font-family: system-ui;
+  margin: 23px;
+}
+
+#login .col-9 {
+  max-width: 100%;
+}
 
 #login .button_1 { 
   font-weight: bold;
   color: #1EA8B5;
   border-color: #1EA8B5;
   border-width: 4px;
-  margin-bottom: 42px;
+  margin-bottom: 70px;
 }
 
 #login .button_1:hover {
@@ -45,10 +54,17 @@
   justify-content: center;
 }
 
-#login a, #login p {
+#login a {
   font-family: 'Fredoka One', cursive;
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 0px;
+}
+
+#login p {
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px;
+  margin-bottom: 0px;
+  margin-left: 36px;
 }
 
 #login i {
@@ -57,7 +73,7 @@
 }
 
 #login .forms {
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   display: flex;
   text-align: center;
@@ -107,7 +123,7 @@
 /* PC用 */
 @media all and (min-width:769px){
 #login .login-img {
-  height: 530px;
+  height: 480px;
 }
 }
 @media all and (min-width:1200px){

@@ -71,10 +71,9 @@
 
 
 
-<p id="timer"></p>
+<p id="timer" class="time-icon"></p>
 
 <script>
-
 let countdown = function(due){
 // 現在日時を取得
 let now = new Date();
@@ -95,16 +94,16 @@ return count;
 }
 // 期日を設定
 let goal = new Date();
-goal.setHours(23);
-goal.setMinutes(59);
-goal.setSeconds(59);
+goal.setHours(13);
+goal.setMinutes(68);
+goal.setSeconds(68);
 
 // recalcの中にファンクションを変数として代入
 let recalc = function(){
 // counterにcountdown(goal)の結果を代入
 let counter = countdown(goal);
 // counterの値をhtmlのIDがtimerの場所へ表示
-let time = counter[1] + ":" + counter[2] + ":" + counter[3];
+let time ="残り時間:\n" + counter[1] + ":" + counter[2] + ":" + counter[3];
 document.getElementById("timer").textContent = time;
 document.getElementById("timer").style.color = "white";
 // refreshを実行

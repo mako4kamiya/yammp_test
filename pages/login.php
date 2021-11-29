@@ -32,12 +32,19 @@
 
   if (!empty($_POST)) {
     // 入力エラーチェック
+    if (strlen($_POST['studentNumber']) != 4 ) {
+      $error['studentNumber'] = 'length';
+    }
     if ($_POST['studentNumber'] == '') {
       $error['studentNumber'] = 'blank';
+    }
+    if (strlen($_POST['password']) < 4) {
+      $error['password'] = 'length';
     }
     if ($_POST['password'] == '') {
       $error['password'] = 'blank';
     }
+  }
 
     if (empty($error)) {
       // 学籍番号がDBにあるか確認する
@@ -64,7 +71,7 @@
         $error['login'] = 'failed';
       }
     }
-  }
+  
 
 ?>
 <body id="login">
@@ -84,7 +91,7 @@
             <i class="fas fa-search-plus"></i>
             <div class="form-group">
             <input required class="col-9 flex-grow-1 form-control is-invalid<?php 'duplicate' ? '.{4}' : '' ?>" pattern=".{4}" type="text" placeholder="学籍番号(4桁)" name="studentNumber" value="<?php echo htmlspecialchars($_POST['studentNumber'], ENT_QUOTES, 'UTF-8'); ?>" />
-          <i class="col-3"></i>
+          <!-- <i class="col-3"></i> -->
           <?php if ($error['studentNumber'] == 'blank'): ?>
             <div class="col-9 invalid-feedback">* 学籍番号を入力してください</div>
           <?php endif; ?>
@@ -100,7 +107,7 @@
             <i class="fas fa-key"></i>
             <div class="form-group">
           <input required pattern=".{4,}" class="col-9 flex-grow-1 form-control <?php print($error['userName'] == 'blank' ? 'is-invalid' : '') ?>" type="password" placeholder="Password" name="password" maxlength="20" value="<?php echo htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8'); ?>" />
-          <i class="col-3"></i>
+          <!-- <i class="col-3"></i> -->
           <?php if ($error['password'] == 'blank'): ?>
             <div class="col-9 invalid-feedback">* パスワードを入力してください</div>
           <?php endif; ?>
@@ -117,8 +124,9 @@
             </div>
           </div>
     
+          <p class="forms createaccount">---------まだアカウントを持っていない方はこちら☟---------</p>
           <div class="link-1">
-            <a href="sinki.php">create new account</a>
+            <a href="sinki.php">Create New Account</a>
           </div>
 
         </div>
