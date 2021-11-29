@@ -212,23 +212,32 @@
     <script>
         'use strict';
         const exam_page = document.getElementById('exam_page');
-        let selection = document.getSelection();;
-        let range;
-        let isSelected = false;
+        let selection;
         let select_text = document.getElementById('select_text');
         let select_icon = document.getElementById('select_icon');
 
 
         // 選択したテキストを取得する
-        addEventListener('selectionchange', () => {
+        document.addEventListener('selectionchange', () => {
             selection = document.getSelection();
         });
+
+        // マウスをクリックし始めたとき
+        exam_page.addEventListener('mousedown', e => {
+            select_icon.style.display = 'none';
+        });
+
+        exam_page.addEventListener('click', e => {
+            selection = document.getSelection();
+        });
+
         // マウスを離したとき
         exam_page.addEventListener('mouseup', e => {
-            if (!isSelected && selection.toString() !== '' ) {
+            console.log(selection.toString());
+            if (selection.toString() != '') {
+
                 // 選択した文字列を取得
-                selection = document.getSelection();
-                range = selection.getRangeAt(0);
+                let range = selection.getRangeAt(0);
 
                 // 選択した文字列をspanタグで囲った文字列に置き換える
                 select_text = document.createElement("span");
@@ -241,12 +250,13 @@
                 select_icon.style.left = `${e.clientX + 10}px`;
                 select_icon.style.top = `${e.clientY + 10}px`;
                 select_icon.style.display = 'block';
-                isSelected = true;
             }
         });
 
         // アイコンをクリックしたとき
         select_icon.addEventListener('click', e => {
+            // let current_selection = selection;
+            // console.log(current_selection);
             select_text.style.backgroundColor = 'Yellow';
             select_icon.style.display = 'none';
             select_text = document.getElementById('select_text');
@@ -258,6 +268,7 @@
         //     console.log(e);
         //     console.log(select_text);
         // });
+
 
     </script>
 </body>
