@@ -81,8 +81,13 @@ body, p {
     height: 100vh;
     justify-content: space-evenly;
 }
+span#select_text {
+    cursor: pointer;
+}
 i {
     position: absolute;
+    cursor: pointer;
+    display: none;
 }
 i::before {
     font-family: "Font Awesome 5 Free";

@@ -77,7 +77,7 @@
     <title>CBT体験 - デモ </title>
 </head>
 <body id="mypage_fecbt_pm_exam">
-    <div>
+    <div id="exam_page">
         <?php include('mypage_fecbt_pm/'. $examFileName .'/t1.php') ?>
     </div>
 
@@ -207,69 +207,58 @@
             <div class="modal-backdrop fade show"></div>
     <?php endif; ?>
 
-    <!-- <script>
+    <i id="select_icon"></i>
+
+    <script>
         'use strict';
-        // let isSelected = false;
+        const exam_page = document.getElementById('exam_page');
+        let selection = document.getSelection();;
+        let range;
+        let isSelected = false;
+        let select_text = document.getElementById('select_text');
+        let select_icon = document.getElementById('select_icon');
 
+
+        // 選択したテキストを取得する
+        addEventListener('selectionchange', () => {
+            selection = document.getSelection();
+        });
         // マウスを離したとき
-        addEventListener('mouseup', e => {
-            // 選択した文字列を取得
-            // let selection = document.getSelection();
-            // let range = selection.getRangeAt(0);
+        exam_page.addEventListener('mouseup', e => {
+            if (!isSelected && selection.toString() !== '' ) {
+                // 選択した文字列を取得
+                selection = document.getSelection();
+                range = selection.getRangeAt(0);
 
-            // 選択した文字列をspanタグで囲った文字列に置き換える
-            // let newNode = document.createElement("span");
-            // newNode.id = 'selected';
-            // newNode.innerHTML = selection.toString();
-            // selection.deleteFromDocument();
-            // selection.getRangeAt(0).insertNode(newNode);
+                // 選択した文字列をspanタグで囲った文字列に置き換える
+                select_text = document.createElement("span");
+                select_text.id = 'select_text';
+                select_text.innerHTML = selection.toString();
+                selection.deleteFromDocument();
+                selection.getRangeAt(0).insertNode(select_text);
 
-            // 選択した文字列の終了地点にiconを挿入する
-            let icon = document.createElement("i");
-            icon.style.left = `${e.clientX}px`;
-            icon.style.top = `${e.clientY}px`;
-            document.body.after(icon)
-
+                // 選択した文字列の終了地点にiconを挿入する
+                select_icon.style.left = `${e.clientX + 10}px`;
+                select_icon.style.top = `${e.clientY + 10}px`;
+                select_icon.style.display = 'block';
+                isSelected = true;
+            }
         });
 
+        // アイコンをクリックしたとき
+        select_icon.addEventListener('click', e => {
+            select_text.style.backgroundColor = 'Yellow';
+            select_icon.style.display = 'none';
+            select_text = document.getElementById('select_text');
+        });
 
-        // マウスを離したとき
-        // document.addEventListener('mouseup', e => {
-        //     position_left = e.clientX;
-        //     position_top = e.clientY;
-
-        //     icon_highlight.style.display = 'block';
-        //     icon_highlight.style.top = `${position_top}px`;
-        //     icon_highlight.style.left = `${position_left}px`;
+        // 選択したテキストをクリックしたとき
+        // select_text.addEventListener('click', e => {
+        //     select_text.style.backgroundColor = 'unset';
+        //     console.log(e);
+        //     console.log(select_text);
         // });
 
-        // ユーザーが選択中のテキストを取得
-        // document.onselectionchange = () => {
-        //     let selection = document.getSelection();
-        //     console.log(selection.anchorOffset); // 選択した要素の始点
-        //     console.log(selection.focusOffset); // 選択した要素の終点
-        //     console.log(selection.toString());
-        //     console.log(selection.getRangeAt(0));
-        // };
-
-        // マウスクリックを離したとき
-        // document.addEventListener('mouseup', e => {
-        //     let selection = document.getSelection(); // 選択した要素
-        //     let range = selection.getRangeAt(0); // 選択した要素の範囲
-
-        //     // console.log(selection.anchorNode); // 選択した要素
-        //     console.log(selection.anchorOffset); // 選択した要素の始点
-        //     console.log(selection.focusOffset); // 選択した要素の終点
-        //     console.log(selection.toString());
-        //     console.log(range);
-
-        //     let newNode = document.createElement("span");
-        //     newNode.innerHTML = selection.toString(); // 選択した要素をspanタグで囲った要素を用意する
-
-        //     selection.deleteFromDocument(); // 選択した要素を一旦消す
-        //     range.insertNode(newNode); // 新しい要素を追加する
-        // });
-    </script> -->
-
+    </script>
 </body>
 </html>
