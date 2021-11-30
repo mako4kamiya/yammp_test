@@ -81,7 +81,7 @@ body, p {
     height: 100vh;
     justify-content: space-evenly;
 }
-span#select_text {
+span.select_text {
     cursor: pointer;
 }
 i {

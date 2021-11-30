@@ -213,7 +213,9 @@
         'use strict';
         const exam_page = document.getElementById('exam_page');
         let selection;
-        let select_text = document.getElementById('select_text');
+        let range;
+        let new_node;
+        let old_text;
         let select_icon = document.getElementById('select_icon');
 
 
@@ -227,24 +229,34 @@
             select_icon.style.display = 'none';
         });
 
+        // マウスをクリックしたとき
         exam_page.addEventListener('click', e => {
-            selection = document.getSelection();
+            let this_text = selection.anchorNode;
+            let this_node = selection.anchorNode.parentNode;
+            let this_parent_node = selection.anchorNode.parentNode.parentNode;
+            // クリックしたのが、選択したテキストだった時
+            if (this_node.className == 'select_text') {
+                console.log(this_text);
+                console.log(this_node);
+                console.log(this_parent_node);
+                this_parent_node.removeChild(this_node);
+                range.insertNode(this_text);
+            }
         });
 
         // マウスを離したとき
         exam_page.addEventListener('mouseup', e => {
-            console.log(selection.toString());
             if (selection.toString() != '') {
 
-                // 選択した文字列を取得
-                let range = selection.getRangeAt(0);
+                // 選択した文字列の範囲を取得
+                range = selection.getRangeAt(0);
 
                 // 選択した文字列をspanタグで囲った文字列に置き換える
-                select_text = document.createElement("span");
-                select_text.id = 'select_text';
-                select_text.innerHTML = selection.toString();
-                selection.deleteFromDocument();
-                selection.getRangeAt(0).insertNode(select_text);
+                new_node = document.createElement("span");
+                new_node.className = 'select_text';
+                new_node.innerHTML = selection.toString();
+                old_text = range.extractContents();
+                range.insertNode(new_node);
 
                 // 選択した文字列の終了地点にiconを挿入する
                 select_icon.style.left = `${e.clientX + 10}px`;
@@ -255,20 +267,9 @@
 
         // アイコンをクリックしたとき
         select_icon.addEventListener('click', e => {
-            // let current_selection = selection;
-            // console.log(current_selection);
-            select_text.style.backgroundColor = 'Yellow';
+            new_node.style.backgroundColor = 'Yellow';
             select_icon.style.display = 'none';
-            select_text = document.getElementById('select_text');
         });
-
-        // 選択したテキストをクリックしたとき
-        // select_text.addEventListener('click', e => {
-        //     select_text.style.backgroundColor = 'unset';
-        //     console.log(e);
-        //     console.log(select_text);
-        // });
-
 
     </script>
 </body>
