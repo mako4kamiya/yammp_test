@@ -215,7 +215,6 @@
         let selection;
         let range;
         let new_node;
-        let old_text;
         let select_icon = document.getElementById('select_icon');
 
 
@@ -234,11 +233,11 @@
             let this_text = selection.anchorNode;
             let this_node = selection.anchorNode.parentNode;
             let this_parent_node = selection.anchorNode.parentNode.parentNode;
+            console.log(this_text);
+            console.log(this_node);
+            console.log(this_parent_node);
             // クリックしたのが、選択したテキストだった時
             if (this_node.className == 'select_text') {
-                console.log(this_text);
-                console.log(this_node);
-                console.log(this_parent_node);
                 this_parent_node.removeChild(this_node);
                 range.insertNode(this_text);
             }
@@ -255,7 +254,7 @@
                 new_node = document.createElement("span");
                 new_node.className = 'select_text';
                 new_node.innerHTML = selection.toString();
-                old_text = range.extractContents();
+                range.deleteContents();
                 range.insertNode(new_node);
 
                 // 選択した文字列の終了地点にiconを挿入する
