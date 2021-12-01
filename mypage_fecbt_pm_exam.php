@@ -212,34 +212,48 @@
     <script>
         'use strict';
         const exam_page = document.getElementById('exam_page');
+        const exam_page_children = exam_page.children[0].children
         let selection;
         let range;
+        // let this_text;
+        let this_node;
+        // let this_parent_node;
         let new_node;
+        let old_text ;
         let select_icon = document.getElementById('select_icon');
 
 
         // 選択したテキストを取得する
         document.addEventListener('selectionchange', () => {
             selection = document.getSelection();
+            this_node = selection.anchorNode.parentNode;
         });
 
         // マウスをクリックし始めたとき
         exam_page.addEventListener('mousedown', e => {
             select_icon.style.display = 'none';
+            let newChild = old_text;
+            let oldChild = new_node;
+            let parentNode = oldChild.parentElement;
+            parentNode.childNodes.forEach(child => {
+                if (child == oldChild && child.style.backgroundColor != 'yellow') {
+                    parentNode.insertBefore(newChild, oldChild);
+                    parentNode.removeChild(oldChild);
+                }
+            });
         });
 
         // マウスをクリックしたとき
         exam_page.addEventListener('click', e => {
-            let this_text = selection.anchorNode;
-            let this_node = selection.anchorNode.parentNode;
-            let this_parent_node = selection.anchorNode.parentNode.parentNode;
-            console.log(this_text);
-            console.log(this_node);
-            console.log(this_parent_node);
             // クリックしたのが、選択したテキストだった時
             if (this_node.className == 'select_text') {
-                this_parent_node.removeChild(this_node);
-                range.insertNode(this_text);
+                let referenceNode = this_node;
+                range.setStartBefore(referenceNode);
+                range.setEndAfter(referenceNode);
+                let text = range.toString()
+                let fragment  = range.createContextualFragment(text);
+                range.deleteContents();
+                range.insertNode(fragment);
             }
         });
 
@@ -254,7 +268,7 @@
                 new_node = document.createElement("span");
                 new_node.className = 'select_text';
                 new_node.innerHTML = selection.toString();
-                range.deleteContents();
+                old_text = range.extractContents();
                 range.insertNode(new_node);
 
                 // 選択した文字列の終了地点にiconを挿入する
@@ -268,6 +282,7 @@
         select_icon.addEventListener('click', e => {
             new_node.style.backgroundColor = 'Yellow';
             select_icon.style.display = 'none';
+            selection.removeAllRanges();
         });
 
     </script>
