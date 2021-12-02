@@ -66,4 +66,10 @@
   font-family: "Font Awesome 5 Free";
   font-weight: 300;
   margin-right: 5px;
+  color: #FFFFFF;
+  border: 20px;
+}
+
+#cbt p.time-icon {
+  color: #FFFFFF;
 }
