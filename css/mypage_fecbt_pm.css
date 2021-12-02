@@ -231,9 +231,6 @@ i::before {
     padding: 0.5em;
     margin: 0 0 1em 0;
 }
-#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane div {
-    display: flex;
-}
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane label.btn {
     border: 3px solid #3d505a;
     margin: 0 1em 1em 0;
