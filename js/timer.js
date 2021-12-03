@@ -33,8 +33,6 @@ function count_down(){
         min = Math.floor(count / 60);
         //60秒で割ったあまりが秒となる
         sec = count % 60;
-        // timer.innerHTML = ("0"+hour) + "：" + ("0"+min).slice(-2) +"：" + ("0"+sec).slice(-2);
-        // timer.textContent = ("0"+hour) + "：" + ("0"+min).slice(-2) +"：" + ("0"+sec).slice(-2);
-        timer.innerText = ("0"+hour) + "：" + ("0"+min).slice(-2) +"：" + ("0"+sec).slice(-2);
+        timer.innerHTML = ("0"+hour) + "：" + ("0"+min).slice(-2) +"：" + ("0"+sec).slice(-2);
     }
 }

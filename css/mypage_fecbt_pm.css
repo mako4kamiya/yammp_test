@@ -115,6 +115,7 @@ i::before {
 #mypage_fecbt_pm_exam > div:first-child section h3,
 #mypage_fecbt_pm_exam > div:first-child section ol,
 #mypage_fecbt_pm_exam > div:first-child section ul{
+    list-style: none;
     font-size: initial;
     font-weight: initial;
     margin: unset;
@@ -144,7 +145,6 @@ i::before {
     margin-bottom: 1em;
 }
 #mypage_fecbt_pm_exam > div:first-child section article li {
-    list-style-type: katakana;
     padding-left: 1em;
 }
 /* ここまで左側 問題画面 */
