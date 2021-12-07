@@ -125,8 +125,10 @@
                     </div>
                     <!-- 必修1 -->
                     <div class="tab-pane fade" id="hissyu_1" role="tabpanel">
-                        <input  id="selected_1" name="selected" value="1" class="form-check-input" type="checkbox">
-                        <label for="selected_1" class="form-check-label">この問題を選択する</label>
+                        <div>
+                            <input  id="selected_1" name="selected" value="1" class="form-check-input" type="checkbox">
+                            <label for="selected_1" class="form-check-label">この問題を選択する</label>
+                        </div>
                         <p>設問1aに関する解答群</p>
                         <div>
                             <div>
@@ -166,8 +168,10 @@
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="sentaku_1_toi_2" role="tabpanel">
-                                <input  id="selected_1" name="selected" value="1" class="form-check-input" type="checkbox">
-                                <label for="selected_1" class="form-check-label">この問題を選択する</label>
+                                <div>
+                                    <input  id="selected_1" name="selected" value="1" class="form-check-input" type="checkbox">
+                                    <label for="selected_1" class="form-check-label">この問題を選択する</label>
+                                </div>
                                 <p>設問1aに関する解答群</p>
                                 <div>
                                     <div>

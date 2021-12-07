@@ -229,10 +229,11 @@ i::before {
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane > p {
     background-color: #f5f6f8;
     padding: 0.5em;
-    margin: 0 0 1em 0;
+    margin: 1em 0;
 }
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane div {
     display: flex;
+    margin-bottom: 1em;
 }
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane label.btn {
     border: 3px solid #3d505a;
@@ -261,12 +262,30 @@ i::before {
 }
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane.sentaku .tab-content {
     overflow: auto;
-    padding: 0 1em;
+    padding: 0.5em 1em;
+    border: 1px solid #dee2e6;
+    border-radius: 3px;
 }
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane.sentaku .tab-content .tab-pane {
     position: relative;
     flex-direction: column;
     width: 100%;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane.sentaku a.nav-link {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 0 1em;
+    margin-right: 12px;
+    margin-bottom: 0.5em;
+    position: relative;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane.sentaku a.nav-link.active::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    border-left: 12px solid #0d6efd;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
 }
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-footer{
     background-color: #000;
