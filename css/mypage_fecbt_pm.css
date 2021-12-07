@@ -226,10 +226,13 @@ i::before {
     opacity: unset;
     display: none;
 }
-#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane p {
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane > p {
     background-color: #f5f6f8;
     padding: 0.5em;
     margin: 0 0 1em 0;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane div {
+    display: flex;
 }
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane label.btn {
     border: 3px solid #3d505a;
@@ -252,6 +255,18 @@ i::before {
     border: 3px solid #FFA510;
     color: #212529;
     background-color: #FFDE7E;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane.sentaku {
+    display: flex;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane.sentaku .tab-content {
+    overflow: auto;
+    padding: 0 1em;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane.sentaku .tab-content .tab-pane {
+    position: relative;
+    flex-direction: column;
+    width: 100%;
 }
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-footer{
     background-color: #000;

@@ -80,7 +80,7 @@
 </head>
 <body id="mypage_fecbt_pm_exam">
     <div id="exam_page">
-        <?php include('mypage_fecbt_pm/'. $examFileName .'/t1.php') ?> <!-- 問題の表示 -->
+        <?php require('mypage_fecbt_pm/'. $examFileName .'/t1.php') ?> <!-- 問題の表示 -->
     </div>
 
     <div>
@@ -96,18 +96,23 @@
         </div>
         <div class="mypage_fecbt_pm_exam-main">
             <ul class="nav" role="tablist">
+                <!-- info -->
                 <li>
                     <a class="nav-link active" data-bs-toggle="tab" href= "#info">i</a>
                 </li>
+                <!-- 必修1 -->
                 <li>
                     <a class="nav-link " data-bs-toggle="tab" href= "#hissyu_1" role="tab">1</a>
                 </li>
-                <l">
+                <!-- 選択1 -->
+                <li>
                     <a class="nav-link" data-bs-toggle="tab" href= "#sentaku_1" role="tab">2-7</a>
                 </li>
+                <!-- 必修2 -->
                 <li>
                     <a class="nav-link" data-bs-toggle="tab" href= "#hissyu_2" role="tab">8</a>
                 </li>
+                <!-- 選択2 -->
                 <li>
                     <a class="nav-link" data-bs-toggle="tab" href= "#sentaku_2" role="tab">7-11</a>
                 </li>
@@ -115,13 +120,13 @@
             <div class="tab-content">
                 <form action="" method="post" name="answers">
                     <!-- info -->
-                    <div class="tab-pane fade show active" id="info">
+                    <div class="tab-pane fade show active" id="info"  role="tabpanel">
                         <p>ここに説明</p>
                     </div>
                     <!-- 必修1 -->
                     <div class="tab-pane fade" id="hissyu_1" role="tabpanel">
                         <input  id="selected_1" name="selected" value="1" class="form-check-input" type="checkbox">
-                        <label for="selected_1" class="form-check-label">1</label>
+                        <label for="selected_1" class="form-check-label">この問題を選択する</label>
                         <p>設問1aに関する解答群</p>
                         <div>
                             <div>
@@ -154,44 +159,50 @@
                         </div>
                     </div>
                     <!-- 選択1 -->
-                    <div class="tab-pane fade" id="sentaku_1" role="tabpanel">
-                        <div class="d-flex align-items-start" id="info" aria-labelledby="info">
-                            <div class="nav flex-column nav-pills me-3" aria-orientation="vertical">
-                                <a class="nav-link active" id="sentaku_1_toi_2" data-bs-toggle="pill" href="#sentaku_1_toi_2" aria-controls="sentaku_1_toi_2" >1</a>
-                                <a class="nav-link" id="sentaku_1_toi_3" data-bs-toggle="pill" href="#sentaku_1_toi_3" aria-controls="sentaku_1_toi_3">2</a>
+                    <div class="tab-pane fade sentaku" id="sentaku_1" role="tabpanel">
+                        <div class="nav flex-column nav-pills" role="tablist">
+                            <a class="nav-link active" data-bs-toggle="pill" href="#sentaku_1_toi_2" role="tab">2</a>
+                            <a class="nav-link" data-bs-toggle="pill" href="#sentaku_1_toi_3" role="tab">3</a>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="sentaku_1_toi_2" role="tabpanel">
+                                <input  id="selected_1" name="selected" value="1" class="form-check-input" type="checkbox">
+                                <label for="selected_1" class="form-check-label">この問題を選択する</label>
+                                <p>設問1aに関する解答群</p>
+                                <div>
+                                    <div>
+                                        <input  id="2_1a_ア" name="userAnswer" value="ア" type="radio" class="btn-check" autocomplete="off">
+                                        <label for="2_1a_ア" class="btn btn-outline-dark">ア</label>
+                                    </div>
+                                    <div>
+                                        <input  id="2_1a_イ" name="userAnswer" value="イ" type="radio" class="btn-check" autocomplete="off">
+                                        <label for="2_1a_イ" class="btn btn-outline-dark">イ</label>
+                                    </div>
+                                    <div>
+                                        <input  id="2_1a_ウ" name="userAnswer" value="ウ" type="radio" class="btn-check" autocomplete="off">
+                                        <label for="2_1a_ウ" class="btn btn-outline-dark">ウ</label>
+                                    </div>
+                                </div>
+                                <p>設問1bに関する解答群</p>
+                                <div>
+                                    <div>
+                                        <input  id="2_1b_ア" name="userAnswer" value="ア" type="radio" class="btn-check" autocomplete="off">
+                                        <label for="2_1b_ア" class="btn btn-outline-dark">ア</label>
+                                    </div>
+                                    <div>
+                                        <input  id="2_1b_イ" name="userAnswer" value="イ" type="radio" class="btn-check" autocomplete="off">
+                                        <label for="2_1b_イ" class="btn btn-outline-dark">イ</label>
+                                    </div>
+                                    <div>
+                                        <input  id="2_1b_ウ" name="userAnswer" value="ウ" type="radio" class="btn-check" autocomplete="off">
+                                        <label for="2_1b_ウ" class="btn btn-outline-dark">ウ</label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="sentaku_1_toi_2" aria-labelledby="sentaku_1_toi_2">1</div>
-                                <div class="tab-pane fade" id="sentaku_1_toi_3" aria-labelledby="sentaku_1_toi_3">2</div>
+                            <div class="tab-pane fade" id="sentaku_1_toi_3" role="tabpanel">
+                                3
                             </div>
                         </div>
-
-
-
-                        <!-- <input  id="selected_2" name="selected" value="1" class="form-check-input" type="checkbox">
-                        <label for="selected_2" class="form-check-label">この問題を選択する</label>
-                        <p>設問1aに関する解答群</p>
-                        <div>
-                            <div>
-                                <input  id="2_1a_ア" name="userAnswer" value="ア" type="radio" class="btn-check" autocomplete="off">
-                                <label for="2_1a_ア" class="btn btn-outline-dark">ア</label>
-                            </div>
-                            <div>
-                                <input  id="2_1a_イ" name="userAnswer" value="イ" type="radio" class="btn-check" autocomplete="off">
-                                <label for="2_1a_イ" class="btn btn-outline-dark">イ</label>
-                            </div>
-                        </div>
-                        <p>設問1bに関する解答群</p>
-                        <div>
-                            <div>
-                                <input  id="2_1b_ア" name="userAnswer" value="ア" type="radio" class="btn-check" autocomplete="off">
-                                <label for="2_1b_ア" class="btn btn-outline-dark">ア</label>
-                            </div>
-                            <div>
-                                <input  id="2_1b_イ" name="userAnswer" value="イ" type="radio" class="btn-check" autocomplete="off">
-                                <label for="2_1b_イ" class="btn btn-outline-dark">イ</label>
-                            </div>
-                        </div> -->
                     </div>
                     <!-- 必修2 -->
                     <div class="tab-pane fade" id="hissyu_2" role="tabpanel">
