@@ -118,9 +118,8 @@
             </div>
             <p><span>試験：<?php print $examName ?> 基本情報技術者試験 午後（体験版）</span><span>受験者名： <?php print($_SESSION['user']['userName']); ?></span></p>
         </div>
+
         <div class="mypage_fecbt_pm_exam-main">
-
-
             <ul class="nav" role="tablist">
                 <!-- info -->
                 <li>
@@ -207,9 +206,8 @@
                     <?php endwhile; ?>
                 </form>
             </div>
-
-
         </div>
+
         <div class="mypage_fecbt_pm_exam-footer">
         </div>
     </div>
