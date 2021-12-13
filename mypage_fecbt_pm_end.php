@@ -21,48 +21,28 @@
         }
     }
 
+    $examName = $_SESSION['exam']['examName'];
+    $questions = $db->prepare('SELECT * FROM questions WHERE examName = ?');
+    $questions->execute([$examName]);
+    $questionCount = $questions->rowCount();
 
-    $selected_array = [];
-    foreach ($_SESSION['answers']['selected'] as $key => $value) {
-        foreach ($value as $v) {
-            array_push($selected_array, $v);
-        }
-    }
-    $userAnswer_array = $_SESSION['answers']['userAnswer'];
+    // echo '<pre>';
+    // var_export($_SESSION['answers']);
+    // echo '</pre>';
 
-    $questions = $db->prepare('SELECT * FROM questions WHERE examName =?');
-    $questions->execute([$_SESSION['answers']['examName']]);
-    $insertRow = $questions->rowCount();
-    
     $answers = [];
-    while($question = $questions->fetch()) {
-        $selected = '';
-        foreach ($selected_array as $key => $value) {
-            if ($question['toi'] == $value) {
-                $selected = 1;
-                break;
-            } else {
-                $selected = 0;
-            }
-        }
-        $userAnswer = '';
-        if ($userAnswer_array) {
-            foreach ($userAnswer_array as $key => $value) {
-                foreach ($value as $k => $v) {
-                    if ($question['id'] == $k) {
-                        $userAnswer = $v;
-                    }
-                }
-            }
-        }
+    while ($question = $questions->fetch()) {
+        $selected = in_array($question['toi'], $_SESSION['answers']['selected']['必修1']) || in_array($question['toi'], $_SESSION['answers']['selected']['必修2']) || in_array($question['toi'], $_SESSION['answers']['selected']['選択1']) || in_array($question['toi'], $_SESSION['answers']['selected']['選択2']) ?  '1' :  '0';
+        $userAnswer = $_SESSION['answers']['userAnswer'][$question['id']] ?  $_SESSION['answers']['userAnswer'][$question['id']] : '' ;
+
         $array = [
             'selected' => $selected,
             'userAnswer' => $userAnswer,
-            'userID' => intval($_SESSION['user']['id']),
-            'questionID' => intval($question['id'])
+            'questionID' => $question['id']
         ];
         array_push($answers, $array);
     }
+
 
     if (isset($_POST['submit_answers'])) {
         try {
@@ -71,7 +51,7 @@
                 $statement->execute([
                     $answer['selected'],
                     $answer['userAnswer'],
-                    $answer['userID'],
+                    $_SESSION['user']['id'],
                     $answer['questionID']
                 ]);
             }
@@ -83,8 +63,79 @@
         } catch (PDOException $e) {
             echo 'DB接続エラー： ' . $e->getMessage();
         }
-    
     }
+
+
+
+
+
+
+
+
+
+    // $selected_array = [];
+    // foreach ($_SESSION['answers']['selected'] as $key => $value) {
+    //     foreach ($value as $v) {
+    //         array_push($selected_array, $v);
+    //     }
+    // }
+    // $userAnswer_array = $_SESSION['answers']['userAnswer'];
+
+    // $questions = $db->prepare('SELECT * FROM questions WHERE examName =?');
+    // $questions->execute([$_SESSION['answers']['examName']]);
+    // $insertRow = $questions->rowCount();
+    
+    // $answers = [];
+    // while($question = $questions->fetch()) {
+    //     $selected = '';
+    //     foreach ($selected_array as $key => $value) {
+    //         if ($question['toi'] == $value) {
+    //             $selected = 1;
+    //             break;
+    //         } else {
+    //             $selected = 0;
+    //         }
+    //     }
+    //     $userAnswer = '';
+    //     if ($userAnswer_array) {
+    //         foreach ($userAnswer_array as $key => $value) {
+    //             foreach ($value as $k => $v) {
+    //                 if ($question['id'] == $k) {
+    //                     $userAnswer = $v;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     $array = [
+    //         'selected' => $selected,
+    //         'userAnswer' => $userAnswer,
+    //         'userID' => intval($_SESSION['user']['id']),
+    //         'questionID' => intval($question['id'])
+    //     ];
+    //     array_push($answers, $array);
+    // }
+
+    // if (isset($_POST['submit_answers'])) {
+    //     try {
+    //         $statement = $db->prepare('INSERT INTO answers SET selected=?, userAnswer=?, created_at=NOW(), userID=?, questionID=?');
+    //         foreach ($answers as $answer) {
+    //             $statement->execute([
+    //                 $answer['selected'],
+    //                 $answer['userAnswer'],
+    //                 $answer['userID'],
+    //                 $answer['questionID']
+    //             ]);
+    //         }
+    //         unset($_SESSION['answers']);
+    //         $host  = $_SERVER['HTTP_HOST'];
+    //         $extra = 'mypage.php';
+    //         header("Location: http://$host/$extra");
+    //         exit();
+    //     } catch (PDOException $e) {
+    //         echo 'DB接続エラー： ' . $e->getMessage();
+    //     }
+    
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -95,7 +146,7 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="mypage_fecbt_pm.css">
+    <link rel="stylesheet" href="css/mypage_fecbt_pm.css">
     <title>CBT体験 - デモ </title>
 </head>
 <body id="mypage_fecbt_pm_exam">
