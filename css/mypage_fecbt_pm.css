@@ -287,6 +287,17 @@ i::before {
     border-top: 12px solid transparent;
     border-bottom: 12px solid transparent;
 }
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane.sentaku a.nav-link.checked {
+    background-color: #565656;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .tab-content .tab-pane.sentaku a.nav-link.checked.active::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    border-left: 12px solid #565656;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-footer{
     background-color: #000;
     position: absolute;
