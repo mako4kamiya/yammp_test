@@ -55,19 +55,8 @@
     }
 
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/mypage_fecbt_pm.css">
-    <script src="js/timer.js" async></script>
-    <title>CBT体験 - デモ </title>
-</head>
+<?php require('mypage_fecbt_pm_head.php') ?>
+
 <body id="mypage_fecbt_pm_exam">
     <div id="exam_page">
         <?php require('mypage_fecbt_pm/'. $examFileName .'/t1.php') ?> <!-- 問題の表示 -->
@@ -250,6 +239,8 @@
     <?php endif; ?>
 
     <i id="select_icon"></i>
+
+    <script src="js/timer.js"></script>
 
     <script>
         'use strict';
