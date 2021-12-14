@@ -15,7 +15,7 @@
 
     $answers = [];
     while ($question = $questions->fetch()) {
-        $selected = in_array($question['toi'], $_SESSION['answers']['selected']['必修1']) || in_array($question['toi'], $_SESSION['answers']['selected']['必修2']) || in_array($question['toi'], $_SESSION['answers']['selected']['選択1']) || in_array($question['toi'], $_SESSION['answers']['selected']['選択2']) ?  '1' :  '0';
+        $selected = in_array($question['toi'], $_SESSION['answers']['selected']['必須1']) || in_array($question['toi'], $_SESSION['answers']['selected']['必須2']) || in_array($question['toi'], $_SESSION['answers']['selected']['選択1']) || in_array($question['toi'], $_SESSION['answers']['selected']['選択2']) ?  '1' :  '0';
         $userAnswer = $_SESSION['answers']['userAnswer'][$question['id']] ?  $_SESSION['answers']['userAnswer'][$question['id']] : '' ;
 
         $array = [

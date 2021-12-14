@@ -122,7 +122,7 @@
                     <?php $groupBySentakuGroup->execute([$examName]) ?>
                     <?php while($SentakuGroup = $groupBySentakuGroup->fetch()): ?>
                         <div class="tab-pane fade <?php if (preg_match("/選択/", $SentakuGroup['sentakuGroup'])) print 'sentaku' ?>" id="<?php print $SentakuGroup['sentakuGroup'] ?>" role="tabpanel">
-                            <?php if(preg_match("/必修/", $SentakuGroup['sentakuGroup'])): ?><!-- 必修問題 -->
+                            <?php if(preg_match("/必須/", $SentakuGroup['sentakuGroup'])): ?><!-- 必須問題 -->
                                 <p>問<?php print $SentakuGroup['toi'] ?>　【必須問題】</p>
                                 <input hidden id="<?php printf('toi_%s-selected', $SentakuGroup['toi']) ?>" name="<?php printf('selected[%s][]', $SentakuGroup['sentakuGroup']) ?>" value="<?php print $SentakuGroup['toi'] ?>" class="form-check-input" type="checkbox" checked>
                                 <?php $whereSentakuGroup->execute([$examName, $SentakuGroup['sentakuGroup']]) ?>
