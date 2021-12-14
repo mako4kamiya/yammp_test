@@ -80,6 +80,7 @@ body, p {
     display: flex;
     height: 100vh;
     justify-content: space-evenly;
+    background-color: #f6f7f9;
 }
 span.select_text {
     cursor: pointer;
@@ -97,6 +98,7 @@ i::before {
 
 /* ここから 左側 問題画面 */
 #mypage_fecbt_pm_exam > div:first-child {
+    background-color: #fff;
     width: 50%;
     overflow: scroll;
 }
@@ -159,6 +161,8 @@ i::before {
     display: flex;
     flex-direction: column;
     position: relative;
+    border: 1px solid #b5b6b8;
+    border-radius: 3px;
 }
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-header{
     background-color: #000;
@@ -196,6 +200,53 @@ i::before {
     justify-content: space-between;
     background-color: #619028;
     padding: 0 1em;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .mypage_fecbt_pm_exam-info {
+    background-color: #fff;
+    border: 1px solid #b5b6b8;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin: 0 auto;
+    padding: 1em;
+    width: 90%;
+    height: 90%;
+    overflow-y: scroll;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .mypage_fecbt_pm_exam-info h2 {
+    font-family: 'Fredoka One', cursive, sans-serif;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .mypage_fecbt_pm_exam-info .notes {
+    color: red;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .mypage_fecbt_pm_exam-info .notes-highlight {
+    border: 1px solid #b5b6b8;
+    border-radius: 3px;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .info ul {
+    list-style: none;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .info ul > p {
+    background-color: #f5f6f8;
+    padding: 0.5em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .info li {
+    padding: 0 2em;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .info li p {
+    margin-bottom: 1em;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main .info img {
+    width: 80%;
+    margin-bottom: 2em;
 }
 #mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-main {
     background-color: #f6f7f9;
@@ -314,10 +365,15 @@ i::before {
     bottom: 0;
     right: 0;
     left: 0;
-}
-#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-footer{
     display: flex;
+    justify-content: end;
     height: 40px;
+}
+#mypage_fecbt_pm_exam > div:nth-child(2) .mypage_fecbt_pm_exam-footer button{
+    background-color: #f7d78c;
+    color: #000;
+    padding: 0 2em;
+    margin: 0.5em;
 }
 
 .mypage_fecbt_pm_check.modal {

@@ -2,33 +2,16 @@
     require('dbconnect.php');
     session_start();
 
-    if (!isset($_SESSION['user'])) {
-        // ログイン情報が無ければログイン画面を表示する
-        $host  = $_SERVER['HTTP_HOST'];
-        $extra = 'login.php';
-        header("Location: http://$host/$extra");
+    if (empty($_SESSION['examName']) || empty($_SESSION['answers']) || empty($_SESSION['user'])) {
+        header("Location: login.php");
         exit();
-    } else if ($_COOKIE["user"]){
-    // Cookieにユーザー情報があれば、自動でログイン処理を行う。
-        $statement = $db->prepare('SELECT * FROM users');
-        $statement->execute();
-        while ($user = $statement->fetch()) {
-            if (password_verify($user['id'], $_COOKIE['user'])) {
-            $_SESSION['user']['id'] = $user['id'];
-            $_SESSION['user']['studentNumber'] = $user['studentNumber'];
-            $_SESSION['user']['userName'] = $user['userName'];
-            }
-        }
     }
 
-    $examName = $_SESSION['exam']['examName'];
+
+    $examName = $_SESSION['examName'];
     $questions = $db->prepare('SELECT * FROM questions WHERE examName = ?');
     $questions->execute([$examName]);
     $questionCount = $questions->rowCount();
-
-    // echo '<pre>';
-    // var_export($_SESSION['answers']);
-    // echo '</pre>';
 
     $answers = [];
     while ($question = $questions->fetch()) {
@@ -55,6 +38,7 @@
                     $answer['questionID']
                 ]);
             }
+            unset($_SESSION['examName']);
             unset($_SESSION['answers']);
             $host  = $_SERVER['HTTP_HOST'];
             $extra = 'mypage.php';
