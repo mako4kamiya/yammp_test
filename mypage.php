@@ -3,6 +3,10 @@
   require('dbconnect.php');
   session_start();
 
+  unset($_SESSION['examName']);
+  unset($_SESSION['answers']);
+
+
   if (!isset($_SESSION['user'])) {
     // ログイン情報が無ければログイン画面を表示する
     header('Location: login.php');
@@ -22,7 +26,7 @@
 ?>
 
 <body id="mypage">
-<?php include("mypage_fecbt_pm_select-modal.php"); ?>
+<?php include("mypage_fecbt_pm_select-modal.php"); ?> <!-- 問題選択モーダル -->
 <?php include("mypage_header.php"); ?>
 
   <main class="mycontainer container">

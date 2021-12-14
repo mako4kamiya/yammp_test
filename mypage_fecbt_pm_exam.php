@@ -2,27 +2,13 @@
     require('dbconnect.php');
     session_start();
 
-    if (!isset($_SESSION['user'])) {
-        // ログイン情報が無ければログイン画面を表示する
-        $host  = $_SERVER['HTTP_HOST'];
-        $extra = 'login.php';
-        header("Location: http://$host/$extra");
+    if (empty($_SESSION['examName']) || empty($_SESSION['user'])) {
+        header("Location: login.php");
         exit();
-    } else if ($_COOKIE["user"]){
-    // Cookieにユーザー情報があれば、自動でログイン処理を行う。
-        $statement = $db->prepare('SELECT * FROM users');
-        $statement->execute();
-        while ($user = $statement->fetch()) {
-            if (password_verify($user['id'], $_COOKIE['user'])) {
-            $_SESSION['user']['id'] = $user['id'];
-            $_SESSION['user']['studentNumber'] = $user['studentNumber'];
-            $_SESSION['user']['userName'] = $user['userName'];
-            }
-        }
     }
 
     // 対象となる試験の「試験名」と「試験ファイル名」を取得する
-    $examName = $_SESSION['exam']['examName']; // 試験名
+    $examName = $_SESSION['examName']; // 試験名
     foreach (glob("mypage_fecbt_pm/*_fe_pm_qs/data.json") as $path) {
         $json = file_get_contents($path);
         $data = json_decode($json,true);
@@ -34,34 +20,38 @@
     // 対象となる試験の情報を取得する
     $questions = $db->prepare('SELECT * FROM questions WHERE examName = ?');
     $questions->execute([$examName]);
-
-    $fieldNameGroupByToi = $db->prepare('SELECT fieldName FROM questions WHERE examName = ? AND toi = ? GROUP BY toi');
-    
-    $groupBySentakuGroup = $db->prepare('SELECT * FROM questions GROUP BY sentakuGroup ORDER BY toi');
-
-    $groupByToi = $db->prepare('SELECT * FROM questions GROUP BY toi');
-    
-    $whereSentakuGroup = $db->prepare('SELECT * FROM questions WHERE sentakuGroup = ?');
-    
-    $whereSentakuGroupGroupByToi = $db->prepare('SELECT * FROM questions WHERE sentakuGroup = ? GROUP BY toi');
-    
-    $whereSentakuGroupToi = $db->prepare('SELECT * FROM questions WHERE sentakuGroup = ? AND toi = ?');
-    
-    $sentaku_kigou = array("ア", "イ", "ウ", "エ", "オ", "カ", "キ", "ク", "ケ", "コ",);
-
-    if (!empty($_POST)) {
-        // 選択した問題数チェック
-        if(count($_POST['selected']['選択1']) == 4 && count($_POST['selected']['選択2']) == 1) {
-            $error['selected'] = 'ok';
-        } else {
-            $error['selected'] = 'wrong_select';
-        }
-        $_SESSION['answers'] = $_POST;
-    }
-
-    // 書き直し
-    if ($_REQUEST['action'] == 'rewrite') {
-        $_POST = $_SESSION['answers'];
+    if ($questions->fetch()) {
+        
+            $fieldNameGroupByToi = $db->prepare('SELECT fieldName FROM questions WHERE examName = ? AND toi = ? GROUP BY toi');
+            
+            $groupBySentakuGroup = $db->prepare('SELECT * FROM questions WHERE examName = ? GROUP BY sentakuGroup ORDER BY toi');
+            
+            $whereSentakuGroup = $db->prepare('SELECT * FROM questions WHERE examName = ? AND sentakuGroup = ?');
+            
+            $whereSentakuGroupGroupByToi = $db->prepare('SELECT * FROM questions WHERE examName = ? AND sentakuGroup = ? GROUP BY toi');
+            
+            $whereSentakuGroupToi = $db->prepare('SELECT * FROM questions WHERE examName = ? AND sentakuGroup = ? AND toi = ?');
+            
+            $sentaku_kigou = array("ア", "イ", "ウ", "エ", "オ", "カ", "キ", "ク", "ケ", "コ",);
+        
+            if (!empty($_POST)) {
+                // 選択した問題数チェック
+                if(count($_POST['selected']['選択1']) == 4 && count($_POST['selected']['選択2']) == 1) {
+                    $error['selected'] = 'ok';
+                } else {
+                    $error['selected'] = 'wrong_select';
+                }
+                $_SESSION['answers'] = $_POST;
+            }
+        
+            // 書き直し
+            if ($_REQUEST['action'] == 'rewrite') {
+                $_POST = $_SESSION['answers'];
+            }
+        
+    } else {
+        header("Location: login.php");
+        exit();
     }
 
 ?>
@@ -105,9 +95,9 @@
                     <a class="nav-link active" data-bs-toggle="tab" href= "#info">i</a>
                 </li>
                 <!-- 問題番号のタブ -->
-                <?php $groupBySentakuGroup->execute([]) ?>
+                <?php $groupBySentakuGroup->execute([$examName]) ?>
                 <?php while($SentakuGroup = $groupBySentakuGroup->fetch()): ?>
-                    <?php $whereSentakuGroupGroupByToi->execute([$SentakuGroup['sentakuGroup']])?>
+                    <?php $whereSentakuGroupGroupByToi->execute([$examName, $SentakuGroup['sentakuGroup']])?>
                     <?php $SentakuGroupCount = $whereSentakuGroupGroupByToi->rowCount()?>
                     <li>
                         <a class="nav-link " data-bs-toggle="tab" href= "#<?php print $SentakuGroup['sentakuGroup'] ?>" role="tab"><?php  preg_match("/選択/", $SentakuGroup['sentakuGroup']) ? printf('%s-%s', $SentakuGroup['toi'], ($SentakuGroup['toi'] + $SentakuGroupCount - 1)) : print $SentakuGroup['toi'] ?></a>
@@ -117,21 +107,36 @@
             <div class="tab-content">
                 <form action="" method="post" name="answers">
                     <!-- info内容 -->
-                    <div class="tab-pane fade show active" id="info"  role="tabpanel">
-                        <p>ここに説明</p>
-                        <?php
-                            echo '<pre>';
-                            var_export($_POST);
-                            echo '</pre>';
-                        ?>
+                    <div class="tab-pane fade show info active" id="info"  role="tabpanel">
+                        <ul>
+                            <p>問題一覧</p>
+                            <li>
+                                <img src="<?php print 'mypage_fecbt_pm/'. $examFileName. '/mondai.png' ?>">
+                            </li>
+                            <p>共通に使用される擬似言語の記述形式</p>
+                            <li>
+                                <p>擬似言語を使用した問題では，各問題文中に注記がない限リ，次の記述形式が適用されているものとする。</p>
+                                <p><strong>〔宣言，注釈及び処理〕</strong></p>
+                                <img src="image/info1.png" style="width: 60%">
+                            </li>
+                            <li>
+                                <p><strong>〔演算子と優先順位〕</strong></p>
+                                <img src="image/info2.png" style="width: 50%">
+                            </li>
+                            <li>
+                                <p><strong>〔論理型の定数〕</strong></p>
+                                <p>true, false</p>
+                            </li>
+                        </ul>
                     </div>
                     <!-- 問題内容 -->
-                    <?php $groupBySentakuGroup->execute([]) ?>
+                    <?php $groupBySentakuGroup->execute([$examName]) ?>
                     <?php while($SentakuGroup = $groupBySentakuGroup->fetch()): ?>
                         <div class="tab-pane fade <?php if (preg_match("/選択/", $SentakuGroup['sentakuGroup'])) print 'sentaku' ?>" id="<?php print $SentakuGroup['sentakuGroup'] ?>" role="tabpanel">
                             <?php if(preg_match("/必修/", $SentakuGroup['sentakuGroup'])): ?><!-- 必修問題 -->
+                                <p>問<?php print $SentakuGroup['toi'] ?>　【必須問題】</p>
                                 <input hidden id="<?php printf('toi_%s-selected', $SentakuGroup['toi']) ?>" name="<?php printf('selected[%s][]', $SentakuGroup['sentakuGroup']) ?>" value="<?php print $SentakuGroup['toi'] ?>" class="form-check-input" type="checkbox" checked>
-                                <?php $whereSentakuGroup->execute([$SentakuGroup['sentakuGroup']]) ?>
+                                <?php $whereSentakuGroup->execute([$examName, $SentakuGroup['sentakuGroup']]) ?>
                                 <?php while($row = $whereSentakuGroup->fetch()): ?>
                                     <p>設問<?php print $row['setsumon'] ?>に関する解答群</p>
                                     <div>
@@ -145,22 +150,23 @@
                                 <?php endwhile; ?>
                             <?php elseif(preg_match("/選択/", $SentakuGroup['sentakuGroup'])): ?><!-- 選択問題 -->
                                 <div class="nav flex-column nav-pills" role="tablist">
-                                    <?php $whereSentakuGroupGroupByToi->execute([$SentakuGroup['sentakuGroup']]) ?>
+                                    <?php $whereSentakuGroupGroupByToi->execute([$examName, $SentakuGroup['sentakuGroup']]) ?>
                                     <?php $i = true ?>
                                     <?php while($row = $whereSentakuGroupGroupByToi->fetch(PDO::FETCH_ASSOC)): ?>
                                         <a class="nav-link <?php if($i == true) print 'active'; $i = false ?> <?php  if (!empty($_POST['selected'][$row['sentakuGroup']]) && in_array($row['toi'], $_POST['selected'][$row['sentakuGroup']])) print 'checked'?> " data-bs-toggle="pill" href="#<?php printf('%s-%s', $row['sentakuGroup'], $row['toi']) ?>" role="tab"><?php print $row['toi'] ?></a>
                                     <?php endwhile; ?>
                                 </div>
                                 <div class="tab-content">
-                                    <?php $whereSentakuGroupGroupByToi->execute([$SentakuGroup['sentakuGroup']]) ?>
+                                    <?php $whereSentakuGroupGroupByToi->execute([$examName, $SentakuGroup['sentakuGroup']]) ?>
                                     <?php $j = true ?>
                                     <?php while($row = $whereSentakuGroupGroupByToi->fetch(PDO::FETCH_ASSOC)): ?>
                                         <div class="tab-pane fade <?php if ($j == true) print 'show active'; $j = false ?>" id="<?php printf('%s-%s', $row['sentakuGroup'], $row['toi']) ?>" role="tabpanel">
+                                            <p>問<?php print $row['toi'] ?></p>
                                             <div>
                                                 <input  id="<?php printf('toi_%s-selected', $row['toi']) ?>" name="<?php printf('selected[%s][]', $row['sentakuGroup']) ?>" value="<?php print $row['toi'] ?>" class="form-check-input" type="checkbox" <?php if (!empty($_POST['selected'][$row['sentakuGroup']]) && in_array($row['toi'], $_POST['selected'][$row['sentakuGroup']])) print 'checked' ?>>
                                                 <label for="<?php printf('toi_%s-selected', $row['toi']) ?>" class="form-check-label">この問題を選択する</label>
                                             </div>
-                                            <?php $whereSentakuGroupToi->execute([$row['sentakuGroup'], $row['toi']]) ?>
+                                            <?php $whereSentakuGroupToi->execute([$examName, $row['sentakuGroup'], $row['toi']]) ?>
                                             <?php while($row = $whereSentakuGroupToi->fetch()): ?>
                                                 <p>設問<?php print $row['setsumon'] ?>に関する解答群</p>
                                                 <div>
@@ -183,6 +189,7 @@
         </div>
 
         <div class="mypage_fecbt_pm_exam-footer">
+            <button type="button" class="btn" disabled >開始</button>
         </div>
     </div>
 
