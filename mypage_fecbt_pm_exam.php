@@ -60,6 +60,18 @@
 <body id="mypage_fecbt_pm_exam">
     <div id="exam_page">
         <?php require('mypage_fecbt_pm/'. $examFileName .'/t1.php') ?> <!-- 問題の表示 -->
+        <section id="t2"><h1>t2</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t3"><h1>t3</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t4"><h1>t4</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t5"><h1>t5</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t6"><h1>t6</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t7"><h1>t7</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t8"><h1>t8</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t9"><h1>t9</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t10"><h1>t10</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t11"><h1>t11</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t12"><h1>t12</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <section id="t13"><h1>t13</h1><br><br><br><br><br><br><br><br><br><br></section>
     </div>
 
     <div>
@@ -78,7 +90,7 @@
         </div>
 
         <div class="mypage_fecbt_pm_exam-main">
-            <ul class="nav" role="tablist">
+            <ul class="nav" role="tablist" id="tabs">
                 <!-- info -->
                 <li>
                     <a class="nav-link active" data-bs-toggle="tab" href= "#info">i</a>
@@ -89,7 +101,7 @@
                     <?php $whereSentakuGroupGroupByToi->execute([$examName, $SentakuGroup['sentakuGroup']])?>
                     <?php $SentakuGroupCount = $whereSentakuGroupGroupByToi->rowCount()?>
                     <li>
-                        <a class="nav-link " data-bs-toggle="tab" href= "#<?php print $SentakuGroup['sentakuGroup'] ?>" role="tab"><?php  preg_match("/選択/", $SentakuGroup['sentakuGroup']) ? printf('%s-%s', $SentakuGroup['toi'], ($SentakuGroup['toi'] + $SentakuGroupCount - 1)) : print $SentakuGroup['toi'] ?></a>
+                        <a class="nav-link " data-bs-toggle="tab" href= "#<?php print $SentakuGroup['sentakuGroup'] ?>" role="tab" id="<?php print "t". $SentakuGroup['toi']?>"><?php  preg_match("/選択/", $SentakuGroup['sentakuGroup']) ? printf('%s-%s', $SentakuGroup['toi'], ($SentakuGroup['toi'] + $SentakuGroupCount - 1)) : print $SentakuGroup['toi'] ?></a>
                     </li>
                 <?php endwhile; ?>
             </ul>
@@ -138,11 +150,11 @@
                                     </div>
                                 <?php endwhile; ?>
                             <?php elseif(preg_match("/選択/", $SentakuGroup['sentakuGroup'])): ?><!-- 選択問題 -->
-                                <div class="nav flex-column nav-pills" role="tablist">
+                                <div class="nav flex-column nav-pills" role="tablist" id="tabs2">
                                     <?php $whereSentakuGroupGroupByToi->execute([$examName, $SentakuGroup['sentakuGroup']]) ?>
                                     <?php $i = true ?>
                                     <?php while($row = $whereSentakuGroupGroupByToi->fetch(PDO::FETCH_ASSOC)): ?>
-                                        <a class="nav-link <?php if($i == true) print 'active'; $i = false ?> <?php  if (!empty($_POST['selected'][$row['sentakuGroup']]) && in_array($row['toi'], $_POST['selected'][$row['sentakuGroup']])) print 'checked'?> " data-bs-toggle="pill" href="#<?php printf('%s-%s', $row['sentakuGroup'], $row['toi']) ?>" role="tab"><?php print $row['toi'] ?></a>
+                                        <a class="nav-link <?php if($i == true) print 'active'; $i = false ?> <?php  if (!empty($_POST['selected'][$row['sentakuGroup']]) && in_array($row['toi'], $_POST['selected'][$row['sentakuGroup']])) print 'checked'?> " data-bs-toggle="pill" href="#<?php printf('%s-%s', $row['sentakuGroup'], $row['toi']) ?>" role="tab" id="<?php print "t". $row['toi']?>"><?php print $row['toi'] ?></a>
                                     <?php endwhile; ?>
                                 </div>
                                 <div class="tab-content">
@@ -241,6 +253,24 @@
     <i id="select_icon"></i>
 
     <script src="js/timer.js"></script>
+
+    <script>
+        'user strict';
+        const tabs = document.getElementById('tabs');
+        tabs.addEventListener('click', (e)=>{
+            const toi = e.delegateTarget.id; // クリックしたタブの問題番号
+            const target = document.getElementById(toi); // 対象の問題番号があるタグ
+            const target_top = target.offsetTop; // 対象の問題番号があるタグのy座標
+            exam_page.scroll(0, target_top);
+        });
+        const tabs2 = document.getElementById('tabs2');
+        tabs2.addEventListener('click', (e)=>{
+            const toi = e.delegateTarget.id; // クリックしたタブの問題番号
+            const target = document.getElementById(toi); // 対象の問題番号があるタグ
+            const target_top = target.offsetTop; // 対象の問題番号があるタグのy座標
+            exam_page.scroll(0, target_top);
+        });
+    </script>
 
     <script>
         'use strict';
