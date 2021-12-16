@@ -1,70 +1,23 @@
-#edit .button_2 {
-  font-weight: bold;
-  color: #208DC3;
-  border-color: #208DC3;
-  border-width: 5px;
-  width: 100px;
-}
-
-#edit .button_2:hover {
-  background-color: #9ACDE7;
-  border-color: #9ACDE7;
-}
-
-#edit .button_3{
-  font-weight: bold;
-  color: #F26040;
-  border-color: #F26040;
-  border-width: 5px;
-  width: 100px;
-  margin-right: 49px;
-  margin-left: 10px;
-}
-
-#edit .button_3:hover {
-  background-color: #EAA8BF;
-  border-color: #EAA8BF;
-}
-
-#edit .forms {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  height: 100px;
-  justify-content: center;
-}
-
-#edit .main-body { 
-  flex-direction: column;
-	width: 70%;
-	margin: 0 auto;
-}
-
-#edit .link-2::before {
-  font-size: 2.0em;
-  content: "\f503";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  text-align: center;
-}
-
-#edit .main-body input[type='text'] {
-	font: 15px/24px sans-serif;
-	box-sizing: border-box;
-  padding: 1em; 
-	transition: 0.3s;
-	letter-spacing: 5px;
-	color: #474d52;
-	border: 5px solid #1b2538;
-	border-radius: 4px;
-  text-align: center;
-}
-
-#edit .forms i { 
-  font-size: 2em;
-  width: 50px;
-}
-
 #edit p {
   text-align: center;
+}
+#edit  { 
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
+}
+#edit label {
+  margin: 0 0.5em 0 0;
+}
+#edit i {
+  font-size: 2em;
+}
+#edit button.btn.btn-normal{
+  font-weight: bold;
+  color: #1EA8B5;
+  border-color: #1EA8B5;
+}
+#edit button.btn.btn-normal:hover{
+  background-color: #95DFD6;
+  border-color: #95DFD6;
 }

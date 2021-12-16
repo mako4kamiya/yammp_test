@@ -44,7 +44,7 @@
       </div>
       <div class="mypage-menu col-6">
         <label for="iconbtn3"><i class="fas fa-user-cog"></i></label>
-        <button type="button" id="iconbtn3" class="btn btn-success button_type3" onclick="location.href='edit.php'">ユーザー情報編集・削除</button>
+        <button type="button" id="iconbtn3" class="btn btn-success button_type3" onclick="location.href='mypage_edit.php'">ユーザー情報編集・削除</button>
       </div>
     </div>
   </main>
