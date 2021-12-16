@@ -4,7 +4,7 @@
       $html_head_title = 'CBT体験 - My page';
     } elseif (preg_match('/score/', $_SERVER['REQUEST_URI'])) {
       $html_head_title = 'CBT体験 - SCORE';
-    } elseif (preg_match('/delete/', $_SERVER['REQUEST_URI'])) {
+    } elseif (preg_match('/edit/', $_SERVER['REQUEST_URI'])) {
       $html_head_title = 'CBT体験 - EDIT';
     } else {
       $html_head_title = 'CBT体験';
