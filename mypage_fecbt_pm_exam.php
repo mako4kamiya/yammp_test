@@ -59,19 +59,7 @@
 
 <body id="mypage_fecbt_pm_exam">
     <div id="exam_page">
-        <?php require('mypage_fecbt_pm/'. $examFileName .'/t1.php') ?> <!-- 問題の表示 -->
-        <section id="t2"><h1>t2</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t3"><h1>t3</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t4"><h1>t4</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t5"><h1>t5</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t6"><h1>t6</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t7"><h1>t7</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t8"><h1>t8</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t9"><h1>t9</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t10"><h1>t10</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t11"><h1>t11</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t12"><h1>t12</h1><br><br><br><br><br><br><br><br><br><br></section>
-        <section id="t13"><h1>t13</h1><br><br><br><br><br><br><br><br><br><br></section>
+        <?php require('mypage_fecbt_pm/'. $examFileName .'/mondai.php') ?> <!-- 問題の表示 -->
     </div>
 
     <div>
