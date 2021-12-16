@@ -1,7 +1,6 @@
 'use strict';
 //変数の定義
 const timer = document.getElementById("timer");
-console.log(timer);
 let count   = 3600; //カウントダウンの数字を格納する変数
 let hour    = 0;
 let min     = 0; //残り時間「分」を格納する変数
