@@ -1,11 +1,6 @@
 #edit p {
   text-align: center;
 }
-#edit  { 
-  flex-direction: column;
-  width: 70%;
-  margin: 0 auto;
-}
 #edit label {
   margin: 0 0.5em 0 0;
 }

@@ -17,6 +17,6 @@
     <div class="user-info">
         <p><?php print($_SESSION['user']['userName']); ?></p>
         <p><?php print($_SESSION['user']['studentNumber']); ?></p>
-    <p>******</p>
+        <p>******</p>
     </div>
 </div>
