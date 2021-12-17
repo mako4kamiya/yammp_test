@@ -12,12 +12,12 @@ body#signup {
   width: 130px;
 }
 
-#sinki .button_2:hover {
+#signup .button_2:hover {
   background-color: #9ACDE7;
   border-color: #9ACDE7;
 }
 
-#sinki .button_2-1 {
+#signup .button_2-1 {
   font-weight: bold;
   color: #208DC3;
   border-color: #208DC3;
@@ -27,7 +27,7 @@ body#signup {
   width: 130px;
 }
 
-#sinki .button_2-1:hover {
+#signup .button_2-1:hover {
   background-color: #9ACDE7;
   border-color: #9ACDE7;
 }

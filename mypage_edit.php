@@ -10,8 +10,6 @@
     exit();
   }
 
-  // unset($_SESSION['flash']);
-
   // ニックネームの変更を送信した場合
   if ($_POST['changeName']) {
     // 入力エラーチェック
@@ -122,6 +120,7 @@
           $answers->execute([$_SESSION['user']['id']]);
           $user = $db->prepare('DELETE FROM users WHERE id = ?');
           $user->execute([$_SESSION['user']['id']]);
+          $_SESSION['flash'] = "ユーザー情報を削除しました";
           unset($_SESSION['user']);
           setcookie("user", time() - 3600);
           header('Location: login.php');
@@ -143,7 +142,6 @@
 
   <main class="mycontainer container">
     <?php include("mypage_title-header.php"); ?>
-
     <!-- changeNameModal -->
     <div class="modal fade" id="changeNameModal" tabindex="-1" aria-labelledby="changeNameModalLabel" aria-hidden="true">
       <div class="modal-dialog">

@@ -76,6 +76,7 @@
 ?>
 <body id="login">
   <main class="mycontainer">
+    <?php include("flash.php"); ?>
     <div class="main-header">
       <img src="image/pc.jpg" alt="" class="login-img">
     </div>
