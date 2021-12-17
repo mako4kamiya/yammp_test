@@ -5,6 +5,7 @@
 
   unset($_SESSION['examName']);
   unset($_SESSION['answers']);
+  unset($_SESSION['flash']);
 
 
   if (!isset($_SESSION['user'])) {
