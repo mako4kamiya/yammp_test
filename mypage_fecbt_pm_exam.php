@@ -78,7 +78,7 @@
         </div>
 
         <div class="mypage_fecbt_pm_exam-main">
-            <ul class="nav" role="tablist" id="tabs">
+            <ul class="nav" role="tablist" id="tab-必須">
                 <!-- info -->
                 <li>
                     <a class="nav-link active" data-bs-toggle="tab" href= "#info">i</a>
@@ -138,7 +138,7 @@
                                     </div>
                                 <?php endwhile; ?>
                             <?php elseif(preg_match("/選択/", $SentakuGroup['sentakuGroup'])): ?><!-- 選択問題 -->
-                                <div class="nav flex-column nav-pills" role="tablist" id="tabs2">
+                                <div class="nav flex-column nav-pills" role="tablist" id="tab-<?php print $SentakuGroup['sentakuGroup'] ?>">
                                     <?php $whereSentakuGroupGroupByToi->execute([$examName, $SentakuGroup['sentakuGroup']]) ?>
                                     <?php $i = true ?>
                                     <?php while($row = $whereSentakuGroupGroupByToi->fetch(PDO::FETCH_ASSOC)): ?>

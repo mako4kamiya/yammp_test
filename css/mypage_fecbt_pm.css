@@ -102,8 +102,10 @@ i::before {
     width: 50%;
     overflow: scroll;
 }
-#mypage_fecbt_pm_exam > div:first-child img{
+#mypage_fecbt_pm_exam > div:first-child section img{
     max-width: 100%;
+    display: block;
+    margin: 0 auto;
 }
 #mypage_fecbt_pm_exam > div:first-child section {
     margin: 10%;
@@ -121,6 +123,7 @@ i::before {
     font-size: initial;
     font-weight: initial;
     margin: unset;
+    padding: unset;
 }
 #mypage_fecbt_pm_exam > div:first-child section h1 {
     border: 2px solid black;
@@ -137,18 +140,45 @@ i::before {
     text-align: center;
     margin: 0.5em 0;
 }
+#mypage_fecbt_pm_exam > div:first-child section span:not(.select_text) {
+    border: 2px solid black;
+    padding: 0 2em;
+    margin: 0 0.3em;
+}
+#mypage_fecbt_pm_exam > div:first-child section ol li,
+#mypage_fecbt_pm_exam > div:first-child section ul li {
+    margin-left: 2em;
+    text-indent: -2em;
+}
 #mypage_fecbt_pm_exam > div:first-child section p,
 #mypage_fecbt_pm_exam > div:first-child section article {
     margin: 0 1em;
 }
 #mypage_fecbt_pm_exam > div:first-child section article ul {
-    list-style: none;
-    padding: unset;
+    padding-left: 1em;
     margin-bottom: 1em;
 }
-#mypage_fecbt_pm_exam > div:first-child section article li {
-    padding-left: 1em;
+#mypage_fecbt_pm_exam > div:first-child section article h3 {
+    text-indent: -1em;
 }
+#mypage_fecbt_pm_exam > div:first-child section article ul.row {
+    padding: unset;
+}
+#mypage_fecbt_pm_exam > div:first-child section article ul li table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+}
+#mypage_fecbt_pm_exam > div:first-child section article ul li table td {
+    border: 1px solid black;
+    width: calc(100% / 5);
+}
+#mypage_fecbt_pm_exam > div:first-child section article ul li.indent3 {
+    margin-left: 3em;
+    text-indent: -3em;
+}
+
 /* ここまで左側 問題画面 */
 
 #mypage_fecbt_pm_exam > div:nth-child(2) {
