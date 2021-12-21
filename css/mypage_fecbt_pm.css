@@ -164,15 +164,24 @@ i::before {
 #mypage_fecbt_pm_exam > div:first-child section article ul.row {
     padding: unset;
 }
-#mypage_fecbt_pm_exam > div:first-child section article ul li table {
+#mypage_fecbt_pm_exam > div:first-child section article table {
     border-collapse: collapse;
-    width: 100%;
-    text-align: center;
     table-layout: fixed;
 }
-#mypage_fecbt_pm_exam > div:first-child section article ul li table td {
+#mypage_fecbt_pm_exam > div:first-child section article table td {
     border: 1px solid black;
+}
+#mypage_fecbt_pm_exam > div:first-child section article table.t2 {
+    width: 100%;
+}
+#mypage_fecbt_pm_exam > div:first-child section article table.t2 td {
     width: calc(100% / 5);
+    text-align: center;
+}
+#mypage_fecbt_pm_exam > div:first-child section article table.t4 td {
+    width: calc(100% / 4);
+    padding-left: 0.5em;
+    padding-right: 2em;
 }
 #mypage_fecbt_pm_exam > div:first-child section article ul li.indent3 {
     margin-left: 3em;
